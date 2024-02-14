@@ -1,2 +1,0 @@
-#!/bin/bash
-http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171' nvim $*
