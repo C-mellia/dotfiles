@@ -1,5 +1,5 @@
 require("nvim-tree").setup({
-    disable_netrw = true
+    disable_netrw = true,
 	sort = {
 		sorter = "case_sensitive",
 	},
