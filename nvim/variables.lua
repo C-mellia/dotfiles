@@ -1,5 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
 vim.opt.guicursor = "i:block"
 vim.opt.showtabline = 0
 vim.opt.number = true
