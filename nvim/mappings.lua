@@ -61,3 +61,5 @@ vim.keymap.set('n', '<Leader>a<', 'viw<ESC>a><ESC>bi<lt><ESC>')
 vim.keymap.set('n', '<Leader>a>', 'viw<ESC>a><ESC>bi<lt><ESC>')
 vim.keymap.set('n', "<Leader>a'", "viw<ESC>a'<ESC>bi'<ESC>")
 vim.keymap.set('n', '<Leader>a"', 'viw<ESC>a"<ESC>bi"<ESC>')
+
+-- '"([asodjashiouwehf])"' 
