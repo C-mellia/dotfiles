@@ -25,8 +25,8 @@ vim.keymap.set('n', '<Leader>tcd', "<cmd>:Telescope commands<CR>")
 vim.keymap.set('n', '<Leader>tm', "<cmd>:Telescope man_pages sections={\"ALL\"}<CR>")
 vim.keymap.set('n', '<Leader>tcs', "<cmd>:Telescope colorscheme enable_preview=true<CR>")
 vim.keymap.set('n', '<Leader>tk', "<cmd>:Telescope keymaps<CR>")
-vim.keymap.set('n', '<Leader>tls', "<cmd>:Telescope lsp_document_symbols")
-vim.keymap.set('n', '<Leader>tvo', "<cmd>:Telescope vim_options")
+vim.keymap.set('n', '<Leader>tls', "<cmd>:Telescope lsp_document_symbols<CR>")
+vim.keymap.set('n', '<Leader>tvo', "<cmd>:Telescope vim_options<CR>")
 
 vim.keymap.set('n', '<Leader>aa/', '[/v]/')
 vim.keymap.set('n', '<Leader>aa/', '[/v]/d')
@@ -63,3 +63,5 @@ vim.keymap.set('n', "<Leader>a'", "viw<ESC>a'<ESC>bi'<ESC>")
 vim.keymap.set('n', '<Leader>a"', 'viw<ESC>a"<ESC>bi"<ESC>')
 
 -- '"([asodjashiouwehf])"' 
+
+vim.keymap.set('n', "<Leader>%", "<cmd>:bd %<CR>")

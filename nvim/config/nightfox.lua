@@ -21,7 +21,7 @@ require('nightfox').setup({
       comments = "italic",     -- Value is any valid attr-list value `:help attr-list`
       conditionals = "NONE",
       constants = "bold",
-      functions = "underline",
+      functions = "NONE",
       keywords = "NONE",
       numbers = "bold",
       operators = "NONE",
