@@ -210,7 +210,6 @@ client.background       #181818f0
 bar {
     i3bar_command i3bar --transparency;
     status_command i3status;
-    padding 0 10px
     colors {
         background #181818f0
     }
