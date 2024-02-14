@@ -1,0 +1,4 @@
+#!/bin/sh
+export http_proxy='http://localhost:20171/'
+export https_proxy='https://localhost:20171/'
+nitrogen --restore &
