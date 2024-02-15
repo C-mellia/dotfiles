@@ -5,6 +5,8 @@ source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export VISUAL=vim
 export EDITOR=vim
 
+alias mupdf='mupdf -I "$(fzf)"'
+
 # Greeting: 
 # echo '<(` ^´)>'
 echo '(U w U)'

@@ -1,0 +1,3 @@
+#!/bin/sh
+scrot -s --file /home/camellia/Image/%b%d-%H:%M:%S
+mpv /home/camellia/Downloads/hitmarker_2.mp3

@@ -106,6 +106,7 @@ bindsym $mod+f fullscreen toggle
 # scrot
 bindsym --release $mod+Shift+F1 exec scrot -s --file /home/camellia/Image/%b%d-%H:%M:%S
 bindsym --release $mod+F1 exec scrot --file /home/camellia/Image/%b%d-%H:%M:%S
+bindsym --release $mod+F2 exec /home/camellia/dotfiles/i3/screenshot
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
