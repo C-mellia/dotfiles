@@ -13,4 +13,4 @@
 -- gN: Place C++ scope declarations N characters from the indent of the block they are in.
 -- +N: Indent a continuation line (a line that spills onto the next) inside a function N additional characters.
 
-vim.opt_local.cinoptions = "(0,ws,Ws,:0,Ls,l1,p0,t0,m1,j1,g0"
+-- vim.opt_local.cinoptions = "(0,ws,Ws,:0,Ls,l1,p0,t0,m1,j1,g0"

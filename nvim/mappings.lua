@@ -1,4 +1,8 @@
 vim.g.mapleader = ' '
+vim.keymap.set('i', '<C-f>', '<C-o>l')
+vim.keymap.set('i', '<C-b>', '<C-o>h')
+vim.keymap.set('i', '<C-e>', '<C-o>A')
+vim.keymap.set('i', '<C-a>', '<C-o>I')
 vim.keymap.set('n', '<Leader>xc', '<cmd>:wa | qa!<CR>')
 vim.keymap.set('n', '<Leader>1', '<cmd>:only!<CR>')
 vim.keymap.set('n', '<Leader>0', '<cmd>: close<CR>')

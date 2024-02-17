@@ -37,3 +37,4 @@ vim.opt.updatetime = 5
 vim.opt.colorcolumn = "80"
 
 vim.opt.expandtab = true
+vim.opt.cinoptions = "(0,ws,Ws,:0,Ls,l1,p0,t0,m1,j1,g0"

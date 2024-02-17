@@ -6,6 +6,9 @@ require("nvim-tree").setup({
 	filters = {
 		dotfiles = true,
 	},
+    view = {
+        width = 30,
+    },
     renderer = {
         add_trailing = true,
         indent_markers = {
