@@ -4,7 +4,9 @@ source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 export VISUAL=vim
 export EDITOR=vim
+export PATH="${PATH}:${HOME}/dotfiles/script"
 
+alias fzf-cd='cd $(dfzf)'
 alias mupdf='mupdf -I "$(fzf)"'
 
 # Greeting: 

@@ -1,0 +1,4 @@
+#!/bin/bash
+fzf --no-mouse --cycle --ansi \
+    --preview="bat --color=always --style=numbers {}" \
+    --bind ctrl-f:preview-down,ctrl-b:preview-up
