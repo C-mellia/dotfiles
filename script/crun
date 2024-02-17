@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ -f ./build.sh ]]; then
+    ./build.sh && ./main
+else 
+    echo "no 'build.sh' file found under current directory"
+fi

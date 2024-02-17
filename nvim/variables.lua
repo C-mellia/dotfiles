@@ -9,7 +9,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 
 vim.opt.laststatus = 0
-vim.opt.mouse = ""
+-- vim.opt.mouse = ""
 vim.cmd [[
 filetype plugin indent on
 ]]

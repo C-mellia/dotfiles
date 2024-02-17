@@ -1,0 +1,34 @@
+#!/bin/bash
+# while getopts o: flag; do
+#     case "${flag}" in
+#         o) SHOULD_OVERRIDE=True
+#     esac
+# done
+while [ true ]; do
+    case $1 in
+        -o) SHOULD_OVERRIDE=True;;
+        *) break;;
+    esac
+    shift 1
+done
+
+if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
+    echo "#!/bin/bash
+CC=clang
+CC_FLAG='-Wall -Wextra -std=gnu11'
+\$CC -o main main.c \$CC_FLAG" > build.sh
+    chmod +x build.sh
+else 
+    echo "nothing to do with build.sh"
+fi
+
+if [[ ! -f main.c ]] || [[ $SHOULD_OVERRIDE ]]; then
+    echo '#include <stdio.h>
+
+int main(void) {
+    printf("Hello, world\n");
+    return 0;
+}' > main.c
+else 
+    echo "nothing to do with main.c"
+fi

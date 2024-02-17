@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.keymap.set('i', '<C-f>', '<C-o>l')
+vim.keymap.set('i', '<C-f>', '<C-o>a')
 vim.keymap.set('i', '<C-b>', '<C-o>h')
 vim.keymap.set('i', '<C-e>', '<C-o>A')
 vim.keymap.set('i', '<C-a>', '<C-o>I')
