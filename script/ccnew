@@ -1,0 +1,38 @@
+#!/bin/bash
+
+while [ true ]; do
+    case $1 in
+        -o) SHOULD_OVERRIDE=True;;
+        *) break;;
+    esac
+    shift 1
+done
+
+if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
+    if [[ -f build.sh ]]; then
+        echo "Overriding existing build.sh file"
+    fi
+    echo "#!/bin/bash
+CC=clang++
+CC_FLAG='-Wall -Wextra -std=gnu++20'
+LD_FLAG='-L/usr/local/lib -lfmt'
+\$CC -o main main.cc \$CC_FLAG \$LD_FLAG" > build.sh
+    chmod +x build.sh
+else 
+    echo "nothing to do with build.sh"
+fi
+
+if [[ ! -f main.cc ]] || [[ $SHOULD_OVERRIDE ]]; then
+    if [[ -f main.cc ]]; then
+        echo "Overriding existing main.cc file"
+    fi
+    echo '#include <fmt/base.h>
+
+auto main(void) -> int {
+    fmt::println("Hello, world");
+    return 0;
+}' > main.cc
+else 
+    echo "nothing to do with main.cc"
+fi
+

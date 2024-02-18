@@ -1,9 +1,5 @@
 #!/bin/bash
-# while getopts o: flag; do
-#     case "${flag}" in
-#         o) SHOULD_OVERRIDE=True
-#     esac
-# done
+
 while [ true ]; do
     case $1 in
         -o) SHOULD_OVERRIDE=True;;
@@ -13,6 +9,9 @@ while [ true ]; do
 done
 
 if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
+    if [[ -f build.sh ]]; then
+        echo "Overriding existing build.sh file"
+    fi
     echo "#!/bin/bash
 CC=clang
 CC_FLAG='-Wall -Wextra -std=gnu11'
@@ -23,6 +22,9 @@ else
 fi
 
 if [[ ! -f main.c ]] || [[ $SHOULD_OVERRIDE ]]; then
+    if [[ -f main.c ]]; then
+        echo "Overriding existing main.c file"
+    fi
     echo '#include <stdio.h>
 
 int main(void) {
