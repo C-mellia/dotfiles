@@ -1,3 +1,4 @@
+local global_conf = require("global_conf")
 require 'mellifluous'.setup({
     dim_inactive = false,
     color_set = 'mellifluous',
@@ -17,7 +18,7 @@ require 'mellifluous'.setup({
         operators = {},
     },
     transparent_background = {
-        enabled = true,
+        enabled = global_conf.transparent_bg,
         floating_windows = true,
         telescope = true,
         file_tree = true,
