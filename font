@@ -1,0 +1,7 @@
+#!/bin/bash
+if [[ ! -d $HOME/.local/share/fonts ]]; then
+	mkdir -p $HOME/.local/share/fonts
+fi
+cd $HOME/.local/share/fonts
+wget -O ComicShannsMono.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/ComicShannsMono.tar.xz
+tar -xf ComicShannsMono.tar.xz && rm ComicShannsMono.tar.xz
