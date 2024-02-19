@@ -1,6 +1,24 @@
 #!/bin/bash
 if [[ -f ./build.sh ]]; then
-    ./build.sh && ./main
+    STATUS=$(./build.sh)
+    if [[ $STATUS ]]; then
+        echo "ERROR: build process failed, exiting..."
+        exit $STATUS
+    elif [[ -f ./main ]]; then
+        ./main $*
+        STATUS=$?
+        if [[ $STATUS == 0 ]]; then
+            echo "INFO: Process exited normally"
+        else
+            echo "INFO: Process exited abnormally with code: ${STATUS}"
+            exit ${STATUS}
+        fi
+    else 
+        echo "ERROR No 'main' executable generated, exiting..."
+        exit 1
+    fi
 else 
-    echo "no 'build.sh' file found under current directory"
+    echo "ERROR: no 'build.sh' file found under current directory"
+    exit 1
 fi
+exit 0
