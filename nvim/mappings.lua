@@ -1,3 +1,6 @@
+local builtin = require("telescope.builtin")
+local util = require("util")
+
 vim.g.mapleader = ' '
 vim.keymap.set('i', '<C-f>', '<C-o>a')
 vim.keymap.set('i', '<C-b>', '<C-o>h')
@@ -26,7 +29,7 @@ vim.keymap.set('n', '<Leader>tt', "<cmd>:Telescope help_tags<CR>")
 vim.keymap.set('n', '<Leader>ts', "<cmd>:Telescope treesitter<CR>")
 vim.keymap.set('n', '<Leader>tcf', "<cmd>:Telescope current_buffer_fuzzy_find<CR>")
 vim.keymap.set('n', '<Leader>tcd', "<cmd>:Telescope commands<CR>")
-vim.keymap.set('n', '<Leader>tm', "<cmd>:Telescope man_pages sections={\"ALL\"}<CR>")
+vim.keymap.set('n', '<Leader>tm', '<cmd>:Telescope man_pages sections={"ALL"}<CR>')
 vim.keymap.set('n', '<Leader>tcs', "<cmd>:Telescope colorscheme enable_preview=true<CR>")
 vim.keymap.set('n', '<Leader>tk', "<cmd>:Telescope keymaps<CR>")
 vim.keymap.set('n', '<Leader>tls', "<cmd>:Telescope lsp_document_symbols<CR>")
@@ -69,3 +72,12 @@ vim.keymap.set('n', '<Leader>a"', 'viw<ESC>a"<ESC>bi"<ESC>')
 -- '"([asodjashiouwehf])"' 
 
 vim.keymap.set('n', "<Leader>%", "<cmd>:bd %<CR>")
+vim.keymap.set('n', "<Leader>gd", function()
+    vim.cmd('normal viw"0y')
+    util.grep_from_dir_reg('0')
+end)
+
+vim.keymap.set('n', "<Leader>gc", function()
+    vim.cmd('normal viw"0y')
+    util.grep_from_buf_reg('0')
+end)
