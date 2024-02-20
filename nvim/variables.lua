@@ -1,5 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_perl_provide = 0
+vim.g.loaded_python3_provide = 0
 
 vim.opt.guicursor = "i:block"
 vim.opt.showtabline = 0

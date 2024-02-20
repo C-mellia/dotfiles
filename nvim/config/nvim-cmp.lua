@@ -1,6 +1,7 @@
 local cmp = require('cmp')
 
 cmp.setup({
+    autocomplete = false,
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
