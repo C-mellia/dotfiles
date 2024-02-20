@@ -104,9 +104,10 @@ bindsym $mod+i split v
 bindsym $mod+f fullscreen toggle
 
 # scrot
-bindsym --release $mod+Shift+F1 exec scrot -s --file /home/camellia/Image/%b%d-%H:%M:%S
-bindsym --release $mod+F1 exec scrot --file /home/camellia/Image/%b%d-%H:%M:%S
-bindsym --release $mod+F2 exec screenshot
+# bindsym --release $mod+Shift+F1 exec scrot -s --file $HOME/Image/%b%d-%H:%M:%S
+# bindsym --release $mod+F1 exec scrot --file $HOME/Image/%b%d-%H:%M:%S
+bindsym --release $mod+F1 exec "$HOME/dotfiles/script/screenshot -s"
+bindsym --release $mod+Shift+F1 exec "$HOME/dotfiles/script/screenshot -u"
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking

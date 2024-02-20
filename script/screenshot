@@ -1,3 +1,25 @@
 #!/bin/sh
-scrot -s --file /home/camellia/Image/%b%d-%H:%M:%S
-mpv /home/camellia/Downloads/hitmarker_2.mp3
+SOUND_EFFECT=${HOME}/Downloads/Hitmarker\ sound.wav
+DIR=$HOME/ScreenCap
+while getopts ":us" opt; do
+    case ${opt} in
+        u)
+            SCROT_FLAG="${SCROT_FLAG} -u"
+            ;;
+        s)
+            SCROT_FLAG="${SCROT_FLAG} -s"
+            ;;
+        ?)
+            echo "Unknown option -${OPTARG}"
+            exit 1
+            ;;
+    esac
+done
+SCROT_FLAG="${SCROT_FLAG} --file $DIR/%b%d-%H:%M:%S"
+if [[ ! -d $DIR ]]; then
+    mkdir -p "${DIR}"
+fi
+scrot $SCROT_FLAG
+if [[ $? -eq 0 ]] && [[ -f $SOUND_EFFECT ]]; then
+    mpv "${SOUND_EFFECT}" &> /dev/null
+fi

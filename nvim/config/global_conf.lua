@@ -10,5 +10,6 @@ return {
         "pylsp",
         "rust_analyzer",
         "tsserver",
+        "bashls",
     },
 }
