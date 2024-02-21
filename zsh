@@ -7,7 +7,6 @@ export EDITOR=vim
 export PATH="${PATH}:${HOME}/dotfiles/script"
 
 alias fzf-cd='cd $(dfzf)'
-alias mupdf='mupdf -I "$(fzf)"'
 
 # Greeting: 
 # echo '<(` ^´)>'

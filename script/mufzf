@@ -1,0 +1,8 @@
+#!/bin/bash
+FILE=$(fzf)
+
+if [[ $? -eq 0 ]]; then
+    mupdf -I "${FILE}"
+else 
+    exit 1
+fi

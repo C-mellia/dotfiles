@@ -32,7 +32,7 @@ vim.opt.shiftwidth = 0
 -- vim.opt.relativenumber = true
 vim.opt.lazyredraw = true
 vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 6
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 5

@@ -72,12 +72,15 @@ vim.keymap.set('n', '<Leader>a"', 'viw<ESC>a"<ESC>bi"<ESC>')
 -- '"([asodjashiouwehf])"' 
 
 vim.keymap.set('n', "<Leader>%", "<cmd>:bd %<CR>")
-vim.keymap.set('n', "<Leader>gd", function()
+vim.keymap.set('n', "<Leader>gg", function()
     vim.cmd('normal viw"0y')
     util.grep_from_dir_reg('0')
 end)
 
-vim.keymap.set('n', "<Leader>gc", function()
+vim.keymap.set('n', "<Leader>cc", function()
     vim.cmd('normal viw"0y')
     util.grep_from_buf_reg('0')
 end)
+vim.keymap.set('n', "<C-j>", "Lzz")
+vim.keymap.set('n', "<C-k>", "Hzz")
+vim.keymap.set('n', "t", "xp")

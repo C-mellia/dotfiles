@@ -1,5 +1,5 @@
 return {
-    transparent_bg = true,
+    transparent_bg = false,
     mason_ensure_installed = {
         "clangd",
         "gopls",
@@ -11,5 +11,7 @@ return {
         "rust_analyzer",
         "tsserver",
         "bashls",
+        "texlab",
     },
+    colorscheme = "mellifluous",
 }

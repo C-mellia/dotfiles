@@ -16,6 +16,10 @@ lspconf.pylsp.setup({
     capabilities = capabilities,
 })
 
+lspconf.texlab.setup({
+    capabilities = capabilities,
+})
+
 -- lspconf.clangd.setup({
 --     capabilities = capabilities,
 --     handlers = {
