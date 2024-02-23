@@ -2,7 +2,7 @@
 source "${HOME}/dotfiles/minimal/minimal.zsh"
 source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=vim
 export PATH="${PATH}:${HOME}/dotfiles/script"
 
