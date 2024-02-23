@@ -1,5 +1,5 @@
 return {
-    transparent_bg = false,
+    transparent_bg = true,
     mason_ensure_installed = {
         "clangd",
         "gopls",
@@ -13,5 +13,5 @@ return {
         "bashls",
         "texlab",
     },
-    colorscheme = "mellifluous",
+    colorscheme = "carbonfox",
 }
