@@ -1,4 +1,7 @@
 #!/bin/bash
+if [[ -d $1 ]]; then
+    cd $1
+fi
 fzf --no-mouse --cycle --ansi \
     --preview="bat --color=always --style=numbers {}" \
     --bind ctrl-f:preview-down,ctrl-b:preview-up

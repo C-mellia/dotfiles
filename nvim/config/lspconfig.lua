@@ -16,6 +16,14 @@ lspconf.pylsp.setup({
     capabilities = capabilities,
 })
 
+lspconf.glsl_analyzer.setup({
+    capabilities = capabilities,
+})
+
+lspconf.zls.setup({
+    capabilities = capabilities,
+})
+
 lspconf.texlab.setup({
     capabilities = capabilities,
 })
