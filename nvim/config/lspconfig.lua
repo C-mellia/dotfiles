@@ -12,6 +12,10 @@ lspconf.lua_ls.setup({
     }
 })
 
+lspconf.cmake.setup({
+    capabilities = capabilities,
+})
+
 lspconf.pylsp.setup({
     capabilities = capabilities,
 })

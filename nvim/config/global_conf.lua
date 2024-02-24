@@ -1,6 +1,7 @@
 return {
     transparent_bg = true,
     mason_ensure_installed = {
+        "cmake",
         "zls",
         "clangd",
         "gopls",

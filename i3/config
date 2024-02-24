@@ -22,7 +22,8 @@ font pango:ComicShannsMonoNerdFont Regular 8
 exec --no-startup-id picom -CGb
 exec --no-startup-id nitrogen --restore
 # exec --no-startup-id fcitx5
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+# exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
 workspace 1 output HDMI-0
 workspace 5 output DP-4
 
