@@ -3,6 +3,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_perl_provide = 0
 vim.g.loaded_python3_provide = 0
 
+vim.opt.indentkeys:append('>')
 vim.opt.guicursor = "i:block"
 vim.opt.showtabline = 0
 vim.opt.number = true
@@ -23,13 +24,13 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
--- vim.opt.cindent = true
+vim.opt.cindent = true
 vim.opt.autoindent = true
-vim.opt.smartindent = true
+vim.opt.smartindent = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0
 
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 vim.opt.lazyredraw = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 6

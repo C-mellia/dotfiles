@@ -1,6 +1,7 @@
 return {
     transparent_bg = true,
     mason_ensure_installed = {
+        "svelte",
         "cmake",
         "zls",
         "clangd",
@@ -8,6 +9,7 @@ return {
         "lua_ls",
         "html",
         "cssls",
+        "htmx",
         "jsonls",
         "pylsp",
         "rust_analyzer",

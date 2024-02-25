@@ -16,6 +16,14 @@ lspconf.cmake.setup({
     capabilities = capabilities,
 })
 
+lspconf.html.setup({
+    capabilities = capabilities,
+})
+
+lspconf.svelte.setup({
+    capabilities = capabilities,
+})
+
 lspconf.pylsp.setup({
     capabilities = capabilities,
 })

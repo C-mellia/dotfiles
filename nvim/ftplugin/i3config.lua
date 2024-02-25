@@ -1,3 +1,3 @@
-vim.opt.autoindent = false
-vim.opt.smartindent = false
-vim.opt.cindent = false
+vim.bo.autoindent = false
+vim.bo.smartindent = false
+vim.bo.cindent = false
