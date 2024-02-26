@@ -1,6 +1,8 @@
 return {
     transparent_bg = true,
     mason_ensure_installed = {
+        "tailwindcss",
+        "templ",
         "svelte",
         "cmake",
         "zls",

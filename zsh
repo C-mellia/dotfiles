@@ -5,6 +5,8 @@ source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 export VISUAL=nvim
 export EDITOR=nvim
 export PATH="${PATH}:${HOME}/dotfiles/script"
+unsetopt beep nomatch
+bindkey -v
 
 alias fzf-cd='cd $(dfzf)'
 

@@ -12,6 +12,18 @@ lspconf.lua_ls.setup({
     }
 })
 
+lspconf.tailwindcss.setup({
+    capabilities = capabilities,
+})
+
+lspconf.templ.setup({
+    capabilities = capabilities,
+})
+
+lspconf.htmx.setup({
+    capabilities = capabilities,
+})
+
 lspconf.cmake.setup({
     capabilities = capabilities,
 })
