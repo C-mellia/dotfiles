@@ -13,7 +13,7 @@ if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
         echo "Overriding existing build.sh file"
     fi
     echo "#!/bin/bash
-CC=clang++
+CC=g++
 CC_FLAG='-Wall -Wextra -std=gnu++20'
 LD_FLAG='-L/usr/local/lib -lfmt'
 \$CC -o main main.cc \$CC_FLAG \$LD_FLAG" > build.sh

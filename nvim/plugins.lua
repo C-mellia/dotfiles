@@ -84,5 +84,7 @@ require("lazy").setup({
 
     "EdenEast/nightfox.nvim",
 
+    "ellisonleao/gruvbox.nvim",
+
 }, {})
 

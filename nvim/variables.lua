@@ -7,7 +7,7 @@ vim.opt.indentkeys:append('>')
 vim.opt.guicursor = "i:block"
 vim.opt.showtabline = 0
 vim.opt.number = true
-vim.opt.fillchars = "eob: "
+-- vim.opt.fillchars = "eob: "
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 

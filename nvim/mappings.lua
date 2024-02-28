@@ -13,7 +13,7 @@ vim.keymap.set('n', '<Leader>o', '<C-w>w')
 vim.keymap.set('n', '<Leader>2', '<cmd>:split<CR>')
 vim.keymap.set('n', '<Leader>3', '<cmd>:vsplit<CR>')
 vim.keymap.set('n', '<Leader>r', '<cmd>:w | e!<CR>')
-vim.keymap.set('n', '<Leader>d', "<cmd>:NvimTreeToggle<CR>")
+vim.keymap.set('n', '<Leader>D', "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set('n', '<Leader>`', "<cmd>:e /home/camellia/.config/nvim/init.lua<CR>")
 
 vim.keymap.set('n', '<C-f>', "<cmd>:cn<CR>")
@@ -91,3 +91,13 @@ vim.keymap.set('n', "<C-k>", "Hzz")
 vim.keymap.set('n', "t", "xp")
 vim.keymap.set('v', "<C-h>", "xhPgvhoho")
 vim.keymap.set('v', "<C-l>", "xpgvlolo")
+
+vim.keymap.set('n', "<Leader>d(", "di(vhP")
+vim.keymap.set('n', "<Leader>d[", "di[vhP")
+vim.keymap.set('n', "<Leader>d{", "di{vhP")
+vim.keymap.set('n', "<Leader>d<lt>", "di<lt>vhP")
+vim.keymap.set('n', "<Leader>d'", "di'vhP")
+vim.keymap.set('n', '<Leader>d"', 'di"vhP')
+vim.keymap.set('n', 'gq', '=ap');
+
+-- "apsijdpoasijd"
