@@ -1,4 +1,3 @@
--- local builtin = require("telescope.builtin")
 local util = require("util")
 
 vim.g.mapleader = ' '
@@ -18,9 +17,6 @@ vim.keymap.set('n', '<Leader>`', "<cmd>:e /home/camellia/.config/nvim/init.lua<C
 
 vim.keymap.set('n', '<C-f>', "<cmd>:cn<CR>")
 vim.keymap.set('n', '<C-b>', "<cmd>:cp<CR>")
-
--- vim.keymap.set('n', 'Th', "<cmd>:resize +1<CR>")
--- vim.keymap.set('n', 'Tv', '<cmd>:vertical resize<CR>')
 
 vim.keymap.set('n', '<Leader>tf', "<cmd>:Telescope find_files<CR>")
 vim.keymap.set('n', '<Leader>tb', "<cmd>:Telescope buffers<CR>")

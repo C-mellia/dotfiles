@@ -10,6 +10,16 @@ bindkey -v
 
 alias fzf-cd='cd $(dfzf)'
 
+set_proxy() {
+    export http_proxy='http://localhost:20171/'
+    export https_proxy='http://localhost:20171/'
+}
+
+unset_proxy() {
+    unset http_proxy
+    unset https_proxy
+}
+
 # Greeting: 
 # echo '<(` ^´)>'
 echo '(U w U)'

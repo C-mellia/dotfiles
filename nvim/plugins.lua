@@ -28,7 +28,7 @@ require("lazy").setup({
         },
     },
 
-    "stevearc/dressing.nvim",
+    -- "stevearc/dressing.nvim",
 
     {
         'numToStr/Comment.nvim',
@@ -87,4 +87,3 @@ require("lazy").setup({
     "ellisonleao/gruvbox.nvim",
 
 }, {})
-
