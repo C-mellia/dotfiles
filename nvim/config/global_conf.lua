@@ -1,5 +1,5 @@
 return {
-    transparent_bg = false,
+    transparent_bg = true,
     mason_ensure_installed = {
         "tailwindcss",
         "templ",
@@ -19,5 +19,5 @@ return {
         "bashls",
         "texlab",
     },
-    colorscheme = "gruvbox",
+    colorscheme = "rose-pine-main",
 }
