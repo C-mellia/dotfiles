@@ -100,7 +100,7 @@ vim.keymap.set('n', 'gq', '=ap');
 -- "apsijdpoasijd"
 
 vim.keymap.set('n', '<leader>A', function() harpoon:list():append() end)
-vim.keymap.set('n', '<C-e>', function() harpoon.ui:toogle_quick_menu(harpoon:list()) end)
+vim.keymap.set('n', '<leader>H', function() harpoon.ui:toogle_quick_menu(harpoon:list()) end)
 
 vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
