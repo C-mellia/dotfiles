@@ -78,7 +78,11 @@ require("lazy").setup({
 
     "tpope/vim-fugitive",
 
-    "ThePrimeagen/harpoon",
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
 
     "winston0410/range-highlight.nvim",
 

@@ -1,7 +1,3 @@
-# Plugins: 
-source "${HOME}/dotfiles/minimal/minimal.zsh"
-source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
 export VISUAL=nvim
 export EDITOR=nvim
 export PATH="${PATH}:${HOME}/dotfiles/script"
@@ -19,6 +15,10 @@ unset_proxy() {
     unset http_proxy
     unset https_proxy
 }
+
+# Plugins: 
+source "${HOME}/dotfiles/minimal/minimal.zsh"
+source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Greeting: 
 # echo '<(` ^´)>'
