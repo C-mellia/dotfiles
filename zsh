@@ -20,9 +20,10 @@ unset_proxy() {
 source "${HOME}/dotfiles/minimal/minimal.zsh"
 source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-# Greeting: 
+# Greeting: (Cute Ascii emos!)
 # echo '<(` ^´)>'
-echo '(U w U)'
+# echo '(U w U)'
+echo '(> … <)'
 
 # stop annoying beepings of tty
 setterm --bfreq 0 2> /dev/null

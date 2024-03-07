@@ -6,5 +6,6 @@ package.path = package.path .. ";" .. path .. "?.lua" .. ";" .. path .. "config/
 require "variables"
 require "plugins"
 require "plug-config"
-require "mappings"
 require "afterplug"
+require "mappings"
+require "autocmd"

@@ -1,7 +1,6 @@
 local util = require("util")
 local harpoon = require("harpoon")
 
-vim.g.mapleader = ' '
 vim.keymap.set('i', '<C-f>', '<C-o>a')
 vim.keymap.set('i', '<C-b>', '<C-o>h')
 vim.keymap.set('i', '<C-e>', '<C-o>A')
@@ -17,7 +16,7 @@ vim.keymap.set('n', '<Leader>D', "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set('n', '<Leader>`', "<cmd>:e /home/camellia/.config/nvim/init.lua<CR>")
 
 vim.keymap.set('n', '<C-f>', "<cmd>:cn<CR>")
-vim.keymap.set('n', '<C-b>', "<cmd>:cp<CR>")
+vim.keymap.set('n', '<C-a>', "<cmd>:cp<CR>")
 
 vim.keymap.set('n', '<Leader>tf', "<cmd>:Telescope find_files<CR>")
 vim.keymap.set('n', '<Leader>tb', "<cmd>:Telescope buffers<CR>")
@@ -109,3 +108,5 @@ vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
 
 vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+
+vim.keymap.set('n', '<leader>s', '<cmd>silent !tmux neww tmux-sessionizer<CR>')

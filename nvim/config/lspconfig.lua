@@ -16,6 +16,10 @@ lspconf.tailwindcss.setup({
     capabilities = capabilities,
 })
 
+lspconf.ocamllsp.setup({
+    capabilities = capabilities,
+})
+
 lspconf.templ.setup({
     capabilities = capabilities,
 })

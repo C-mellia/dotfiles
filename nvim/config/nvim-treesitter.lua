@@ -2,8 +2,9 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "c", "lua", "rust", "vimdoc", "go", "cpp", "latex", "javascript",
         "typescript", "html", "css", "zig", "python", "glsl", "cmake", "templ",
+        "ocaml",
     },
-    sync_install = false,
+    auto_install = true,
     highlight = { enable = true },
-    indent = { enable = false },
+    indent = { enable = true },
 })
