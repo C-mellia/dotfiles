@@ -1,6 +1,7 @@
 export VISUAL=nvim
 export EDITOR=nvim
 export PATH="${PATH}:${HOME}/dotfiles/script"
+
 unsetopt beep nomatch
 bindkey -v
 

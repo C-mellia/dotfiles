@@ -15,7 +15,7 @@ require("rose-pine").setup({
     styles = {
         bold = true,
         italic = true,
-        transparency = global_conf,
+        transparency = global_conf.transparent_bg,
     },
 
     groups = {

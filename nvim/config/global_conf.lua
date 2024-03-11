@@ -1,7 +1,6 @@
 return {
     transparent_bg = true,
     mason_ensure_installed = {
-        "ocamllsp",
         "tailwindcss",
         "templ",
         "svelte",

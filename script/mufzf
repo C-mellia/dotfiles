@@ -2,7 +2,7 @@
 FILE=$(fzf)
 
 if [[ $? -eq 0 ]]; then
-    mupdf -I "${FILE}"
+    mupdf "${FILE}"
 else 
     exit 1
 fi

@@ -15,7 +15,8 @@ if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
     echo "#!/bin/bash
 CC=clang
 CC_FLAG='-Wall -Wextra -std=gnu11'
-\$CC -o main main.c \$CC_FLAG" > build.sh
+FD_FLAG=''
+\$CC -o main main.c \$CC_FLAG \$FD_FLAG" > build.sh
     chmod +x build.sh
 else 
     echo "nothing to do with build.sh"

@@ -16,10 +16,6 @@ lspconf.tailwindcss.setup({
     capabilities = capabilities,
 })
 
-lspconf.ocamllsp.setup({
-    capabilities = capabilities,
-})
-
 lspconf.templ.setup({
     capabilities = capabilities,
 })
@@ -108,7 +104,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- end, opts)
         vim.keymap.set('n', '<space>ld', vim.lsp.buf.type_definition, opts)
         -- vim.keymap.set('n', '<space>lr', vim.lsp.buf.rename, opts)
-        -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
         -- vim.keymap.set('n', '<space>cr', vim.lsp.buf.references, opts)
     --     vim.keymap.set('n', '<space>f', function()
     --         vim.lsp.buf.format { async = true }
