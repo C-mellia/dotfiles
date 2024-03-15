@@ -1,6 +1,7 @@
 return {
     transparent_bg = true,
     mason_ensure_installed = {
+        "cssls",
         "tailwindcss",
         "templ",
         "svelte",
@@ -19,5 +20,5 @@ return {
         "bashls",
         "texlab",
     },
-    colorscheme = "rose-pine-moon",
+    colorscheme = "rose-pine",
 }

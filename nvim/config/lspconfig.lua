@@ -12,6 +12,10 @@ lspconf.lua_ls.setup({
     }
 })
 
+lspconf.cssls.setup({
+    capabilities = capabilities,
+})
+
 lspconf.tailwindcss.setup({
     capabilities = capabilities,
 })
@@ -46,6 +50,7 @@ lspconf.glsl_analyzer.setup({
 
 lspconf.zls.setup({
     capabilities = capabilities,
+    format = false,
 })
 
 lspconf.texlab.setup({
