@@ -20,6 +20,7 @@ unset_proxy() {
 # Plugins: 
 source "${HOME}/dotfiles/minimal/minimal.zsh"
 source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "${HOME}/dotfiles/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
 
 # Greeting: (Cute Ascii emos!)
 # echo '<(` ^´)>'
