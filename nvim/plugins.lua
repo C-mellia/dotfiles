@@ -97,4 +97,14 @@ require("lazy").setup({
 	"stevearc/conform.nvim",
 
 	"folke/trouble.nvim",
+
+	{
+		"folke/noice.nvim",
+		events = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
 }, {})
