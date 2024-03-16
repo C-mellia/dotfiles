@@ -7,6 +7,3 @@
 [submodule "alacritty/alacritty-theme"]
 	path = alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme
-[submodule "zsh-vi-mode"]
-	path = zsh-vi-mode
-	url = https://github.com/jeffreytse/zsh-vi-mode
