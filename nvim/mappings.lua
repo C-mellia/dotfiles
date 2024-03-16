@@ -1,4 +1,5 @@
 local util = require("util")
+local trouble = require("trouble")
 
 vim.keymap.set("i", "<C-f>", "<C-o>a")
 vim.keymap.set("i", "<C-b>", "<C-o>h")
@@ -98,3 +99,9 @@ vim.keymap.set("n", "gq", "=ap")
 -- "apsijdpoasijd"
 
 vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>xx", function()
+	trouble.toggle()
+end)
+vim.keymap.set("n", "<leader>xf", function()
+	trouble.toggle("quickfix")
+end)

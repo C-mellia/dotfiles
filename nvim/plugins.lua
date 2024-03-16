@@ -95,4 +95,6 @@ require("lazy").setup({
 	"github/copilot.vim",
 
 	"stevearc/conform.nvim",
+
+	"folke/trouble.nvim",
 }, {})

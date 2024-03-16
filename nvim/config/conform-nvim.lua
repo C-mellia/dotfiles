@@ -5,6 +5,7 @@ require("conform").setup({
 		lsp_fallback = true,
 	},
 	formatters_by_ft = {
+		css = { { "prettierd", "prettier" } },
 		lua = { "stylua" },
 		html = { "html-beautify" },
 		-- Conform will run multiple formatters sequentially
