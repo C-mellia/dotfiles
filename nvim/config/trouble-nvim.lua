@@ -2,7 +2,7 @@ require("trouble").setup({
 	position = "bottom",
 	height = 10,
 	width = 50,
-	mode = "document_diagnostics",
+	mode = "workspace_diagnostics",
 	icons = false,
 	fold_open = "v", -- icon used for open folds
 	fold_closed = ">", -- icon used for closed folds

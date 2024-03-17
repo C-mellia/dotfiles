@@ -75,6 +75,11 @@ lspconf.rust_analyzer.setup({
 			enable = true,
 		},
 	},
+	workspace = {
+		didChangeConfiguration = {
+			dynamicRegistration = false,
+		},
+	},
 })
 
 lspconf.gopls.setup({
