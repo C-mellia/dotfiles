@@ -1,8 +1,10 @@
 #!/bin/bash
-# from thePrimeagen: 
+# from thePrimeagen:
 # https://github.com/ThePrimeagen/.dotfiles/blob/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer#L4
 
-selected=$(find . -type d | fzf)
+selected=$(
+    fd . -t d | fzf
+)
 
 if [[ -z $selected ]]; then
     exit 0
