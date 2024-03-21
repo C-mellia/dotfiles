@@ -1,3 +1,4 @@
 add_newline = false
 
-scan_timeout = 10
+[c]
+detect_files = ['main.c']
