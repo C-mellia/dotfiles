@@ -6,7 +6,7 @@ else
     DOTFILES_DIR=$1
 fi
 
-if [[ $(uname -s) == "Arch Linux" ]]; then
+if [[ $(pacman) 2&> /dev/null ]]; then
     echo "Installing packages..."
     sudo pacman -S --noconfirm --needed $(cat $DOTFILES_DIR/packages)
 else
@@ -14,7 +14,11 @@ else
     exit 1
 fi
 
+sudo chsh -s $(which zsh) $USER
+
 cd $DOTFILES_DIR
+
+echo "Updating submodules..."
 git submodules update --init
 
 echo "Linking dotfiles..."
