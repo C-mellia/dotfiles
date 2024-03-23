@@ -1,7 +1,22 @@
 #!/bin/bash
 if [[ ! -d $HOME/.local/share/fonts ]]; then
-	mkdir -p $HOME/.local/share/fonts
+    mkdir -p $HOME/.local/share/fonts
 fi
 cd $HOME/.local/share/fonts
-wget -O ComicShannsMono.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/ComicShannsMono.tar.xz
-tar -xf ComicShannsMono.tar.xz && rm ComicShannsMono.tar.xz
+wget -O /tmp/ComicShannsMono.tar.xz https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/ComicShannsMono.tar.xz
+wget -O /tmp/VictorMonoAll.zip https://rubjo.github.io/victor-mono/VictorMonoAll.zip
+
+yes | tar -xf /tmp/ComicShannsMono.tar.xz /tmp/ComicShannsMono
+yes | unzip /tmp/VictorMonoAll.zip -d /tmp/victor-mono/
+
+for item in /tmp/ComicShannsMono/* ; do
+    if [[ -f $item ]]; then
+        mv $item ~/.local/share/fonts/
+    fi
+done
+
+for dir in /tmp/victor-mono/* ; do
+    if [[ -d $dir ]]; then
+        mv $dir/* ~/.local/share/fonts/
+    fi
+done
