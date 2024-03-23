@@ -6,6 +6,14 @@ else
     DOTFILES_DIR=$1
 fi
 
+if [[ $(uname -s) == "Arch Linux" ]]; then
+    echo "Installing packages..."
+    sudo pacman -S --noconfirm --needed $(cat $DOTFILES_DIR/packages)
+else
+    echo "Unsupported OS"
+    exit 1
+fi
+
 cd $DOTFILES_DIR
 git submodules update --init
 
