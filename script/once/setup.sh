@@ -37,7 +37,7 @@ sudo make install
 cd $DOTFILES_DIR
 
 echo "Updating submodules..."
-git submodules update --init
+git submodule update --init
 
 sudo chsh -s $(which zsh) $USER
 
