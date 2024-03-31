@@ -12,6 +12,10 @@ lspconf.lua_ls.setup({
 	},
 })
 
+lspconf.hdl_checker.setup({
+	capabilities = capabilities,
+})
+
 lspconf.tailwindcss.setup({
 	capabilities = capabilities,
 })
