@@ -15,7 +15,7 @@ while getopts ":us" opt; do
             ;;
     esac
 done
-SCROT_FLAG="${SCROT_FLAG} --file $DIR/%b%d-%H:%M:%S"
+SCROT_FLAG=${SCROT_FLAG} --file $DIR/%b%d-%H:%M:%S.png
 if [[ ! -d $DIR ]]; then
     mkdir -p "${DIR}"
 fi
