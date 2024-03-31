@@ -20,7 +20,7 @@ vim.keymap.set("n", "<Leader>.", "<C-w>>")
 vim.keymap.set("n", "<Leader>3", "<cmd>:vsplit<CR>")
 vim.keymap.set("n", "<Leader>r", "<cmd>:w | e!<CR>")
 vim.keymap.set("n", "<Leader>D", "<cmd>:NvimTreeToggle<CR>")
-vim.keymap.set("n", "<Leader>`", "<cmd>:e /home/camellia/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>:cn<CR>")
 vim.keymap.set("n", "<C-a>", "<cmd>:cp<CR>")
