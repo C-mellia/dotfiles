@@ -94,9 +94,15 @@ require("lazy").setup({
 
 	"github/copilot.vim",
 
-	"stevearc/conform.nvim",
+	-- "stevearc/conform.nvim",
 
 	"folke/trouble.nvim",
+
+	"folke/tokyonight.nvim",
+
+	"catppuccin/nvim",
+
+	"rebelot/kanagawa.nvim",
 
 	-- {
 	-- 	"folke/noice.nvim",
