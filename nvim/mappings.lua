@@ -23,7 +23,7 @@ vim.keymap.set("n", "<Leader>D", "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>:cn<CR>")
-vim.keymap.set("n", "<C-a>", "<cmd>:cp<CR>")
+vim.keymap.set("n", "<C-s>", "<cmd>:cp<CR>")
 
 vim.keymap.set("n", "<Leader>tf", "<cmd>:Telescope find_files<CR>")
 vim.keymap.set("n", "<Leader>tb", "<cmd>:Telescope buffers<CR>")
