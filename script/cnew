@@ -1,9 +1,22 @@
 #!/bin/bash
 
+BUILD_SRC=$HOME/dotfiles/script/src/buildc.sh
+MAINC_SRC=$HOME/dotfiles/script/src/main.c
+HELP_MSG="Usage: cnew [options]
+    Options:
+    -o: Override existing build.sh file
+    --shell-only: Only create build.sh file
+    -h, --help: Show this message"
+
 while [ true ]; do
+    if [[ $# -eq 0 ]]; then
+        break
+    fi
     case $1 in
         -o) SHOULD_OVERRIDE=True;;
-        *) break;;
+        --shell-only) NOMAINC=True;;
+        -h|--help) echo $HELP_MSG; exit 0;;
+        *) echo "Invalid option: $1"; echo $HELP_MSG; exit 1;;
     esac
     shift 1
 done
@@ -12,26 +25,46 @@ if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
     if [[ -f build.sh ]]; then
         echo "Overriding existing build.sh file"
     fi
-    echo "#!/bin/bash
-CC=clang
+
+    if [[ -f $BUILD_SRC ]]; then
+        cat $BUILD_SRC > build.sh
+    else
+        echo "#!/bin/bash
+CC=gcc
 CC_FLAG='-Wall -Wextra -std=gnu11'
 FD_FLAG=''
 \$CC -o main main.c \$CC_FLAG \$FD_FLAG" > build.sh
+    fi
     chmod +x build.sh
-else 
+else
     echo "nothing to do with build.sh"
 fi
+
+if [[ $NOMAINC ]]; then
+    exit 0
+fi
+
+if [[ ! -d src ]]; then
+    mkdir src
+fi
+
+cd src
 
 if [[ ! -f main.c ]] || [[ $SHOULD_OVERRIDE ]]; then
     if [[ -f main.c ]]; then
         echo "Overriding existing main.c file"
     fi
-    echo '#include <stdio.h>
+
+    if [[ -f $MAINC_SRC ]]; then
+        cat $MAINC_SRC > main.c
+    else
+        echo '#include <stdio.h>
 
 int main(void) {
     printf("Hello, world\n");
     return 0;
 }' > main.c
-else 
+    fi
+else
     echo "nothing to do with main.c"
 fi
