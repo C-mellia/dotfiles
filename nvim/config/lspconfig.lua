@@ -12,6 +12,10 @@ lspconf.lua_ls.setup({
 	},
 })
 
+lspconf.gdscript.setup({
+	capabilities = capabilities,
+})
+
 lspconf.hdl_checker.setup({
 	capabilities = capabilities,
 })
