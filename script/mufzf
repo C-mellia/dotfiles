@@ -1,14 +1,10 @@
 #!/bin/bash
-if [[ -d ~/tor_downloads ]]; then
-    cd ~/tor_downloads
-    FILE=$(fzf)
 
-    if [[ $? -eq 0 ]]; then
-        nohup mupdf "${FILE}" 2&> /dev/null & disown
-        exit 0
-    else
-        exit 1
-    fi
+FILE=$(fzf)
+
+if [[ $? -eq 0 ]]; then
+    nohup mupdf "${FILE}" 2&> /dev/null & disown
+    exit 0
 else
     exit 1
 fi

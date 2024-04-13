@@ -100,9 +100,9 @@ require("lazy").setup({
 
 	"folke/tokyonight.nvim",
 
-	"catppuccin/nvim",
+	-- "catppuccin/nvim",
 
-	"rebelot/kanagawa.nvim",
+	-- "rebelot/kanagawa.nvim",
 
 	-- {
 	-- 	"folke/noice.nvim",

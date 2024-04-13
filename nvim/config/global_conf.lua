@@ -20,5 +20,5 @@ return {
 		"bashls",
 		"texlab",
 	},
-	colorscheme = "catppuccin",
+	colorscheme = "tokyonight",
 }
