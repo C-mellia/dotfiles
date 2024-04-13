@@ -15,6 +15,7 @@ while [ true ]; do
     case $1 in
         -o) SHOULD_OVERRIDE=True;;
         --shell-only) NOMAINC=True;;
+		--simple-sh) SIMPLESH=True;;
         -h|--help) echo $HELP_MSG; exit 0;;
         *) echo "Invalid option: $1"; echo $HELP_MSG; exit 1;;
     esac
@@ -26,14 +27,15 @@ if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
         echo "Overriding existing build.sh file"
     fi
 
-    if [[ -f $BUILD_SRC ]]; then
+    if [[ -f $BUILD_SRC ]] && [[ ! $SIMPLESH -eq True ]]; then
         cat $BUILD_SRC > build.sh
     else
+		echo "Generating simple version of build.sh"
         echo "#!/bin/bash
 CC=gcc
 CC_FLAG='-Wall -Wextra -std=gnu11'
 FD_FLAG=''
-\$CC -o main main.c \$CC_FLAG \$FD_FLAG" > build.sh
+\$CC -o main src/main.c \$CC_FLAG \$FD_FLAG" > build.sh
     fi
     chmod +x build.sh
 else
