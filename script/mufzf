@@ -1,6 +1,8 @@
 #!/bin/bash
 
-FILE=$(fzf)
+# FILES=$(find -maxdepth 1 -name '*.pdf')+$(find -maxdepth 1 -name '*.epub')
+# FILE=$(echo $FILES | fzf --bind ctrl-l:accept)
+FILE=$(find -maxdepth 1 | fzf --bind ctrl-l:accept)
 
 if [[ $? -eq 0 ]]; then
     nohup mupdf "${FILE}" 2&> /dev/null & disown
