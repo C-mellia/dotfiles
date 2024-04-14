@@ -2,11 +2,11 @@
 
 # FILES=$(find -maxdepth 1 -name '*.pdf')+$(find -maxdepth 1 -name '*.epub')
 # FILE=$(echo $FILES | fzf --bind ctrl-l:accept)
-FILE=$(find -maxdepth 1 | fzf --bind ctrl-l:accept)
-
-if [[ $? -eq 0 ]]; then
-    nohup mupdf "${FILE}" 2&> /dev/null & disown
-    exit 0
-else
-    exit 1
-fi
+while true; do
+	FILE=$(find . -maxdepth 1 -not -path '*/.*' -type f | fzf --bind ctrl-l:accept --bind ctrl-h:cancel)
+	if [[ $? -eq 0 ]]; then
+		nohup mupdf "${FILE}" 2&> /dev/null & disown
+	else
+		break
+	fi
+done
