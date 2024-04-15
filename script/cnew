@@ -6,6 +6,7 @@ HELP_MSG="Usage: cnew [options]
     Options:
     -o: Override existing build.sh file
     --shell-only: Only create build.sh file
+	--simple-sh: Generate simlified version of build.sh instead
     -h, --help: Show this message"
 
 while [ true ]; do
@@ -27,7 +28,7 @@ if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
         echo "Overriding existing build.sh file"
     fi
 
-    if [[ -f $BUILD_SRC ]] && [[ ! $SIMPLESH -eq True ]]; then
+    if [[ -f $BUILD_SRC ]] && ! [[ $SIMPLESH ]]; then
         cat $BUILD_SRC > build.sh
     else
 		echo "Generating simple version of build.sh"

@@ -110,3 +110,5 @@ end)
 vim.keymap.set("n", "<leader>xf", function()
 	trouble.toggle("quickfix")
 end)
+
+vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
