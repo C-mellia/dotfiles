@@ -4,6 +4,7 @@
 
 select=$(
 find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \; \
+	| grep -E '.pdf$|.epub$' \
 	| fzf -m --bind ctrl-l:toggle --bind ctrl-h:cancel --cycle
 )
 
