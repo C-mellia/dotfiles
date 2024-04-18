@@ -5,27 +5,35 @@ vim.keymap.set("i", "<C-f>", "<C-o>a")
 vim.keymap.set("i", "<C-b>", "<C-o>h")
 vim.keymap.set("i", "<C-e>", "<C-o>A")
 vim.keymap.set("i", "<C-a>", "<C-o>I")
-vim.keymap.set("n", "<Leader>xc", "<cmd>:wa | qa!<CR>")
-vim.keymap.set("n", "<Leader>1", "<cmd>:only!<CR>")
-vim.keymap.set("n", "<Leader>0", "<cmd>: close<CR>")
-vim.keymap.set("n", "<Leader>o", "<C-w>w")
-vim.keymap.set("n", "<Leader>h", "<C-w>h")
-vim.keymap.set("n", "<Leader>j", "<C-w>j")
-vim.keymap.set("n", "<Leader>k", "<C-w>k")
-vim.keymap.set("n", "<Leader>l", "<C-w>l")
-vim.keymap.set("n", "<Leader>-", "<C-w>-")
-vim.keymap.set("n", "<Leader>=", "<C-w>+")
-vim.keymap.set("n", "<Leader>,", "<C-w><")
-vim.keymap.set("n", "<Leader>.", "<C-w>>")
-vim.keymap.set("n", "<Leader>3", "<cmd>:vsplit<CR>")
-vim.keymap.set("n", "<Leader>r", "<cmd>:w | e!<CR>")
-vim.keymap.set("n", "<Leader>D", "<cmd>:NvimTreeToggle<CR>")
+
+vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
+
+vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
+vim.keymap.set("n", "<C-w>d", "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
 vim.keymap.set("n", "<C-f>", "<cmd>:cn<CR>")
 vim.keymap.set("n", "<C-s>", "<cmd>:cp<CR>")
 
-vim.keymap.set("n", "<Leader>tf", "<cmd>:Telescope find_files<CR>")
+local builtin = require("telescope.builtin")
+
+vim.keymap.set('n', 'gd', function()
+	builtin.lsp_definitions({
+		jump_type = "vsplit"
+	})
+end)
+
+vim.keymap.set("n", "<Leader>ta", function()
+	builtin.git_files()
+end)
+
+vim.keymap.set('n', '<leader>tf', function()
+	builtin.find_files({
+		hidden = false
+	})
+end)
+
 vim.keymap.set("n", "<Leader>tb", "<cmd>:Telescope buffers<CR>")
 vim.keymap.set("n", "<Leader>tg", "<cmd>:Telescope live_grep<CR>")
 vim.keymap.set("n", "<Leader>tt", "<cmd>:Telescope help_tags<CR>")
