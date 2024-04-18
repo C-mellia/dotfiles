@@ -1,12 +1,25 @@
 #!/bin/bash
 
-# FILES=$(find -maxdepth 1 -name '*.pdf')+$(find -maxdepth 1 -name '*.epub')
-# FILE=$(echo $FILES | fzf --bind ctrl-l:accept)
-while true; do
-	FILE=$(find . -maxdepth 1 -not -path '*/.*' -type f | fzf --bind ctrl-l:accept --bind ctrl-h:cancel)
-	if [[ $? -eq 0 ]]; then
-		nohup mupdf "${FILE}" 2&> /dev/null & disown
-	else
-		break
+# A satisfactory and elegant script for those who really love reading books.
+
+select=$(
+find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \; \
+	| fzf -m --bind ctrl-l:toggle --bind ctrl-h:cancel --cycle
+)
+
+if [[ -z $select ]]; then
+	exit 0
+fi
+
+if ! [[ -z $1 ]]; then
+	i3-msg "workspace $1"
+
+	if [[ $? -ne 0 ]]; then
+		echo "Workspace $1 not found"
+		exit 1
 	fi
-done
+fi
+
+while read -r file; do
+	nohup mupdf "$file" 2&> /dev/null & disown
+done <<< $select
