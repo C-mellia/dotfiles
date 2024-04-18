@@ -3,9 +3,11 @@
 # A satisfactory and elegant script for those who really love reading books.
 
 select=$(
-find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \; \
-	| grep -E '.pdf$|.epub$' \
-	| fzf -m --bind ctrl-l:toggle --bind ctrl-h:cancel --cycle
+find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \;\
+	| grep -E '.pdf$|.epub$'\
+	| fzf -m --cycle\
+	--bind ctrl-l:toggle\
+	--bind ctrl-h:cancel
 )
 
 if [[ -z $select ]]; then

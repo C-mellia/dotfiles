@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.color_scheme = 'Catppuccin Macchiato'
+-- config.color_scheme = 'Catppuccin Macchiato'
 -- config.color_scheme = 'Google Dark (base16)'
 -- config.color_scheme = 'rose-pine-moon'
 
@@ -51,6 +51,6 @@ config.keys = {
 }
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 1
+config.window_background_opacity = 0.9
 
 return config
