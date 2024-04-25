@@ -5,7 +5,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.indentkeys:append(">")
--- vim.opt.guicursor = "i:block"
+vim.opt.guicursor = "i:block"
 vim.opt.showtabline = 0
 vim.opt.number = true
 -- vim.opt.fillchars = "eob: "
@@ -25,9 +25,9 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.cindent = true
-vim.opt.autoindent = true
-vim.opt.smartindent = false
+-- vim.opt.cindent = true
+-- vim.opt.autoindent = true
+-- vim.opt.smartindent = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4

@@ -49,15 +49,15 @@ require("lazy").setup({
 
 	"saadparwaiz1/cmp_luasnip",
 
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		opts = {},
-	},
+	-- {
+	-- 	"folke/which-key.nvim",
+	-- 	event = "VeryLazy",
+	-- 	init = function()
+	-- 		vim.o.timeout = true
+	-- 		vim.o.timeoutlen = 300
+	-- 	end,
+	-- 	opts = {},
+	-- },
 
 	"crispybaccoon/evergarden",
 
