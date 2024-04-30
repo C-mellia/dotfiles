@@ -2,6 +2,18 @@ export VISUAL=nvim
 export EDITOR=nvim
 export PATH="${PATH}:${HOME}/dotfiles/script:${HOME}/.cargo/bin:${HOME}/.local/share/gem/ruby/3.0.0/bin:$PATH:${HOME}/go/bin"
 
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' insert-unambiguous false
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/camellia/.zshrc'
+
+autoload -Uz compinit
+
+compinit
+
 autoload -U colors && colors
 unsetopt beep nomatch
 bindkey -v
