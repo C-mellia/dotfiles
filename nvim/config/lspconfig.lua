@@ -60,13 +60,13 @@ lspconf.texlab.setup({
 	capabilities = capabilities,
 })
 
-lspconf.clangd.setup({
-    capabilities = capabilities,
-    -- handlers = {
-    --     ["textDocument/publishDiagnostics"] = function ()
-    --     end,
-    --},
-})
+-- lspconf.clangd.setup({
+--     capabilities = capabilities,
+--     -- handlers = {
+--     --     ["textDocument/publishDiagnostics"] = function ()
+--     --     end,
+--     --},
+-- })
 
 lspconf.eslint.setup({
 	capabilities = capabilities,
