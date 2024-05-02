@@ -1,6 +1,7 @@
-export VISUAL=nvim
-export EDITOR=nvim
-export PATH="${PATH}:${HOME}/dotfiles/script:${HOME}/.cargo/bin:${HOME}/.local/share/gem/ruby/3.0.0/bin:$PATH:${HOME}/go/bin"
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd extendedglob notify
 
 zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' insert-unambiguous false
@@ -32,19 +33,34 @@ unset_proxy() {
 
 # Plugins:
 # source "${HOME}/dotfiles/minimal/minimal.zsh"
+# ∆
 source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+function _italic() {
+    echo -e "\e[3m$1\e[0m"
+}
+
 # Greeting: (Cute Ascii emos!)
-# echo '<(` ^´)>'
-# echo '(U w U)'
-echo '(> … <)'
+# _italic '<(` ^´)>'
+# echo '(> … <)'
+echo '(˘ w ˘)'
 
 # Keybinding from package minimal
-alias ls='env ls -C -F --color="always" -w $COLUMNS'
+alias ls='/bin/env ls -C -F --color="always" -w $COLUMNS'
 
 # stop annoying beepings of tty
 setterm --bfreq 0 2> /dev/null
 setterm --blen 0 2> /dev/null
 
 stty stop 'undef'
+
+export VISUAL=nvim
+export EDITOR=nvim
+export PATH="${PATH}:
+${HOME}/dotfiles/script:
+${HOME}/.cargo/bin:
+${HOME}/.local/share/gem/ruby/3.0.0/bin:
+${HOME}/go/bin
+"
+
 eval "$(starship init zsh)"

@@ -14,15 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
-	"nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
 
 	{
 		"nvim-tree/nvim-tree.lua",
-		version = "*",
 		lazy = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -49,40 +47,15 @@ require("lazy").setup({
 	"L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
 
-	-- {
-	-- 	"folke/which-key.nvim",
-	-- 	event = "VeryLazy",
-	-- 	init = function()
-	-- 		vim.o.timeout = true
-	-- 		vim.o.timeoutlen = 300
-	-- 	end,
-	-- 	opts = {},
-	-- },
-
 	"crispybaccoon/evergarden",
 
-	{
-		"scottmckendry/cyberdream.nvim",
-		lazy = false,
-	},
-
-	"smjonas/live-command.nvim",
-
 	"ThePrimeagen/vim-be-good",
-
-	"ojroques/nvim-hardline",
 
 	"ramojus/mellifluous.nvim",
 
 	"mbbill/undotree",
 
 	"tpope/vim-fugitive",
-
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
 
 	"winston0410/range-highlight.nvim",
 
@@ -94,8 +67,6 @@ require("lazy").setup({
 
 	"github/copilot.vim",
 
-	-- "stevearc/conform.nvim",
-
 	"folke/trouble.nvim",
 
 	"folke/tokyonight.nvim",
@@ -103,14 +74,4 @@ require("lazy").setup({
 	"catppuccin/nvim",
 
 	"rebelot/kanagawa.nvim",
-
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	events = "VeryLazy",
-	-- 	opts = {},
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"rcarriga/nvim-notify",
-	-- 	},
-	-- },
 }, {})
