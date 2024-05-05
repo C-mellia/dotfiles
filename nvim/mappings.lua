@@ -1,10 +1,6 @@
 local util = require("util")
+local builtin = require("telescope.builtin")
 local trouble = require("trouble")
-
-vim.keymap.set("i", "<C-f>", "<C-o>a")
-vim.keymap.set("i", "<C-b>", "<C-o>h")
-vim.keymap.set("i", "<C-e>", "<C-o>A")
-vim.keymap.set("i", "<C-a>", "<C-o>I")
 
 vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
@@ -13,46 +9,71 @@ vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
 vim.keymap.set("n", "<C-w>d", "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
-vim.keymap.set("n", "<C-f>", "<cmd>:cn<CR>")
-vim.keymap.set("n", "<C-s>", "<cmd>:cp<CR>")
-
-local builtin = require("telescope.builtin")
-
 vim.keymap.set('n', 'gd', function()
 	builtin.lsp_definitions({
 		jump_type = "vsplit"
 	})
 end)
 
-vim.keymap.set("n", "<Leader>ta", function()
+vim.keymap.set("n", "<leader>G", function()
 	builtin.git_files()
 end)
 
-vim.keymap.set('n', '<leader>tf', function()
+vim.keymap.set('n', '<C-p>', function()
 	builtin.find_files({
 		hidden = false
 	})
 end)
 
-vim.keymap.set("n", "<Leader>tb", "<cmd>:Telescope buffers<CR>")
-vim.keymap.set("n", "<Leader>tg", "<cmd>:Telescope live_grep<CR>")
-vim.keymap.set("n", "<Leader>tt", "<cmd>:Telescope help_tags<CR>")
-vim.keymap.set("n", "<Leader>ts", "<cmd>:Telescope treesitter<CR>")
-vim.keymap.set("n", "<Leader>tcf", "<cmd>:Telescope current_buffer_fuzzy_find<CR>")
-vim.keymap.set("n", "<Leader>tcd", "<cmd>:Telescope commands<CR>")
-vim.keymap.set("n", "<Leader>tm", '<cmd>:Telescope man_pages sections={"ALL"}<CR>')
-vim.keymap.set("n", "<Leader>tcs", "<cmd>:Telescope colorscheme enable_preview=true<CR>")
-vim.keymap.set("n", "<Leader>tk", "<cmd>:Telescope keymaps<CR>")
-vim.keymap.set("n", "<Leader>tls", "<cmd>:Telescope lsp_document_symbols<CR>")
-vim.keymap.set("n", "<Leader>tvo", "<cmd>:Telescope vim_options<CR>")
+vim.keymap.set("n", "<leader>M", function()
+    builtin.man_pages({
+        sections = { "ALL" }
+    })
+end)
 
-vim.keymap.set("n", "<Leader>aa/", "[/v]/")
-vim.keymap.set("n", "<Leader>aa/", "[/v]/d")
-vim.keymap.set("n", "<Leader>aa/", "[/v]/c")
+vim.keymap.set("n", "B", function()
+    builtin.buffers()
+end)
 
-vim.keymap.set("n", "<Leader>ai/", "[/wv]/")
-vim.keymap.set("n", "<Leader>ai/", "[/wv]/d")
-vim.keymap.set("n", "<Leader>ai/", "[/wv]/c")
+
+vim.keymap.set("n", "<Leader>N", function()
+    builtin.live_grep()
+end)
+
+vim.keymap.set("n", "<Leader>T", function()
+    builtin.help_tags()
+end)
+
+vim.keymap.set("n", "<C-s>", function()
+    builtin.treesitter()
+end)
+
+vim.keymap.set("n", "<leader>S", function()
+    builtin.colorscheme({
+        enable_preview = true
+    })
+end)
+
+vim.keymap.set("n", "<C-l>", function()
+    builtin.lsp_document_symbols()
+end)
+
+-- vim.keymap.set("n", "<Leader>N", "<cmd>:Telescope live_grep<CR>")
+-- vim.keymap.set("n", "<Leader>T", "<cmd>:Telescope help_tags<CR>")
+-- vim.keymap.set("n", "<C-s>", "<cmd>:Telescope treesitter<CR>")
+-- vim.keymap.set("n", "<Leader>C", "<cmd>:Telescope commands<CR>")
+-- vim.keymap.set("n", "<leader>S", "<cmd>:Telescope colorscheme enable_preview=true<CR>")
+-- vim.keymap.set("n", "<C-l>", "<cmd>:Telescope lsp_document_symbols<CR>")
+-- vim.keymap.set("n", "B", "<cmd>:Telescope buffers<CR>")
+-- vim.keymap.set("n", "<Leader>M", '<cmd>:Telescope man_pages sections={"ALL"}<CR>')
+
+vim.keymap.set("n", "va/", "[/v]/")
+vim.keymap.set("n", "va/", "[/v]/d")
+vim.keymap.set("n", "va/", "[/v]/c")
+
+vim.keymap.set("n", "vi/", "[/wv]/")
+vim.keymap.set("n", "vi/", "[/wv]/d")
+vim.keymap.set("n", "vi/", "[/wv]/c")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -97,9 +118,7 @@ end)
 vim.keymap.set("n", "<Leader>cr", function()
 	util.grep_from_buf_reg("+")
 end)
-vim.keymap.set("n", "t", "xp")
-vim.keymap.set("v", "<C-h>", "xhPgvhoho")
-vim.keymap.set("v", "<C-l>", "xpgvlolo")
+vim.keymap.set("n", "<C-t>", "xp")
 
 vim.keymap.set("n", "<Leader>d(", "di(vhP")
 vim.keymap.set("n", "<Leader>d[", "di[vhP")
@@ -107,12 +126,11 @@ vim.keymap.set("n", "<Leader>d{", "di{vhP")
 vim.keymap.set("n", "<Leader>d<lt>", "di<lt>vhP")
 vim.keymap.set("n", "<Leader>d'", "di'vhP")
 vim.keymap.set("n", '<Leader>d"', 'di"vhP')
-vim.keymap.set("n", "gq", "=ap")
 
 -- "apsijdpoasijd"
 
 vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>xx", function()
+vim.keymap.set("n", "<leader>X", function()
 	trouble.toggle()
 end)
 vim.keymap.set("n", "<leader>xf", function()

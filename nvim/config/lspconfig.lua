@@ -16,10 +16,6 @@ lspconf.gdscript.setup({
 	capabilities = capabilities,
 })
 
-lspconf.hdl_checker.setup({
-	capabilities = capabilities,
-})
-
 lspconf.tailwindcss.setup({
 	capabilities = capabilities,
 })

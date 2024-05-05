@@ -56,11 +56,5 @@ stty stop 'undef'
 
 export VISUAL=nvim
 export EDITOR=nvim
-export PATH="${PATH}:
-${HOME}/dotfiles/script:
-${HOME}/.cargo/bin:
-${HOME}/.local/share/gem/ruby/3.0.0/bin:
-${HOME}/go/bin
+export PATH="${PATH}:${HOME}/dotfiles/script:${HOME}/.cargo/bin:${HOME}/.local/share/gem/ruby/3.0.0/bin:${HOME}/go/bin
 "
-
-eval "$(starship init zsh)"
