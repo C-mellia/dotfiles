@@ -23,6 +23,14 @@ while [ true ]; do
     shift 1
 done
 
+git status 2> /dev/null > /dev/null
+if ! [[ $? -eq 0 ]] then
+    git init 2> /dev/null > /dev/null
+    echo "target/" >> .gitignore
+else
+    echo "nothing to do with git repo"
+fi
+
 if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
     if [[ -f build.sh ]]; then
         echo "Overriding existing build.sh file"
@@ -51,7 +59,7 @@ if [[ ! -d src ]]; then
     mkdir src
 fi
 
-cd src
+cd src;
 
 if [[ ! -f main.c ]] || [[ $SHOULD_OVERRIDE ]]; then
     if [[ -f main.c ]]; then

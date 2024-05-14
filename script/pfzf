@@ -3,5 +3,5 @@ if [[ -d $1 ]]; then
     cd $1
 fi
 fzf --no-mouse --cycle --ansi \
-    --preview="bat --color=always --style=numbers {}" \
+    --preview="cat {}" \
     --bind ctrl-f:preview-down,ctrl-b:preview-up
