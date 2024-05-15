@@ -70,6 +70,11 @@ lspconf.eslint.setup({
 
 lspconf.tsserver.setup({
 	capabilities = capabilities,
+    init_options = {
+        preferences = {
+            disableSuggestions = true,
+        },
+    }
 })
 
 lspconf.rust_analyzer.setup({
