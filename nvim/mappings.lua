@@ -1,6 +1,7 @@
 local util = require("util")
 local builtin = require("telescope.builtin")
 local trouble = require("trouble")
+local oil = require("oil.actions")
 
 vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
@@ -138,3 +139,5 @@ vim.keymap.set("n", "<leader>xf", function()
 end)
 
 vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
+
+vim.keymap.set("n", "<leader>D", oil.open_cwd.callback)
