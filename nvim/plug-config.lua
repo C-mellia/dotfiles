@@ -1,6 +1,5 @@
 require("config.catppuccin-nvim")
 require("config.comment")
-require("config.dressing")
 require("config.evergarden")
 require("config.gruvbox")
 require("config.kanagawa-nvim")

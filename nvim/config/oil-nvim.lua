@@ -1,19 +1,32 @@
 require("oil").setup({
-    default_file_explorer = true,
-    columns = {
-        "icon",
-        "permissions",
-        "size",
-        -- "mtime",
-    },
-    delete_to_trash = false,
-    keymaps = {
-        ["g?"] = "actions.show_help",
-        ["-"] = "actions.parent",
-        ["<C-l>"] = "actions.select",
-		["<C-y>"] = "actions.select_split",
+	default_file_explorer = true,
+	columns = {
+		"icon",
+		"permissions",
+		"size",
+		"mtime",
+	},
+	cleanup_delay_ms = 2000,
+	delete_to_trash = false,
+	constrain_cursor = "name",
+	experimental_watch_for_changes = true,
+	keymaps = {
+		["g?"] = "actions.show_help",
+		["-"] = "actions.parent",
+		["<C-l>"] = "actions.select",
 		["r"] = "actions.refresh",
-    },
-    use_default_keymaps = true,
-    show_hidden = true,
+		["<C-s>"] = "actions.change_sort",
+		["."] = "actions.open_cmdline",
+		["g."] = "actions.toggle_hidden",
+		["yy"] = "actions.copy_entry_path",
+	},
+	view_options = {
+		show_hidden = false,
+		is_hidden_file = function(name, _)
+			return vim.startswith(name, ".")
+		end,
+	},
+	use_default_keymaps = false,
+	show_hidden = true,
+	skip_confirm_for_simple_edits = true,
 })
