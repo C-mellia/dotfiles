@@ -10,7 +10,9 @@ require("oil").setup({
     keymaps = {
         ["g?"] = "actions.show_help",
         ["-"] = "actions.parent",
-        ["<C-l>"] = "actions.select_vsplit",
+        ["<C-l>"] = "actions.select",
+		["<C-y>"] = "actions.select_split",
+		["r"] = "actions.refresh",
     },
     use_default_keymaps = true,
     show_hidden = true,

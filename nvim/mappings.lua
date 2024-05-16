@@ -7,7 +7,6 @@ vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
 
 vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
-vim.keymap.set("n", "<C-w>d", "<cmd>:NvimTreeToggle<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
 vim.keymap.set('n', 'gd', function()

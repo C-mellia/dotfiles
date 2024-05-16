@@ -6,7 +6,7 @@ HELP_MSG="Usage: cnew [options]
     Options:
     -o: Override existing build.sh file
     --shell-only: Only create build.sh file
-	--simple-sh: Generate simlified version of build.sh instead
+    --simple-sh: Generate simlified version of build.sh instead
     -h, --help: Show this message"
 
 while [ true ]; do
@@ -16,7 +16,7 @@ while [ true ]; do
     case $1 in
         -o) SHOULD_OVERRIDE=True;;
         --shell-only) NOMAINC=True;;
-		--simple-sh) SIMPLESH=True;;
+        --simple-sh) SIMPLESH=True;;
         -h|--help) echo $HELP_MSG; exit 0;;
         *) echo "Invalid option: $1"; echo $HELP_MSG; exit 1;;
     esac
