@@ -12,7 +12,7 @@ require("oil").setup({
 	experimental_watch_for_changes = true,
 	keymaps = {
 		["g?"] = "actions.show_help",
-		["-"] = "actions.parent",
+		["<C-h>"] = "actions.parent",
 		["<C-l>"] = "actions.select",
 		["r"] = "actions.refresh",
 		["<C-s>"] = "actions.change_sort",

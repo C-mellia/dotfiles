@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# configuration of buildling process
+
+# object extension
+OBJ_EXT='o'
+# select which compiler to use
+COMMAND=gcc
+# send flags to compiler
+COMMAND_FLAG=''
+TARGET='main'
+
+source ./build_util
+
+_link_objects `for file in ./target/*.$OBJ_EXT; do echo $file; done` || (echo "ERROR: Failed to link"; exit 1)

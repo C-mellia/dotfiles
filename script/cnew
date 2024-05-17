@@ -1,83 +1,11 @@
 #!/bin/bash
 
-BUILD_SRC=$HOME/dotfiles/script/src/buildc.sh
-MAINC_SRC=$HOME/dotfiles/script/src/main.c
-HELP_MSG="Usage: cnew [options]
-    Options:
-    -o: Override existing build.sh file
-    --shell-only: Only create build.sh file
-    --simple-sh: Generate simlified version of build.sh instead
-    -h, --help: Show this message"
+TEMPLATE=$HOME/dotfiles/script/template
+FILES="build.sh build_util compile_step link_step src/main.c .gitignore"
 
-while [ true ]; do
-    if [[ $# -eq 0 ]]; then
-        break
-    fi
-    case $1 in
-        -o) SHOULD_OVERRIDE=True;;
-        --shell-only) NOMAINC=True;;
-        --simple-sh) SIMPLESH=True;;
-        -h|--help) echo $HELP_MSG; exit 0;;
-        *) echo "Invalid option: $1"; echo $HELP_MSG; exit 1;;
-    esac
-    shift 1
+git status > /dev/null 2>&1 && echo "nothing to do with git repo" || git init > /dev/null 2>&1
+
+for fname in $FILES; do
+	[[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
+	cp --update $TEMPLATE/$fname $fname
 done
-
-git status 2> /dev/null > /dev/null
-if ! [[ $? -eq 0 ]] then
-    git init 2> /dev/null > /dev/null
-    echo "target/
-main
-lib*.so" >> .gitignore
-else
-    echo "nothing to do with git repo"
-fi
-
-if [[ ! -f build.sh ]] || [[ $SHOULD_OVERRIDE ]]; then
-    if [[ -f build.sh ]]; then
-        echo "Overriding existing build.sh file"
-    fi
-
-    if [[ -f $BUILD_SRC ]] && ! [[ $SIMPLESH ]]; then
-        cat $BUILD_SRC > build.sh
-    else
-		echo "Generating simple version of build.sh"
-        echo "#!/bin/bash
-CC=gcc
-CC_FLAG='-Wall -Wextra -std=gnu11'
-FD_FLAG=''
-\$CC -o main src/main.c \$CC_FLAG \$FD_FLAG" > build.sh
-    fi
-    chmod +x build.sh
-else
-    echo "nothing to do with build.sh"
-fi
-
-if [[ $NOMAINC ]]; then
-    exit 0
-fi
-
-if [[ ! -d src ]]; then
-    mkdir src
-fi
-
-cd src;
-
-if [[ ! -f main.c ]] || [[ $SHOULD_OVERRIDE ]]; then
-    if [[ -f main.c ]]; then
-        echo "Overriding existing main.c file"
-    fi
-
-    if [[ -f $MAINC_SRC ]]; then
-        cat $MAINC_SRC > main.c
-    else
-        echo '#include <stdio.h>
-
-int main(void) {
-    printf("Hello, world\n");
-    return 0;
-}' > main.c
-    fi
-else
-    echo "nothing to do with main.c"
-fi
