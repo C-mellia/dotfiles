@@ -12,4 +12,9 @@ TARGET='main'
 
 source ./build_util
 
-_link_objects `for file in ./target/*.$OBJ_EXT; do echo $file; done` || (echo "ERROR: Failed to link"; exit 1)
+function link_error {
+	echo "ERROR: Failed to link"
+	exit 1
+}
+
+_link_objects `for file in ./target/*.$OBJ_EXT; do echo $file; done` || link_error

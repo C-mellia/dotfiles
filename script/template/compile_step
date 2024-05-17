@@ -15,7 +15,11 @@ SRC_FILES='main'
 
 source build_util
 
+function comp_error {
+	echo "ERROR: Failed to build $1, exiting..."
+	exit 1
+}
+
 for fname in $SRC_FILES; do
-	[[ -f $SRC/$fname.$SRC_EXT ]] || (echo "WARNING: File $fname not found in dir $SRC, skipping..."; continue)
-	_compile $SRC/$fname.$SRC_EXT target/$fname.$OBJ_EXT || (echo "ERROR: Failed to build $fname, exiting..."; exit 1)
+	_compile $SRC/$fname.$SRC_EXT target/$fname.$OBJ_EXT || comp_error
 done
