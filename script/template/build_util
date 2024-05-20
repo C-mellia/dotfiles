@@ -14,3 +14,8 @@ function _archive {
 	echo "$COMMAND $COMMAND_FLAG lib$TARGET.a $*"
 	$COMMAND $COMMAND_FLAG lib$TARGET.a $*
 }
+
+function _link_dynamic {
+	echo "$COMMAND $* -o lib$TARGET.so --shared $COMMAND_FLAG"
+	$COMMAND $* -o lib$TARGET.so --shared $COMMAND_FLAG
+}
