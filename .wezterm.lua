@@ -12,8 +12,8 @@ config.enable_tab_bar = false
 config.max_fps = 120
 config.automatically_reload_config = true
 -- config.font = wezterm.font('ComicShannsMonoNerdRegular')
--- config.font = wezterm.font('Cascadia Code', {weight = 'Regular'})
-config.font = wezterm.font('Victor Mono', {weight = 'Medium'})
+config.font = wezterm.font('Cascadia Code', {weight = 'Regular'})
+-- config.font = wezterm.font('Victor Mono', {weight = 'Medium'})
 config.font_size = 20
 config.enable_wayland = false
 config.default_prog = {'/usr/bin/zsh'}
@@ -52,6 +52,6 @@ config.keys = {
 }
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.95
 
 return config
