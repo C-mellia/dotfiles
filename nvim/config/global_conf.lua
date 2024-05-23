@@ -20,5 +20,6 @@ return {
 		"bashls",
 		"texlab",
 	},
-	colorscheme = "kanagawa-dragon",
+	-- colorscheme = "kanagawa-dragon",
+    colorscheme = "rose-pine-moon",
 }

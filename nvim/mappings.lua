@@ -1,7 +1,7 @@
 local util = require("util")
 local builtin = require("telescope.builtin")
 local trouble = require("trouble")
-local oil = require("oil.actions")
+-- local oil = require("oil.actions")
 
 vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
@@ -9,9 +9,9 @@ vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
 vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
-vim.keymap.set('n', 'gd', function()
+vim.keymap.set("n", "gd", function()
 	builtin.lsp_definitions({
-		jump_type = "vsplit"
+		jump_type = "vsplit",
 	})
 end)
 
@@ -19,43 +19,42 @@ vim.keymap.set("n", "<leader>G", function()
 	builtin.git_files()
 end)
 
-vim.keymap.set('n', '<C-p>', function()
+vim.keymap.set("n", "<C-p>", function()
 	builtin.find_files({
-		hidden = false
+		hidden = false,
 	})
 end)
 
 vim.keymap.set("n", "<leader>M", function()
-    builtin.man_pages({
-        sections = { "ALL" }
-    })
+	builtin.man_pages({
+		sections = { "ALL" },
+	})
 end)
 
 vim.keymap.set("n", "B", function()
-    builtin.buffers()
+	builtin.buffers()
 end)
 
-
 vim.keymap.set("n", "<Leader>N", function()
-    builtin.live_grep()
+	builtin.live_grep()
 end)
 
 vim.keymap.set("n", "<Leader>T", function()
-    builtin.help_tags()
+	builtin.help_tags()
 end)
 
 vim.keymap.set("n", "<C-s>", function()
-    builtin.treesitter()
+	builtin.treesitter()
 end)
 
 vim.keymap.set("n", "<leader>S", function()
-    builtin.colorscheme({
-        enable_preview = true
-    })
+	builtin.colorscheme({
+		enable_preview = true,
+	})
 end)
 
 vim.keymap.set("n", "<C-l>", function()
-    builtin.lsp_document_symbols()
+	builtin.lsp_document_symbols()
 end)
 
 -- vim.keymap.set("n", "<Leader>N", "<cmd>:Telescope live_grep<CR>")
@@ -139,4 +138,4 @@ end)
 
 vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
 
-vim.keymap.set("n", "<leader>D", oil.open_cwd.callback)
+-- vim.keymap.set("n", "<leader>D", oil.open_cwd.callback)

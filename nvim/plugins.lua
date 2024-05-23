@@ -19,20 +19,20 @@ require("lazy").setup({
 
 	"nvim-treesitter/nvim-treesitter",
 
-	-- {
-	-- 	"nvim-tree/nvim-tree.lua",
-	-- 	lazy = false,
-	-- 	dependencies = {
-	-- 		"nvim-tree/nvim-web-devicons",
-	-- 	},
-	-- },
-
 	{
-		'stevearc/oil.nvim',
-		opts = {},
+		"nvim-tree/nvim-tree.lua",
 		lazy = false,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
+
+	-- {
+	-- 	'stevearc/oil.nvim',
+	-- 	opts = {},
+	-- 	lazy = false,
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- },
 
 	"stevearc/dressing.nvim",
 
@@ -81,4 +81,9 @@ require("lazy").setup({
 	"catppuccin/nvim",
 
 	"rebelot/kanagawa.nvim",
+
+	{
+		"stevearc/conform.nvim",
+		opts = {},
+	},
 }, {})
