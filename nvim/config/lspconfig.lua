@@ -40,9 +40,9 @@ lspconf.svelte.setup({
 	capabilities = capabilities,
 })
 
--- lspconf.pylsp.setup({
--- 	capabilities = capabilities,
--- })
+lspconf.pylsp.setup({
+	capabilities = capabilities,
+})
 
 lspconf.glsl_analyzer.setup({
 	capabilities = capabilities,
@@ -70,11 +70,11 @@ lspconf.eslint.setup({
 
 lspconf.tsserver.setup({
 	capabilities = capabilities,
-    init_options = {
-        preferences = {
-            disableSuggestions = true,
-        },
-    }
+	init_options = {
+		preferences = {
+			disableSuggestions = true,
+		},
+	},
 })
 
 lspconf.rust_analyzer.setup({
@@ -121,7 +121,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<space>m", vim.lsp.buf.format, opts)
 		-- vim.keymap.set('n', '<space>lr', vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 		--     vim.keymap.set('n', '<space>f', function()
 		--         vim.lsp.buf.format { async = true }
 		--     end, opts)

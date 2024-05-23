@@ -31,7 +31,7 @@ require("lazy").setup({
 		"stevearc/oil.nvim",
 		opts = {},
 		lazy = false,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	"stevearc/dressing.nvim",
