@@ -13,7 +13,11 @@ config.max_fps = 120
 config.automatically_reload_config = true
 -- config.font = wezterm.font('ComicShannsMonoNerdRegular')
 -- config.font = wezterm.font('Cascadia Code', {weight = 'Regular'})
+<<<<<<< HEAD
 config.font = wezterm.font("Victor Mono", { weight = "Medium" })
+=======
+config.font = wezterm.font('Victor Mono', {weight = 'Medium'})
+>>>>>>> f7aa280 (	modified:   .wezterm.lua)
 config.font_size = 20
 config.enable_wayland = false
 config.default_prog = { "/usr/bin/zsh" }

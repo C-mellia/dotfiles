@@ -40,9 +40,9 @@ lspconf.svelte.setup({
 	capabilities = capabilities,
 })
 
-lspconf.pylsp.setup({
-	capabilities = capabilities,
-})
+-- lspconf.pylsp.setup({
+-- 	capabilities = capabilities,
+-- })
 
 lspconf.glsl_analyzer.setup({
 	capabilities = capabilities,
