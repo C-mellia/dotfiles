@@ -139,3 +139,4 @@ end)
 vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
 
 -- vim.keymap.set("n", "<leader>D", oil.open_cwd.callback)
+vim.keymap.set("n", "<leader>D", "<cmd>NvimTreeOpen<cr>")
