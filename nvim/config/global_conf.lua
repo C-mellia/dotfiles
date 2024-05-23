@@ -21,9 +21,5 @@ return {
 		"texlab",
 	},
 	-- colorscheme = "kanagawa-dragon",
-<<<<<<< HEAD
     colorscheme = "rose-pine-moon",
-=======
-	colorscheme = "rose-pine-moon",
->>>>>>> f7aa280 (	modified:   .wezterm.lua)
 }
