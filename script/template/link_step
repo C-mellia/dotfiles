@@ -2,12 +2,11 @@
 
 # configuration of buildling process
 
-# object extension
-OBJ_EXT='o'
-# select which compiler to use
+# specify the command to use
 COMMAND=gcc
-# send flags to compiler
+# send additional flags to command
 COMMAND_FLAG=''
+# specify the target name for the stage
 TARGET='main'
 
 source ./build_util
@@ -17,4 +16,4 @@ function link_error {
 	exit 1
 }
 
-_link_objects `for file in ./target/*.$OBJ_EXT; do echo $file; done` || link_error
+_link_objects `for file in ./target/*.o; do echo $file; done` || link_error

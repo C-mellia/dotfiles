@@ -1,10 +1,6 @@
 #!/bin/bash
 
-# extension of source files
-SRC_EXT='c'
-# object extension
-OBJ_EXT='o'
-# source directory of c-files to be searched
+# source directory of src-files to be searched
 SRC='src'
 # select which compiler to use
 COMMAND=gcc
@@ -21,5 +17,5 @@ function comp_error {
 }
 
 for fname in $SRC_FILES; do
-	_compile $SRC/$fname.$SRC_EXT target/$fname.$OBJ_EXT || comp_error
+	_compile $SRC/${fname}.c target/${fname}.o || comp_error
 done

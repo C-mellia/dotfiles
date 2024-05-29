@@ -1,25 +1,16 @@
 #!/bin/bash
-if [[ -f ./build.sh ]]; then
-    ./build.sh
-    STATUS=$?
-    if [[ ! $STATUS == 0 ]]; then
-        echo "ERROR: build process failed, exiting..."
-        exit 1
-    elif [[ -f ./main ]]; then
-        ./main $*
-        STATUS=$?
-        if [[ $STATUS == 0 ]]; then
-            echo "INFO: Process exited normally"
-        else
-            echo "INFO: Process exited abnormally with code: ${STATUS}"
-            exit 1
-        fi
-    else 
-        echo "ERROR No 'main' executable generated, exiting..."
-        exit 1
-    fi
-else 
-    echo "ERROR: no 'build.sh' file found under current directory"
-    exit 1
+
+# a build and run script for c-like language. the script expect a build.sh file
+# under current directory which also generate a main executable file under the
+# same directory.
+
+bash ./build.sh && ./main $*
+status=$?
+
+if [[ $status -eq 0 ]]; then
+    echo "Process exited normally"
+else
+    echo "Process exited with code: ${status}"
 fi
+
 exit 0

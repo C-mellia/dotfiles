@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# reusable part of the build system that are likely to be called multiple times
+# in certain circumstances, e.g. separate build steps for files written in
+# different languages and multiple targets in the same project.
+
 function _compile {
 	echo "$COMMAND -o $2 $COMMAND_FLAG -c $1"
 	$COMMAND -o $2 $COMMAND_FLAG -c $1
