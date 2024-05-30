@@ -11,6 +11,7 @@ if [[ $status -eq 0 ]]; then
     echo "Process exited normally"
 else
     echo "Process exited with code: ${status}"
+    exit $status
 fi
 
 exit 0
