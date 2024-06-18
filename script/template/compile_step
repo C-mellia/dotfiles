@@ -1,21 +1,8 @@
 #!/bin/bash
 
-# source directory of src-files to be searched
-SRC='src'
-# select which compiler to use
-COMMAND=gcc
-# send flags to compiler
-COMMAND_FLAG='-Wall -Wextra -std=gnu11'
-# libraries to link or send flags to linker, if link step is necessary
-SRC_FILES='main'
-
-source build_util
-
-function comp_error {
-	echo "ERROR: Failed to build $1, exiting..."
-	exit 1
-}
+CC=gcc
+CC_FLAG='-Wall -Wextra -std=gnu11'
 
 for fname in $SRC_FILES; do
-	_compile $SRC/${fname}.c target/${fname}.o || comp_error
+    step_exec "$CC -o ./target/$fname.o -c ./src/$fname.c $CC_FLAG" "Failed to compile $fname.c"
 done

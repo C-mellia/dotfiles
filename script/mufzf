@@ -4,15 +4,13 @@
 
 select=$(
 find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \;\
-	| grep -E '.pdf$|.epub$'\
+	| grep -E "\.pdf$|\.epub$"\
 	| fzf -m --cycle\
 	--bind ctrl-l:toggle\
 	--bind ctrl-h:cancel
 )
 
-if [[ -z $select ]]; then
-	exit 0
-fi
+[[ -z $select ]] && exit 0
 
 if ! [[ -z $1 ]]; then
 	i3-msg "workspace $1"

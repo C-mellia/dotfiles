@@ -1,0 +1,11 @@
+#!/bin/bash
+
+FLAG=''
+
+if ! [[ -d target ]]; then
+    mkdir target/
+fi
+
+cd target
+
+pdflatex ../body.tex main.pdf $FLAG

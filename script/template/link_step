@@ -1,19 +1,6 @@
 #!/bin/bash
 
-# configuration of buildling process
+LD=gcc
+LD_FLAG=''
 
-# specify the command to use
-COMMAND=gcc
-# send additional flags to command
-COMMAND_FLAG=''
-# specify the target name for the stage
-TARGET='main'
-
-source ./build_util
-
-function link_error {
-	echo "ERROR: Failed to link"
-	exit 1
-}
-
-_link_objects `for file in ./target/*.o; do echo $file; done` || link_error
+step_exec "$LD -o main `for file in ./target/*.o; do echo $file; done`" "Failed to link target main"

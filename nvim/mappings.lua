@@ -10,51 +10,51 @@ vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
 
 vim.keymap.set("n", "gd", function()
-	builtin.lsp_definitions({
-		jump_type = "vsplit",
-	})
+    builtin.lsp_definitions({
+        jump_type = "vsplit",
+    })
 end)
 
 vim.keymap.set("n", "<leader>G", function()
-	builtin.git_files()
+    builtin.git_files()
 end)
 
 vim.keymap.set("n", "<C-p>", function()
-	builtin.find_files({
-		hidden = false,
-	})
+    builtin.find_files({
+        hidden = false,
+    })
 end)
 
 vim.keymap.set("n", "<leader>M", function()
-	builtin.man_pages({
-		sections = { "ALL" },
-	})
+    builtin.man_pages({
+        sections = { "ALL" },
+    })
 end)
 
 vim.keymap.set("n", "B", function()
-	builtin.buffers()
+    builtin.buffers()
 end)
 
 vim.keymap.set("n", "<Leader>N", function()
-	builtin.live_grep()
+    builtin.live_grep()
 end)
 
 vim.keymap.set("n", "<Leader>T", function()
-	builtin.help_tags()
+    builtin.help_tags()
 end)
 
 vim.keymap.set("n", "<C-s>", function()
-	builtin.treesitter()
+    builtin.treesitter()
 end)
 
 vim.keymap.set("n", "<leader>S", function()
-	builtin.colorscheme({
-		enable_preview = true,
-	})
+    builtin.colorscheme({
+        enable_preview = true,
+    })
 end)
 
 vim.keymap.set("n", "<C-l>", function()
-	builtin.lsp_document_symbols()
+    builtin.lsp_document_symbols()
 end)
 
 -- vim.keymap.set("n", "<Leader>N", "<cmd>:Telescope live_grep<CR>")
@@ -104,18 +104,18 @@ vim.keymap.set("n", '<Leader>a"', 'viw<ESC>a"<ESC>bi"<ESC>')
 
 vim.keymap.set("n", "<Leader>%", "<cmd>:bd %<CR>")
 vim.keymap.set("n", "<Leader>gg", function()
-	vim.cmd('normal viw"0y')
-	util.grep_from_dir_reg("0")
+    vim.cmd('normal viw"0y')
+    util.grep_from_dir_reg("0")
 end)
 vim.keymap.set("n", "<Leader>cc", function()
-	vim.cmd('normal viw"0y')
-	util.grep_from_buf_reg("0")
+    vim.cmd('normal viw"0y')
+    util.grep_from_buf_reg("0")
 end)
 vim.keymap.set("n", "<Leader>gr", function()
-	util.grep_from_buf_reg("+")
+    util.grep_from_buf_reg("+")
 end)
 vim.keymap.set("n", "<Leader>cr", function()
-	util.grep_from_buf_reg("+")
+    util.grep_from_buf_reg("+")
 end)
 vim.keymap.set("n", "<C-t>", "xp")
 
@@ -130,10 +130,10 @@ vim.keymap.set("n", '<Leader>d"', 'di"vhP')
 
 vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>X", function()
-	trouble.toggle()
+    trouble.toggle()
 end)
 vim.keymap.set("n", "<leader>xf", function()
-	trouble.toggle("quickfix")
+    trouble.toggle("quickfix")
 end)
 
 vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
@@ -141,3 +141,6 @@ vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++
 vim.keymap.set("n", "<leader>D", "<cmd>Oil<cr>")
 -- vim.keymap.set("n", "<leader>D", oil.open_cwd.callback)
 -- vim.keymap.set("n", "<leader>D", "<cmd>NvimTreeOpen<cr>")
+
+
+vim.keymap.set("v", "<C-+>", "<C-A>gv");

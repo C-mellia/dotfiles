@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- config.color_scheme = 'Catppuccin Macchiato'
-config.color_scheme = "Gruvbox Material (Gogh)"
+-- config.color_scheme = "Gruvbox Material (Gogh)"
 -- config.color_scheme = "Google Dark (base16)"
 -- config.color_scheme = "rose-pine-moon"
 
@@ -12,8 +12,8 @@ config.enable_tab_bar = false
 config.max_fps = 120
 config.automatically_reload_config = true
 -- config.font = wezterm.font('ComicShannsMonoNerdRegular')
-config.font = wezterm.font("Cascadia Code", { weight = "Regular" })
--- config.font = wezterm.font("Victor Mono", { weight = "Medium" })
+-- config.font = wezterm.font("Cascadia Code", { weight = "Regular" })
+config.font = wezterm.font("Victor Mono", { weight = "Bold" })
 -- config.font = wezterm.font("Victor Mono")
 config.font_size = 16
 config.enable_wayland = false
@@ -52,6 +52,6 @@ config.keys = {
 }
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.8
 
 return config
