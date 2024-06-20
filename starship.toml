@@ -1,4 +1,6 @@
 add_newline = false
 
+command_timeout = 100
+
 [c]
 detect_files = ['main.c']
