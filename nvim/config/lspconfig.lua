@@ -46,7 +46,7 @@ lspconf.svelte.setup({
     capabilities = capabilities,
 })
 
-lspconf.pylsp.setup({
+lspconf.pyright.setup({
     capabilities = capabilities,
 })
 

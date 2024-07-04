@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# path to the directory of template files
 TEMPLATE=$HOME/dotfiles/script/template
 FILES="build.sh compile_step link_step src/main.c .gitignore"
 

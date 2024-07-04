@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TEMPLATE=$HOME/dotfiles/script/template
-FILES="body.tex build-tex"
+FILES="src/body.tex build-tex"
 
 git status > /dev/null 2>&1 && echo "nothing to do with git repo" || git init > /dev/null 2>&1
 

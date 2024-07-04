@@ -8,7 +8,7 @@ vim.opt.smartcase = true
 vim.opt.path:append("/usr/local/include")
 vim.opt.path:append("/opt/cuda/include")
 
-vim.opt.indentkeys:append(">")
+-- vim.opt.indentkeys:append(">")
 vim.opt.guicursor = "i:block"
 vim.opt.showtabline = 0
 vim.opt.number = true

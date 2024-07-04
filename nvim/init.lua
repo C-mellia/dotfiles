@@ -9,3 +9,7 @@ require("plug-config")
 require("afterplug")
 require("mappings")
 require("autocmd")
+
+if vim.g.neovide then
+    require("neovide")
+end

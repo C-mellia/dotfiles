@@ -2,10 +2,6 @@
 
 FLAG=''
 
-if ! [[ -d target ]]; then
-    mkdir target/
-fi
+[[ -d target ]] || mkdir target/
 
-cd target
-
-pdflatex ../body.tex main.pdf $FLAG
+(cd target && pdflatex ../src/body.tex main.pdf $FLAG)

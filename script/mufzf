@@ -22,5 +22,5 @@ if ! [[ -z $1 ]]; then
 fi
 
 while read -r file; do
-	nohup mupdf "$file" 2&> /dev/null & disown
+	nohup mupdf "$file" 2&> /dev/null & disown || exit 1
 done <<< $select

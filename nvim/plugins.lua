@@ -72,7 +72,7 @@ require("lazy").setup({
 
 	{ "rose-pine/neovim", name = "rose-pine" },
 
-	-- "github/copilot.vim",
+	"github/copilot.vim",
 
 	"folke/trouble.nvim",
 
