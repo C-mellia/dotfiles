@@ -3,7 +3,7 @@ set $mod Mod4
 font pango:ComicShannsMonoNerdFont Regular 6
 #font pango:DejaVu Sans Mono 8
 
-exec --no-startup-id picom -CGb --config $PICOM_CONFIG_FILE
+exec --no-startup-id picom -b --config $PICOM_CONFIG_FILE
 # exec --no-startup-id sway
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id fcitx5
@@ -22,7 +22,7 @@ exec --no-startup-id /usr/bin/wired --run
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -41,8 +41,8 @@ set $rofi rofi -font "Victor Mono Medium 24"
 bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' $rofi -modes run -show run options -theme squared-nord
 bindsym $mod+p exec --no-startup-id $rofi -modes run -show run options -theme squared-everforest
 
-bindsym $mod+Shift+e exec --no-startup-id $rofi -show emoji -modi emoji options -theme dmenu
-bindsym $mod+Tab exec --no-startup-id rofi -show window -modi window -theme simple-tokyonight
+bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji -modi emoji options -theme dmenu
+bindsym $mod+Tab exec --no-startup-id rofi -show window -modi window -theme simple-tokyonight -font "Victor Mono Medium 24"
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"

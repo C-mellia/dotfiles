@@ -1,6 +1,6 @@
 # default gaps
-gaps inner 5
-gaps outer 1
+gaps inner 8
+gaps outer 4
 
 # gaps
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
