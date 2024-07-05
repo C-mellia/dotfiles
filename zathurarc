@@ -1,0 +1,21 @@
+set default-bg rgba(0,0,0,0.8)
+set default-fg rgba(255,255,255,1.0)
+set recolor-lightcolor rgba(18,18,18,0.0)
+set recolor-darkcolor rgba(255,255,255,1.0)
+
+set adjust-open "best-fit"
+
+set recolor "true"
+set recolor-keephue "true"
+
+set scroll-step 100
+
+map r reload
+map R rotate
+
+set selection-clipboard clipboard
+
+# map j feedkeys "<C-Down>"
+# map k feedkeys "<C-Up>"
+
+recolor
