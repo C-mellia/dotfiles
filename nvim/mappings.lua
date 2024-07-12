@@ -144,3 +144,8 @@ vim.keymap.set("n", "<leader>D", "<cmd>Oil<cr>")
 
 
 vim.keymap.set("v", "<C-+>", "<C-A>gv");
+
+vim.keymap.set("n", "<Up>", "<cmd>resize +2<CR>")
+vim.keymap.set("n", "<Down>", "<cmd>resize -2<CR>")
+vim.keymap.set("n", "<Left>", "<cmd>vertical resize +2<CR>")
+vim.keymap.set("n", "<Right>", "<cmd>vertical resize -2<CR>")

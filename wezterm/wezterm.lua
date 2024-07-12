@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- config.color_scheme = 'Catppuccin Macchiato'
 -- config.color_scheme = "Gruvbox Material (Gogh)"
 -- config.color_scheme = "Google Dark (base16)"
-config.color_scheme = "rose-pine-moon"
+-- config.color_scheme = "rose-pine-moon"
 
 config.audible_bell = "Disabled"
 config.enable_scroll_bar = false
@@ -52,6 +52,6 @@ config.keys = {
 }
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 0.70
+config.window_background_opacity = 0.80
 
 return config

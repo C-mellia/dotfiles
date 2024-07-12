@@ -14,8 +14,7 @@ map r reload
 map R rotate
 
 set selection-clipboard clipboard
+set guioptions none
 
 # map j feedkeys "<C-Down>"
 # map k feedkeys "<C-Up>"
-
-recolor

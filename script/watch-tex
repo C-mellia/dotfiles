@@ -1,0 +1,8 @@
+#!/bin/bash
+
+[[ -f build-tex ]] && watchexec -e tex \
+    -c \
+    -N \
+    --restart \
+    --stop-timeout 0 \
+    ./build-tex

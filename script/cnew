@@ -3,6 +3,9 @@
 TEMPLATE=$HOME/dotfiles/script/template
 FILES="build.sh compile_step link_step src/main.c .gitignore"
 
+[[ -d include ]] || mkdir include
+[[ -d src ]] || mkdir src
+
 git status > /dev/null 2>&1 && echo "nothing to do with git repo" || git init > /dev/null 2>&1
 
 for fname in $FILES; do

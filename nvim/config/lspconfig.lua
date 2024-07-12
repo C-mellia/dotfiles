@@ -18,6 +18,10 @@ lspconf.jdtls.setup({
     -- root_dir = vim.fn.getcwd,
 })
 
+lspconf.arduino_language_server.setup({
+    capabilities = capabilities,
+})
+
 lspconf.gdscript.setup({
     capabilities = capabilities,
 })
