@@ -4,3 +4,6 @@
 [submodule "alacritty/alacritty-theme"]
 	path = alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme
+[submodule "rofi-themes-collection"]
+	path = rofi-themes-collection
+	url = https://github.com/newmanls/rofi-themes-collection
