@@ -1,7 +1,5 @@
 #!/bin/bash
 
-summary=false
-
 while [[ ! -z $1 ]]; do
     case $1 in
         -h|--help)
@@ -12,7 +10,7 @@ while [[ ! -z $1 ]]; do
             exit 0
             ;;
         -s|--summary)
-            summary=true
+            summary=0
             ;;
         *)
             exe_name=$1
@@ -24,16 +22,17 @@ done
 
 count=0
 
-[[ -z exe_name ]] || exe_name='firefox'
+[[ -z $exe_name ]] && exe_name='firefox'
 
 while read -r line; do
     mem=$(echo $line | awk '{print $1}')
     exe=$(echo $line | awk '{print $2}')
-    $summary || printf "[$count] %s: %.2f%%\n" $exe $mem
+    [[ -z $summary ]] && printf "[$count] %s: %.2f%%\n" $exe $mem
     py_arr="$py_arr$punc$mem"
     punc=", "
     ((count+=1))
 done <<< $(ps axo %mem,exe | grep $exe_name)
+
 sum=$(python -c "print(sum([$py_arr]))")
 
 printf "$count processe(s) grepped via \"$exe_name\" used up: %.2f%%\n" $sum
