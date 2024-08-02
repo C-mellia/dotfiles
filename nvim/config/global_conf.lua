@@ -1,5 +1,5 @@
 return {
-	transparent_bg = true,
+	transparent_bg = false,
 	mason_ensure_installed = {
 		"cssls",
 		"tailwindcss",
@@ -21,6 +21,6 @@ return {
 		"texlab",
 	},
     -- colorscheme = "default",
-	-- colorscheme = "kanagawa-dragon",
-	colorscheme = "rose-pine-moon",
+	colorscheme = "kanagawa-dragon",
+	-- colorscheme = "rose-pine-moon",
 }

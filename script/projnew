@@ -1,0 +1,11 @@
+#!/bin/bash
+
+template=/usr/share/projnew/template
+recipe=${1:-c}
+
+while read -r file; do
+    fname=${file%$template/$recipe/}
+    echo $fname
+    [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
+    [[ -f $file ]] && cp --update $file ./
+done <<< $(find $template/$recipe -type f)

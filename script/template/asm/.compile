@@ -1,0 +1,10 @@
+#!/bin/bash
+
+AS=as
+AS_FLAG='--warn --fatal-warnings -I./include'
+
+for fname in ${srcs:-main}; do
+    step_exec \
+        "$AS -o ./target/$fname.o ./src/$fname.c $AS_FLAG" \
+        "Failed to compile $fname.c"
+done

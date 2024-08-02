@@ -4,4 +4,4 @@ FLAG=''
 
 [[ -d target ]] || mkdir target/
 
-(cd target && pdflatex ../src/body.tex main.pdf $FLAG)
+(cd target && pdflatex ../src/body.tex body.pdf $FLAG)
