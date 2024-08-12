@@ -3,9 +3,11 @@
 template=/usr/share/projnew/template
 recipe=${1:-c}
 
+[[ -d $template/$recipe ]] || { echo "Recipe $recipe not found"; exit 1; }
+
 while read -r file; do
-    fname=${file%$template/$recipe/}
-    echo $fname
+    fname=${file#$template/$recipe/}
+    # echo $fname
     [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
-    [[ -f $file ]] && cp --update $file ./
+    [[ -f $file ]] && cp --update $file $fname
 done <<< $(find $template/$recipe -type f)

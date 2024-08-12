@@ -36,7 +36,7 @@ unset_proxy() {
 # ∆
 source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-function _italic() {
+_italic() {
     echo -e "\e[3m$1\e[0m"
 }
 
@@ -45,8 +45,8 @@ function _italic() {
 # echo '(> … <)'
 echo '(˘ w ˘)'
 
-# Keybinding from package minimal
 alias ls='/bin/env ls -C -F --color="always" -w $COLUMNS'
+alias grep='/bin/env grep -n --color=always'
 
 # stop annoying beepings of tty
 setterm --bfreq 0 2> /dev/null
