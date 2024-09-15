@@ -54,3 +54,6 @@ vim.opt.splitbelow = true
 vim.opt.inccommand = "split"
 vim.opt.breakindent = true
 vim.opt.timeoutlen = 300
+
+vim.opt.conceallevel = 2
+vim.g.tex_conceal = "abdmg"

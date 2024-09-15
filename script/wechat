@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# https://github.com/huan/docker-wechat/blob/main/dochat.sh
+
+# sudo docker pull "zixia/wechat:3.3.0.115"
+
+set -eo pipefail
+
+for dev in /dev/video*; do
+    devs+=('--device' "$dev")
+done
+
+# [[ $(lshw -C display 2> /dev/null | grep vendor) =~ NVIDIA ]] && devs+=('--gpus' 'all' '--env' 'NVIDIA_DRIVER_CAPABILITIES=all')
+
+wechat_files="$HOME/.wechat"
+wechat_app_data="$HOME/.local/wechat"
+
+[[ -d $wechat_files ]] || mkdir -p $wechat_files
+[[ -d $wechat_app_data ]] || mkdir -p $wechat_app_data
+
+sudo docker run \
+    "${devs[@]}" \
+    --gpus=all --env="NVIDIA_DRIVER_CAPABILITIES=all" \
+    --name wechat \
+    --rm \
+    -i \
+    -v "$wechat_files:/home/user/WeChat Files" \
+    -v "$wechat_app_data:/home/user/.wine/drive_c/users/user/Application Data" \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v "/run/user/$(id -u)/pulse":"/run/pulse" \
+    -e DISPLAY \
+    -e XMODIFIERS=@im-fcitx \
+    -e QT_IM_MODULE=fcitx \
+    -e GTK_IM_MODULE=fcitx \
+    -e AUDIO_GID="$(getent group audio | cut -d: -f3)" \
+    -e VIDEO_GID="$(getent group video | cut -d: -f3)" \
+    -e GID="$(id -g)" \
+    -e UID="$(id -u)" \
+    --ipc=host \
+    --privileged \
+    --add-host dldir1.qq.com:127.0.0.1 \
+    "zixia/wechat:3.3.0.115"

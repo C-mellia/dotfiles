@@ -10,4 +10,4 @@ while read -r file; do
     # echo $fname
     [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
     [[ -f $file ]] && cp --update $file $fname
-done <<< $(find $template/$recipe -type f)
+done <<< $(find -L $template/$recipe -type f)
