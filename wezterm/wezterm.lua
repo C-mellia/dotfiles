@@ -12,7 +12,7 @@ config.enable_tab_bar = false
 config.max_fps = 120
 config.automatically_reload_config = true
 -- config.font = wezterm.font('ComicShannsMonoNerdRegular')
-config.font = wezterm.font("Cascadia Code", { weight = "Regular" })
+config.font = wezterm.font("Cascadia Code", { weight = "Bold" })
 -- config.font = wezterm.font("Victor Mono", { weight = "Bold" })
 -- config.font = wezterm.font("Victor Mono")
 config.font_size = 16
