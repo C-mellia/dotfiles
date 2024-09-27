@@ -82,10 +82,10 @@ require("lazy").setup({
 
 	"rebelot/kanagawa.nvim",
 
-	{
-		"stevearc/conform.nvim",
-		opts = {},
-	},
+	-- {
+	-- 	"stevearc/conform.nvim",
+	-- 	opts = {},
+	-- },
 
 	{
 		"lervag/vimtex",
