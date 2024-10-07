@@ -22,8 +22,8 @@ bindkey -v
 alias fzf-cd='cd $(dfzf)'
 
 set_proxy() {
-    export http_proxy='http://localhost:20171/'
-    export https_proxy='http://localhost:20171/'
+    export http_proxy='http://127.0.0.1:20171/'
+    export https_proxy='http://127.0.0.1:20171/'
 }
 
 unset_proxy() {
@@ -55,6 +55,7 @@ setterm --blen 0 2> /dev/null
 stty stop 'undef'
 
 alias pyenv="source ~/activate"
+alias go="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 go"
 
 export VISUAL=nvim
 export EDITOR=nvim

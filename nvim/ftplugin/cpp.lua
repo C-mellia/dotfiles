@@ -1,2 +1,2 @@
 -- brutal vim to c filetype
--- vim.cmd([[ set filetype=c ]])
+vim.cmd([[ set filetype=c ]])
