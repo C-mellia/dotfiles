@@ -5,9 +5,11 @@ recipe=${1:-c}
 
 [[ -d $template/$recipe ]] || { echo "Recipe $recipe not found"; exit 1; }
 
+# custom command executions
+[[ -f $template/$recipe/.exec ]] && [[ -x $template/$recipe/.exec ]] && . $template/$recipe/.exec
 while read -r file; do
     fname=${file#$template/$recipe/}
     # echo $fname
     [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
     [[ -f $file ]] && cp --update $file $fname
-done <<< $(find -L $template/$recipe -type f)
+done <<< $(find -L $template/$recipe -type f -not -path '*/.exec')
