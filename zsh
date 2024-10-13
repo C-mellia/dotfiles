@@ -56,6 +56,7 @@ stty stop 'undef'
 
 alias pyenv="source ~/activate"
 alias go="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 go"
+alias trans="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 trans"
 
 export VISUAL=nvim
 export EDITOR=nvim
