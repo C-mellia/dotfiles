@@ -24,7 +24,7 @@ exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x
 
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id wezterm -e tmux
+exec --no-startup-id wezterm -e /bin/zsh $HOME/dotfiles/wezterm/wezterm_startup.sh
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status

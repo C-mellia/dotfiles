@@ -12,14 +12,8 @@ find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \;\
 
 [[ -z $select ]] && exit 0
 
-if ! [[ -z $1 ]]; then
-	i3-msg "workspace $1"
-
-	if [[ $? -ne 0 ]]; then
-		echo "Workspace $1 not found"
-		exit 1
-	fi
-fi
+workspace=${1:-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')}
+i3-msg "workspace $workspace" > /dev/null || exit 1
 
 while read -r file; do
 	nohup zathura "$file" &> /dev/null & disown || exit 1
