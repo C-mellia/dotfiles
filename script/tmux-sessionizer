@@ -2,7 +2,7 @@
 # from thePrimeagen:
 # https://github.com/ThePrimeagen/.dotfiles/blob/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer#L4
 
-selected=${1:-$(find $PWD -type d | fzf)}
+selected=${1:-$(find -O3 $PWD -type d | fzf)}
 [[ -z $selected ]] && ! [[ -d $selected ]] && exit 0
 
 # using full path instead of deriving the basename
