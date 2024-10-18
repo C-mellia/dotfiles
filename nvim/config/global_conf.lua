@@ -15,7 +15,7 @@ return {
 		"jsonls",
 		"pylsp",
 		"rust_analyzer",
-		"tsserver",
+		"ts_ls",
 		"bashls",
 		"texlab",
 	},

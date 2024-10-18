@@ -78,13 +78,13 @@ lspconf.eslint.setup({
 	capabilities = capabilities,
 })
 
-lspconf.ts_ls.setup({
-    capabilities = capabilities,
-    init_options = {
-        preferences = {
-            disableSuggestions = true,
-        },
-    },
+lspconf.tsserver.setup({
+	capabilities = capabilities,
+	init_options = {
+		preferences = {
+			disableSuggestions = true,
+		},
+	},
 })
 
 lspconf.rust_analyzer.setup({
