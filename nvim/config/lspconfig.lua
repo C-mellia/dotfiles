@@ -78,7 +78,7 @@ lspconf.eslint.setup({
     capabilities = capabilities,
 })
 
-lspconf.tsserver.setup({
+lspconf.ts_ls.setup({
     capabilities = capabilities,
     init_options = {
         preferences = {
