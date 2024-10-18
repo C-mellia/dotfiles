@@ -58,6 +58,10 @@ alias pyenv="source ~/activate"
 alias go="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 go"
 alias trans="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 trans"
 
+# coursier
+alias cs="cs -J-Dhttps.proxyHost=127.0.0.1 -J-Dhttps.proxyPort=20171 -J-Dhttp.proxyHost=127.0.0.1 -J-Dhttp.proxyPort=20171"
+alias sbt="sbt -J-Dhttps.proxyHost=127.0.0.1 -J-Dhttps.proxyPort=20171 -J-Dhttp.proxyHost=127.0.0.1 -J-Dhttp.proxyPort=20171"
+
 export VISUAL=nvim
 export EDITOR=nvim
 PATH="${PATH}:${HOME}/dotfiles/script:${HOME}/.cargo/bin:${HOME}/.local/share/gem/ruby/3.0.0/bin:${HOME}/go/bin"

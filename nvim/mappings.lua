@@ -149,3 +149,6 @@ vim.keymap.set("n", "<Up>", "<cmd>resize +2<CR>")
 vim.keymap.set("n", "<Down>", "<cmd>resize -2<CR>")
 vim.keymap.set("n", "<Left>", "<cmd>vertical resize +2<CR>")
 vim.keymap.set("n", "<Right>", "<cmd>vertical resize -2<CR>")
+
+vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
+vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")

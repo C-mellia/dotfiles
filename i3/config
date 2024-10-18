@@ -29,18 +29,19 @@ exec --no-startup-id wezterm -e /bin/zsh $HOME/dotfiles/wezterm/wezterm_startup.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym $mod+m exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 floating_modifier $mod
 tiling_drag modifier titlebar
 bindsym $mod+Return exec wezterm
 bindsym $mod+c kill
-bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' dmenu_run -fn 'ComicShannsMonoNerdFontMono-8'
-bindsym $mod+p exec --no-startup-id dmenu_run -fn 'ComicShannsMonoNerdFontMono-8'
+# bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' dmenu_run -fn 'ComicShannsMonoNerdFontMono-8'
+# bindsym $mod+p exec --no-startup-id dmenu_run -fn 'ComicShannsMonoNerdFontMono-8'
 
-# bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' rofi -modes run -show run options -theme squared-nord
-# bindsym $mod+p exec --no-startup-id rofi -modes run -show run options -theme squared-everforest
+bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' rofi -modes run -show run options -theme squared-nord
+bindsym $mod+p exec --no-startup-id rofi -modes run -show run options -theme squared-everforest
 
 # bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji -modi emoji options -theme dmenu
 # bindsym $mod+Tab exec --no-startup-id rofi -show window -modi window -theme simple-tokyonight
@@ -176,10 +177,8 @@ bar {
     # modifier $mod
 }
 
-# include gaps
-# default_border pixel 0
-# default_floating_border pixel 0
-# default_tabbed_border pixel 0
-# new_window 1pixel
-# for_window [class="^.*"] border pixel 0
-# for_window [class=".*"] title_format ""
+include gaps
+default_border pixel 0
+default_floating_border pixel 0
+for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] title_format ""
