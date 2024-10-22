@@ -1,0 +1,9 @@
+# user local binaries
+PATH="$HOME/.local/bin/:$PATH"
+
+# scripts
+PATH="$DOTFILES/script:$PATH"
+
+# editor
+export VISUAL=nvim
+export EDITOR=nvim
