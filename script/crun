@@ -4,14 +4,14 @@
 # under current directory which also generate a main executable file under the
 # same directory.
 
-bash ./build.sh && ./main $*
+[[ -f .env ]] && source .env
+. build.sh && ./main $*
 status=$?
 
 if [[ $status -eq 0 ]]; then
     echo "Process exited normally"
 else
     echo "Process exited with code: ${status}"
-    exit $status
 fi
 
-exit 0
+exit $status

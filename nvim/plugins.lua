@@ -94,4 +94,6 @@ require("lazy").setup({
 			vim.g.vimtex_view_method = "zathura"
 		end,
 	},
+
+    "Mofiqul/vscode.nvim",
 }, {})
