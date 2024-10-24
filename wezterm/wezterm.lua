@@ -12,9 +12,12 @@ config.enable_scroll_bar = false
 config.enable_tab_bar = false
 config.max_fps = 60
 config.automatically_reload_config = true
+
 -- config.font = wezterm.font('ComicShannsMonoNerdRegular')
 -- config.font = wezterm.font("Cascadia Code", { weight = "Bold" })
 config.font = wezterm.font("Victor Mono", { weight = "Bold" })
+-- config.font = wezterm.font("Scriptina Regular", { weight = "Bold", italic = true })
+
 config.font_size = 16
 config.enable_wayland = false
 config.default_prog = { "/usr/bin/zsh" }

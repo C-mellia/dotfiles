@@ -128,7 +128,7 @@ vim.keymap.set("n", '<Leader>d"', 'di"vhP')
 
 -- "apsijdpoasijd"
 
-vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>X", function()
     trouble.toggle()
 end)
