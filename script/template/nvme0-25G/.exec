@@ -1,11 +1,19 @@
 #!/bin/bash
 
-img_dir=$HOME/img
+img_dir=/usr/share/img
 nvme0_25G_template=$img_dir/nvme0-25G
+code_fname=OVMF_CODE.fd
+vars_fname=OVMF_VARS.fd
+code_file=/usr/share/edk2/x64/$code_fname
+vars_file=$nvme0_25G_template/$vars_fname
 
 panic() {
     while [[ ! -z $1 ]]; do echo $1; shift; done
     exit 1
+}
+
+exec_print() {
+    echo "$*" && eval "$*"
 }
 
 if [[ ! -d $nvme0_25G_template ]]; then
@@ -15,4 +23,11 @@ if [[ ! -d $nvme0_25G_template ]]; then
         "OVMF_VARS.fd, which is a writable copy of the firmware image under the same directory to OVMF_CODE.fd. Both of the firmware should be requirable if the edk2-ovmf(arch-linux) package is installed."\
         "nvme0n1, created via \`qemu-img create -f raw nvme0n1 25G\`, which is a bootable image that by booting the install media with the said firmware and nvme driver setup, it can be installed by following the steps specified in the 'arch linux install' wiki page"
 fi
-cp -r $nvme0_25G_template ./nvme0-25G
+# [[ -d ./nvme0-25G ]] || cp -r $nvme0_25G_template/ ./nvme0-25G
+[[ -d ./nvme0-25G ]] || mkdir ./nvme0-25G
+[[ -f $code_file ]] || panic "Missing file: $code_file"
+[[ -f $vars_file ]] || panic "Missing file: $vars_file"
+[[ -f $nvme0_25G_template/nvme0n1 ]] || panic "Missing file: $nvme0_25G_template/nvme0n1"
+exec_print "ln -sf /usr/share/edk2/x64/$code_fname ./nvme0-25G/$code_fname"
+exec_print "cp --update $nvme0_25G_template/$vars_fname ./nvme0-25G/$vars_fname"
+exec_print "cp $nvme0_25G_template/nvme0n1 ./nvme0-25G/nvme0n1"

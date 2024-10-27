@@ -60,7 +60,7 @@ while read -r file; do
     fi
     # echo $fname
     [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
-    [[ -f $file ]] && cp --update $file $fname
-done <<< $(find -L $template/$recipe -type f)
+    [[ -f $file ]] && cp --update --preserve=links $file $fname
+done <<< $(find -L $template/$recipe/ -type f)
 
 echo "Project setup completed"
