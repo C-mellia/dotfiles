@@ -1,0 +1,18 @@
+#!/bin/bash
+
+img_dir=$HOME/img
+nvme0_25G_template=$img_dir/nvme0-25G
+
+panic() {
+    while [[ ! -z $1 ]]; do echo $1; shift; done
+    exit 1
+}
+
+if [[ ! -d $nvme0_25G_template ]]; then
+    panic "Template missing: $nvme0_25G_template"\
+        "Expected a prebuilt system image under $img_dir containing:"\
+        "OVMF_CODE.fd, which is a link to the readonly firmware image most likely under /usr/share/edk2/x64/"\
+        "OVMF_VARS.fd, which is a writable copy of the firmware image under the same directory to OVMF_CODE.fd. Both of the firmware should be requirable if the edk2-ovmf(arch-linux) package is installed."\
+        "nvme0n1, created via \`qemu-img create -f raw nvme0n1 25G\`, which is a bootable image that by booting the install media with the said firmware and nvme driver setup, it can be installed by following the steps specified in the 'arch linux install' wiki page"
+fi
+cp -r $nvme0_25G_template ./nvme0-25G

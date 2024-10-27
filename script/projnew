@@ -1,15 +1,66 @@
 #!/bin/bash
 
 template=/usr/share/projnew/template
+show_info=false # -i
+recipe= # <cmd> [<option>] <recipe>
+pager=$(which glow) || pager=less
+pager_option=
+only_list=false
+
+while getopts "hil" opt; do
+    case $opt in
+        h)
+            echo "copy files from templates and execute custom script to setup a project"
+            echo "-i: show recipe info if available"; exit 0
+            ;;
+        i)
+            show_info=true; recipe=$OPTARG
+            ;;
+        l)
+            only_list=true # list available recipes
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2; exit 1
+            ;;
+    esac
+done
+shift $(($OPTIND - 1))
+
 recipe=${1:-c}
 
 [[ -d $template/$recipe ]] || { echo "Recipe $recipe not found"; exit 1; }
 
+if $only_list; then
+    echo "Available recipes:"
+    for list_recipe in $(ls $template); do
+        printf "\t%s\n" $list_recipe
+    done
+    exit 0
+elif $show_info; then
+    if [[ -f $template/$recipe/.info ]]; then
+        echo "recipe \'$recipe\':" && $pager $template/$recipe/.info && exit 0
+    else
+        echo No available info regarding recipe \'$recipe\' && exit 1
+    fi
+fi
+
 # custom command executions
-[[ -f $template/$recipe/.exec ]] && [[ -x $template/$recipe/.exec ]] && . $template/$recipe/.exec
+if [[ -f $template/$recipe/.exec ]] && [[ -x $template/$recipe/.exec ]]; then
+    echo "Custom script found, executing..."
+    if ! . $template/$recipe/.exec; then
+        echo "errors occurred during execution of the custom script" && exit 1
+    fi
+fi
+
+echo "Copying template files..."
 while read -r file; do
     fname=${file#$template/$recipe/}
+    if [[ $fname == .exec ]] || [[ $fname == .info ]]; then
+        continue
+    fi
     # echo $fname
     [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
     [[ -f $file ]] && cp --update $file $fname
-done <<< $(find -L $template/$recipe -type f -not -path '*/.exec')
+done <<< $(find -L $template/$recipe -type f)
+
+echo "Project setup completed"

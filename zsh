@@ -19,21 +19,8 @@ autoload -U colors && colors
 unsetopt beep nomatch
 bindkey -v
 
-alias fzf-cd='cd $(dfzf)'
-
-set_proxy() {
-    export http_proxy='http://127.0.0.1:20171/'
-    export https_proxy='http://127.0.0.1:20171/'
-}
-
-unset_proxy() {
-    unset http_proxy
-    unset https_proxy
-}
-
 # Plugins:
 # source "${HOME}/dotfiles/minimal/minimal.zsh"
-# ∆
 source "${HOME}/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 _italic() {
@@ -51,15 +38,9 @@ setterm --blen 0 2> /dev/null
 
 stty stop 'undef'
 
+alias fzf-cd='cd $(dfzf)'
 alias ls='/bin/env ls -C -F --color="always" -w $COLUMNS'
 alias grep='/bin/env grep -n --color=always'
-
-# use proxy
-alias go="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 go"
-alias trans="http_proxy=http://127.0.0.1:20171/ https_proxy=http://127.0.0.1:20171/ no_proxy=localhost,127.0.0.0/8,::1 trans"
-# coursier
-alias cs="cs -J-Dhttps.proxyHost=127.0.0.1 -J-Dhttps.proxyPort=20171 -J-Dhttp.proxyHost=127.0.0.1 -J-Dhttp.proxyPort=20171"
-alias sbt="sbt -J-Dhttps.proxyHost=127.0.0.1 -J-Dhttps.proxyPort=20171 -J-Dhttp.proxyHost=127.0.0.1 -J-Dhttp.proxyPort=20171"
 
 export DOTFILES=${DOTFILES:-$HOME/dotfiles}
 [[ -f $DOTFILES/envs ]] && source $DOTFILES/envs

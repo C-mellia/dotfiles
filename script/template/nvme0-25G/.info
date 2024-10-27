@@ -1,0 +1,14 @@
+Creating a copy of a prebuilt archlinux install under current directory with
+25G of disk size, nvme driver configured, uefi setup, and a running script,
+which use qemu to boot the system
+
+the prebuilt system is supposed to be available under $HOME/img/uefi-25G-og/
+with a link to /usr/share/edk2/x64/OVMF_CODE.fd and a copy of
+/usr/share/edk2/x64/OVMF_VARS.fd
+
+so the filesystem under $HOME/img will be roughly like:
+
+.
+./OVMF_CODE.fd # a link
+./OVMF_VARS.fd # a writable copy
+./nvme0n1 # a hard disk image created by `qemu-img create`
