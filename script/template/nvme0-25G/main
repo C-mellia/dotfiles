@@ -1,0 +1,23 @@
+#!/bin/bash
+
+arch=x86_64
+log_dir=./logs
+img_dir=./nvme0-25G
+img_fname=nvme0n1
+log_fname=qemu.log
+log=$log_dir/$log_fname
+img=$img_dir/$img_fname
+ovmf_code=$img_dir/OVMF_CODE.fd
+ovmf_vars=$img_dir/OVMF_VARS.fd
+
+[[ -d $log_dir ]] || mkdir -p $log_dir
+
+nohup qemu-system-$arch\
+    -drive if=pflash,format=raw,readonly=on,file=$ovmf_code\
+    -drive if=pflash,format=raw,file=$ovmf_vars\
+    -machine type=q35,accel=kvm\
+    -m 4G -smp 4 -cpu host\
+    -drive file=$img,format=raw,if=none,id=nvme0n1\
+    -device nvme,drive=nvme0n1,serial=deadbeef,id=nvme0\
+    -display gtk,zoom-to-fit=on,show-tabs=off,show-menubar=off\
+    >> $log 2>&1 & disown

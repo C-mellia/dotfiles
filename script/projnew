@@ -7,6 +7,11 @@ pager=$(which glow) || pager=less
 pager_option=
 only_list=false
 
+panic() {
+    while [[ ! -z $1 ]]; do echo $1; shift 1; done
+    exit 1
+}
+
 while getopts "hil" opt; do
     case $opt in
         h)
@@ -44,23 +49,19 @@ elif $show_info; then
     fi
 fi
 
-# custom command executions
-if [[ -f $template/$recipe/.exec ]] && [[ -x $template/$recipe/.exec ]]; then
-    echo "Custom script found, executing..."
-    if ! . $template/$recipe/.exec; then
-        echo "errors occurred during execution of the custom script" && exit 1
-    fi
-fi
-
 echo "Copying template files..."
 while read -r file; do
     fname=${file#$template/$recipe/}
-    if [[ $fname == .exec ]] || [[ $fname == .info ]]; then
+    if [[ $fname == .info ]]; then
         continue
+    elif [[ $fname == .exec ]]; then
+        echo "Custom script found, executing..."
+        . $template/$recipe/.exec || panic "errors occurred during execution of the custom script"
+    else
+        # echo $fname
+        [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
+        [[ -f $file ]] && cp --update --preserve=links $file $fname
     fi
-    # echo $fname
-    [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
-    [[ -f $file ]] && cp --update --preserve=links $file $fname
 done <<< $(find -L $template/$recipe/ -type f)
 
 echo "Project setup completed"
