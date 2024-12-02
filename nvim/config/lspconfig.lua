@@ -12,6 +12,11 @@ lspconf.lua_ls.setup({
 	},
 })
 
+lspconf.elixirls.setup({
+	capabilities = capabilities,
+    cmd = { os.getenv("HOME") .. "/.local/bin/language_server.sh" },
+})
+
 lspconf.jdtls.setup({
 	capabilities = capabilities,
 	cmd = { "jdtls" },

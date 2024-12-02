@@ -1,0 +1,19 @@
+#!/bin/bash
+
+declare -i cur_count=0
+cur_word=
+
+while read -r line; do
+    arr=($line)
+    word=${arr[0]}
+    count=${arr[1]}
+    if [[ $cur_word == $word ]]; then
+        let $((cur_count+=$count))
+    else
+        [[ -z $cur_word ]] || echo "$cur_word $cur_count"
+        cur_word=$word
+        cur_count=$count
+    fi
+done
+
+[[ -z $cur_word ]] || echo "$cur_word $cur_count"

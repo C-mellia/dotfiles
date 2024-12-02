@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./hadoop_init.sh && ./hadoop_stream.sh

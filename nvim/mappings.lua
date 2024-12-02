@@ -152,3 +152,11 @@ vim.keymap.set("n", "<Right>", "<cmd>vertical resize -2<CR>")
 
 vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
 vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")
+
+vim.keymap.set("n", "<leader>MI", "<cmd>:MoltenInit<CR>")
+vim.keymap.set("n", "<leader>MM", "<cmd>:MoltenEvaluateLine<CR>")
+vim.keymap.set("n", "<leader>MR", "<cmd>:MoltenReevaluateCell<CR>")
+vim.keymap.set("v", "<leader>MM", "<cmd>:MoltenEvaluateVisual<CR>")
+vim.keymap.set("n", "<leader>MD", "<cmd>:MoltenDelete<CR>")
+
+vim.keymap.set("n", "<leader>MO", "<cmd>:noautocmd MoltenEnterOutput<CR>")

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include <garage/garage.h>
+#include <garage/prelude.h>
 
 static void nest_startup(void);
 static void nest_cleanup(void);

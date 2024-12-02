@@ -12,8 +12,13 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"zig",
 		"python",
+        "markdown"
 	},
 	auto_install = false,
-	highlight = { enable = true },
+	highlight = {
+        enable = true,
+        disable = { "latex", },
+        additional_vim_regex_highlighting = { "latex", "markdown" },
+    },
 	indent = { enable = true },
 })

@@ -26,6 +26,9 @@ exec --no-startup-id /usr/bin/wired --run
 
 exec --no-startup-id wezterm -e /bin/zsh $HOME/dotfiles/wezterm/wezterm_startup.sh
 
+exec --no-startup-id xset b off
+exec --no-startup-id xset b 0 0 0
+
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
