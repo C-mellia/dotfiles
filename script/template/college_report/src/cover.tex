@@ -1,0 +1,40 @@
+\begin{titlepage}
+    \includegraphics[width=2cm]{../rsc/College icon.png}
+    \begin{center}
+        \vspace{1cm}
+        \includegraphics[width=8.5cm]{../rsc/college banner.png}\\
+        \vspace{2cm}
+        % Title
+        {
+            \fontseries{sb}\selectfont \Huge{(Title)}\\
+        }
+        \vspace{3cm}
+        \Large
+        % Author information
+        \begin{tabular}{l c}
+            课程名称 & (To be filled)\\ \cline{2-2}
+            学生学院 & (To be filled)\\ \cline{2-2}
+            专业班级 & (To be filled)\\ \cline{2-2}
+            学号 & (To be filled)\\ \cline{2-2}
+            学生姓名 & (To be filled)\\ \cline{2-2}
+            指导老师 & (To be filled)\\ \cline{2-2}
+        \end{tabular}
+        \vfill
+        % Date
+        \today
+        \vspace{4cm}
+    \end{center}
+\end{titlepage}
+
+% Empty page for printing
+\newpage
+\null
+\thispagestyle{empty}
+
+% Table of contents
+\newpage
+\pdfbookmark{\contentsname}{Contents}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}

@@ -16,7 +16,10 @@ while getopts "hil" opt; do
     case $opt in
         h)
             echo "copy files from templates and execute custom script to setup a project"
-            echo "-i: show recipe info if available"; exit 0
+            echo "-h: show this help"
+            echo "-i: show recipe info if available"
+            echo "-l: list available recipes"
+            exit 0
             ;;
         i)
             show_info=true; recipe=$OPTARG

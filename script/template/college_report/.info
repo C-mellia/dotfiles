@@ -1,0 +1,9 @@
+A template designed for writing reports in the college I was in.
+
+Two png files is necessary for this template to work:
+
+icon.png(165 x 160)
+
+college banner.png(761 x 213)
+
+both have to be readable in the ./rsc directory(or ../rsc relative to src/body.tex)

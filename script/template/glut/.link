@@ -1,8 +1,9 @@
 #!/bin/bash
 
 LD=gcc
-LD_FLAG='-lGL -lglut'
+LD_FLAG=(-lGL -lglut -lGLU -l Xmu -lXi -lXext -lX11 -lm)
 
-step_exec \
-    "$LD -o main $(for file in $srcs; do echo target/$file.o; done) $LD_FLAG" \
-    "Failed to link target main"
+echo "$LD -o main $(for file in $srcs; do echo target/"$file".o; done)" "${LD_FLAG[@]}"
+$LD -o main "$(for file in $srcs; do echo target/"$file".o; done)" "${LD_FLAG[@]}" || {
+    echo "Failed to link target main" && exit 1
+}

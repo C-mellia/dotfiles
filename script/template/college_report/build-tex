@@ -1,0 +1,7 @@
+#!/bin/bash
+
+latex_flag="-interaction=nonstopmode -shell-escape"
+
+[[ -d target ]] || mkdir target
+# [[ -d target/_minted-body ]] && rm -rf target/_minted-body
+(cd target && xelatex $latex_flag ../src/body.tex)
