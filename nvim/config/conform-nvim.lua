@@ -2,9 +2,10 @@ require("conform").setup({
 	formatters_by_ft = {
 		go = { "gofmt" },
 		lua = { "stylua" },
-		python = { "isort", "black" },
+		-- python = { "isort", "black" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		javascript = { "prettierd", "prettier", stop_after_first = true },
+		sql = { "sql_formatter" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

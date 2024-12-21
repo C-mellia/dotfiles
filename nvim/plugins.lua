@@ -82,10 +82,10 @@ require("lazy").setup({
 
 	"rebelot/kanagawa.nvim",
 
-	-- {
-	-- 	"stevearc/conform.nvim",
-	-- 	opts = {},
-	-- },
+	{
+		"stevearc/conform.nvim",
+		opts = {},
+	},
 
 	{
 		"lervag/vimtex",
@@ -95,31 +95,31 @@ require("lazy").setup({
 		end,
 	},
 
-    "Mofiqul/vscode.nvim",
-    {
-        'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-        ---@module 'render-markdown'
-        ---@type render.md.UserConfig
-        opts = {},
-    },
+	"Mofiqul/vscode.nvim",
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
 
-    {
-        "3rd/image.nvim",
-        opts = {}
-    },
+	-- {
+	--     "3rd/image.nvim",
+	--     opts = {}
+	-- },
 
-    {
-        "benlubas/molten-nvim",
-        version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-        dependencies = { "3rd/image.nvim" },
-        build = ":UpdateRemotePlugins",
-        init = function()
-            -- this is an example, not a default. Please see the readme for more configuration options
-            vim.g.molten_image_provider = "image.nvim"
-            vim.g.molten_output_win_max_height = 20
-        end,
-    },
+	-- {
+	--     "benlubas/molten-nvim",
+	--     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+	--     dependencies = { "3rd/image.nvim" },
+	--     build = ":UpdateRemotePlugins",
+	--     init = function()
+	--         -- this is an example, not a default. Please see the readme for more configuration options
+	--         vim.g.molten_image_provider = "image.nvim"
+	--         vim.g.molten_output_win_max_height = 20
+	--     end,
+	-- },
 }, {})

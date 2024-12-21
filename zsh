@@ -26,6 +26,12 @@ _italic() {
     echo -e "\e[3m$1\e[0m"
 }
 
+_cycle_fzf() {
+    fzf --cycle $@
+}
+
+export _cycle_fzf
+
 # Greeting: (Cute Ascii emos!)
 # _italic '<(` ^´)>'
 # echo '(> … <)'
@@ -37,9 +43,11 @@ setterm --blen 0 2> /dev/null
 
 stty stop 'undef'
 
-alias fzf-cd='cd $(dfzf)'
 alias ls='/bin/env ls -C -F --color="always" -w $COLUMNS'
 alias grep='/bin/env grep -n --color=always'
+
+# fzfs
+alias lsfzf="/bin/ls | tr -s ' ' '\n' | _cycle_fzf"
 
 export DOTFILES=${DOTFILES:-$HOME/dotfiles}
 [[ -f $DOTFILES/envs ]] && source $DOTFILES/envs

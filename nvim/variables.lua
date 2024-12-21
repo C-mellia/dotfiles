@@ -59,4 +59,5 @@ vim.opt.conceallevel = 2
 vim.g.tex_conceal = "abdmg"
 
 vim.opt.formatoptions:append("mB")
-vim.opt.background = 'light'
+vim.opt.background = "dark"
+-- vim.opt.background = 'light'

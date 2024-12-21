@@ -2,8 +2,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- config.color_scheme = "Catppuccin Macchiato"
-config.color_scheme = "Vs Code Light+ (Gogh)"
--- config.color_scheme = "Vs Code Dark+ (Gogh)"
+-- config.color_scheme = "Vs Code Light+ (Gogh)"
+config.color_scheme = "Vs Code Dark+ (Gogh)"
 -- config.color_scheme = "Gruvbox Material (Gogh)"
 -- config.color_scheme = "Google Dark (base16)"
 -- config.color_scheme = "rose-pine-moon"
