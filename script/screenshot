@@ -1,20 +1,11 @@
 #!/bin/bash
+
 SOUND_EFFECT=${HOME}/Downloads/Hitmarker\ sound.wav
 DIR=$HOME/ScreenCap
-while getopts ":us" opt; do
-    case ${opt} in
-        u)
-            SCROT_FLAG="${SCROT_FLAG} -u"
-            ;;
-        s)
-            SCROT_FLAG="${SCROT_FLAG} -s"
-            ;;
-        ?)
-            echo "Unknown option -${OPTARG}"
-            exit 1
-            ;;
-    esac
-done
-SCROT_FLAG="${SCROT_FLAG} --file $DIR/%b%d-%H:%M:%S.png"
+
+SCROT_FLAG=("$@" --file "$DIR"/%b%d-%H:%M:%S.png)
 [[ -d $DIR ]] || mkdir -p "${DIR}"
-scrot $SCROT_FLAG && [[ -f $SOUND_EFFECT ]] && mpv "${SOUND_EFFECT}" &> /dev/null
+
+set -o pipefail
+scrot "${SCROT_FLAG[@]}" -e 'echo $n' | tr -d '[:space:]' | xclip -selection clipboard || exit 1
+[[ -f $SOUND_EFFECT ]] && mpv "${SOUND_EFFECT}" > /dev/null 2>&1

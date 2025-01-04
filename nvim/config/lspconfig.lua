@@ -63,6 +63,10 @@ lspconf.gdscript.setup({
 	capabilities = capabilities,
 })
 
+lspconf.cssls.setup({
+	capabilities = capabilities,
+})
+
 lspconf.tailwindcss.setup({
 	capabilities = capabilities,
 })

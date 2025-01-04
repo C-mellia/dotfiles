@@ -1,0 +1,1 @@
+-- vim.keymap.del("i", "<C-x>") -- Remove the default completion keybinding

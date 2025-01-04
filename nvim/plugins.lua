@@ -51,7 +51,13 @@ require("lazy").setup({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 
-	"L3MON4D3/LuaSnip",
+	{
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
+
 	"saadparwaiz1/cmp_luasnip",
 
 	"crispybaccoon/evergarden",

@@ -3,6 +3,7 @@ package.path = package.path .. ";" .. path .. "?.lua" .. ";" .. path .. "config/
 
 -- global config: config/global_conf
 -- utils: util
+require("unmapping")
 require("variables")
 require("plugins")
 require("plug-config")
@@ -11,5 +12,5 @@ require("mappings")
 require("autocmd")
 
 if vim.g.neovide then
-    require("neovide")
+	require("neovide")
 end

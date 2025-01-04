@@ -60,6 +60,6 @@ vim.g.tex_conceal = "abdmg"
 
 vim.opt.formatoptions:append("mB")
 vim.opt.background = "dark"
--- vim.opt.background = 'light'
+-- vim.opt.background = "light"
 
 vim.g.copilot_proxy = "http://localhost:20171"
