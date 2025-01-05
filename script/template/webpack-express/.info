@@ -1,0 +1,26 @@
+<!-- vim: set filetype=markdown -->
+# Webpack Express
+
+Setup for a simple Express server with Webpack.
+
+## Structure
+
+```
+.
+├── public/
+├── server.js
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   └── Main.js
+│   ├── index.js
+│   └── styles/
+│       └── main.css
+└── webpack.config.js
+```
+
+## Usage
+
+```bash
+npm i && npm run dev
+```

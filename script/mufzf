@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# A satisfactory and elegant script for those who really love reading books.
-
 select=$(
 find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \;\
 	| grep -E "\.pdf$|\.epub$"\
@@ -10,11 +8,16 @@ find . -maxdepth 1 -not -path '*/.*' -type f -exec basename {} \;\
 	--bind ctrl-h:cancel
 )
 
-[[ -z $select ]] && exit 0
+[[ -z $select ]] && exit 1
 
 workspace=${1:-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')}
 i3-msg "workspace $workspace" > /dev/null || exit 1
 
 while read -r file; do
-	nohup zathura "$file" &> /dev/null & disown || exit 1
-done <<< $select
+    nohup zathura "$file"\
+        &> /dev/null & disown || {
+        echo "Failed to open '$file'" && continue
+    }
+done <<< "$select"
+
+exit 0

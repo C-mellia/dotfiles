@@ -40,6 +40,14 @@ lspconf.lua_ls.setup({
 	},
 })
 
+lspconf.docker_compose_language_service.setup({
+	capabilities = capabilities,
+})
+
+lspconf.dockerls.setup({
+	capabilities = capabilities,
+})
+
 lspconf.sqlls.setup({
 	capabilities = capabilities,
 })

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+npm init -y > /dev/null 2>&1
+git init > /dev/null 2>&1
+
+tmp=$(mktemp)
+
+savedevs=(
+    webpack
+    webpack-cli
+    @types/node
+    @types/express
+    express
+    webpack-dev-middleware
+    html-webpack-plugin
+    jsdoc
+    lit
+)
+
+packages=(
+    babel-loader
+    css-loader
+    style-loader
+    nodemon
+)
+
+jq '.scripts+={"dev": "nodemon server.js"} | .type="module" | del(.name)' package.json\
+    > "$tmp" && mv "$tmp" package.json
+
+npm i add-dependencies > /dev/null || {
+    echo "Failed to install add-dependencies" && exit 1
+}
+
+npx add-dependencies --save-dev "${savedevs[@]}" > /dev/null || {
+    echo "Failed to install dev dependencies" && exit 1
+}
+
+npx add-dependencies --save "${packages[@]}" > /dev/null || {
+    echo "Failed to install dependencies" && exit 1
+}

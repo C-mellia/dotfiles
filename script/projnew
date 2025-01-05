@@ -4,13 +4,7 @@ template=/usr/share/projnew/template
 show_info=false # -i
 recipe= # <cmd> [<option>] <recipe>
 pager=$(which glow) || pager=less
-pager_option=
 only_list=false
-
-panic() {
-    while [[ ! -z $1 ]]; do echo $1; shift 1; done
-    exit 1
-}
 
 while getopts "hil" opt; do
     case $opt in
@@ -32,7 +26,7 @@ while getopts "hil" opt; do
             ;;
     esac
 done
-shift $(($OPTIND - 1))
+shift $((OPTIND - 1))
 
 recipe=${1:-c}
 
@@ -40,31 +34,34 @@ recipe=${1:-c}
 
 if $only_list; then
     echo "Available recipes:"
-    for list_recipe in $(ls $template); do
-        printf "\t%s\n" $list_recipe
+    for list_recipe in "$template"/*; do
+        printf "\t%s\n" "$list_recipe"
     done
     exit 0
 elif $show_info; then
     if [[ -f $template/$recipe/.info ]]; then
-        echo "recipe \'$recipe\':" && $pager $template/$recipe/.info && exit 0
+        printf "recipe \'%s\':\n" "$recipe" && $pager $template/"$recipe"/.info && exit 0
     else
-        echo No available info regarding recipe \'$recipe\' && exit 1
+        printf "No available info regarding recipe \'%s\'\n" "$recipe" && exit 1
     fi
 fi
 
 echo "Copying template files..."
 while read -r file; do
-    fname=${file#$template/$recipe/}
+    fname=${file#"$template"/"$recipe"/}
     if [[ $fname == .info ]]; then
+        which glow &>/dev/null && glow "$file"
         continue
     elif [[ $fname == .exec ]]; then
         echo "Custom script found, executing..."
-        . $template/$recipe/.exec || panic "errors occurred during execution of the custom script"
+        eval . "$template/$recipe/.exec" || {
+            echo "errors occurred during execution of the custom script" && exit 1
+        }
     else
         # echo $fname
-        [[ -d $(dirname $fname) ]] || mkdir -p $(dirname $fname)
-        [[ -f $file ]] && cp --update --preserve=links $file $fname
+        [[ -d $(dirname "$fname") ]] || mkdir -p "$(dirname "$fname")"
+        [[ -f $file ]] && cp --update --preserve=links "$file" "$fname"
     fi
-done <<< $(find -L $template/$recipe/ -type f)
+done <<< "$(find -L $template/"$recipe"/ -type f)"
 
 echo "Project setup completed"
