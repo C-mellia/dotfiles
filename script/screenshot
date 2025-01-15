@@ -1,11 +1,13 @@
 #!/bin/bash
 
-SOUND_EFFECT=${HOME}/Downloads/Hitmarker\ sound.wav
-DIR=$HOME/ScreenCap
-
-SCROT_FLAG=("$@" --file "$DIR"/%b%d-%H:%M:%S.png)
-[[ -d $DIR ]] || mkdir -p "${DIR}"
-
 set -o pipefail
-scrot "${SCROT_FLAG[@]}" -e 'echo $n' | tr -d '[:space:]' | xclip -selection clipboard || exit 1
-[[ -f $SOUND_EFFECT ]] && mpv "${SOUND_EFFECT}" > /dev/null 2>&1
+
+sound_effect=${HOME}/Downloads/Hitmarker\ sound.wav
+prefix=$HOME/ScreenCap
+scrot_flag=("$@" --file "$prefix"/%b%d-%H:%M:%S.png -e "echo \$n")
+
+[[ -d $prefix ]] || mkdir -p "$prefix"
+
+scrot "${scrot_flag[@]}" | tr -d "[:space:]" | xclip -selection clipboard || exit 1
+
+[[ -f $sound_effect ]] && mpv "$sound_effect" > /dev/null 2>&1

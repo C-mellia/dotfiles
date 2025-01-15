@@ -6,6 +6,7 @@ require("conform").setup({
 		rust = { "rustfmt", lsp_format = "fallback" },
 
 		sql = { "sql_formatter", "sqlfmt", stop_after_first = true },
+		bash = { "shellharden" },
 
 		javascript = { "prettierd", "prettier", stop_after_first = true },
 		yaml = { "prettierd", "prettier", stop_after_first = true },
