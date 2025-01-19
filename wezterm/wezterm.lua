@@ -19,7 +19,7 @@ config.automatically_reload_config = true
 config.font = wezterm.font("Victor Mono", { weight = "Medium" })
 -- config.font = wezterm.font("Scriptina Regular", { weight = "Bold", italic = true })
 
-config.font_size = 32
+config.font_size = 24
 config.enable_wayland = false
 config.default_prog = { "/usr/bin/zsh" }
 config.disable_default_key_bindings = true

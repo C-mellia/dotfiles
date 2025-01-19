@@ -3,7 +3,7 @@ set $mod Mod4
 font pango:ComicShannsMonoNerdFont Regular 6
 #font pango:DejaVu Sans Mono 8
 
-# exec --no-startup-id picom -b --config $PICOM_CONFIG_FILE
+exec --no-startup-id picom -b --config $PICOM_CONFIG_FILE
 # exec --no-startup-id sway
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id fcitx5

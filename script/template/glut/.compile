@@ -1,11 +1,25 @@
 #!/bin/bash
 
+declare srcs
+
 CC=gcc
 CC_FLAG='-Wall -Wextra -std=gnu11 -I./include'
 
-for fname in $srcs; do
-    echo $CC -o ./target/"$fname".o -c ./src/"$fname".c "${CC_FLAG[@]}"
-    $CC -o ./target/"$fname".o -c ./src/"$fname".c "${CC_FLAG[@]}" || {
-        echo "Failed to compile $fname.c" && exit
+function do_compile() {
+    declare CC CC_FLAG TARGET input
+    declare -a cmd
+
+    local CC_FLAG=("$CC_FLAG")
+    local input="${1?No input specified}"
+    local cmd=("$CC" -o "$TARGET" -c "$input" "${CC_FLAG[@]}")
+
+    echo "${cmd[@]}"; eval "${cmd[@]}" || {
+        echo "Failed to compile $fname.c" && exit 1
     }
+}
+
+for fname in $srcs; do
+    CC=$CC CC_FLAG="${CC_FLAG[*]}" TARGET=./target/"$fname".o do_compile ./src/"$fname".c
 done
+
+exit 0

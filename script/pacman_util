@@ -1,0 +1,45 @@
+#!/bin/bash
+
+#
+# - Help
+# - List packages with corresponding size
+# - Browse packages
+#
+
+URL=https://wiki.archlinux.org/title/Pacman/Tips_and_tricks
+
+function __help() {
+    printf "\tA util generally used to query information from pacman compiled with different commands found on %s\n" "$URL"
+    printf "\tcommands:\n"
+    printf "\t\thelp: show this help message\n"
+    printf "\t\tlist: List packages with corresponding size\n"
+    printf "\t\tbrowse: Browse packages\n"
+}
+
+function __list() {
+    LC_ALL=C.UTF-8 pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | LC_ALL=C.UTF-8 sort -h
+}
+
+function __browse() {
+    pacman -Qq\
+        | fzf\
+        --preview 'pacman -Qil {}'\
+        --bind 'enter:execute(pacman -Qil {} | less)'
+}
+
+command=${1?No command given}
+shift 1
+
+case $command in
+    help)
+        __help "$@"
+        ;;
+    list)
+        __list "$@"
+        ;;
+    browse)
+        __browse "$@"
+        ;;
+esac
+
+exit 0

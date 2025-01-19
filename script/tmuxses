@@ -1,0 +1,38 @@
+#!/bin/bash
+# from thePrimeagen:
+# https://github.com/ThePrimeagen/.dotfiles/blob/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer#L4
+
+select_path=${1:-$(/bin/find\
+    -O3 "$PWD"\
+    -name '.*'\
+    -prune\
+    -o -perm -004\
+    -type d\
+    2> /dev/null\
+    | /bin/grep -vE '.*/\.'\
+    | fzf)}
+
+[[ -z "$select_path" ]] && exit 0
+[[ -d "$select_path" ]] || exit 1
+
+[[ "$select_path" =~ ^\/.* ]] || select_path=$PWD/$select_path
+
+client_id=$(tr . _ <<< "$select_path")
+
+[[ -z $TMUX && -z $(pgrep tmux) ]] && {
+    tmux new-session\
+    -s "$client_id"\
+    -c "$select_path"; exit $?
+}
+
+tmux has-session\
+    -t "$client_id"\
+    2> /dev/null\
+    || tmux new-session\
+    -ds "$client_id"\
+    -c "$select_path"
+
+tmux switch-client\
+    -t "$client_id"
+
+exit 0
