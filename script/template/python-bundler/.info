@@ -1,0 +1,24 @@
+<!-- vim:set filetype=markdown -->
+# Python Bundler
+
+A template used to setup a python project with pyinstaller as a bundler that
+generate a single file executable for the project.
+
+## Structure
+
+```
+.
+├── build.sh
+├── .gitignore
+├── requirements.txt
+└── src
+    └── main.py
+```
+
+## Get started
+
+```bash
+projnew python-pyinstaller
+# clear && crun
+clear && ./build.sh && ./main
+```

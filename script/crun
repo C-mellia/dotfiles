@@ -1,17 +1,23 @@
 #!/bin/bash
 
-# a build and run script for c-like language. the script expect a build.sh file
-# under current directory which also generate a main executable file under the
-# same directory.
+# a build and run script for very specific project setup structure, that there
+# should have a build.sh executable file, and then after successfully execute
+# the script file, a executable main target file should be generated.
 
+[[ -x ./build.sh ]] || {
+    echo "Missing a executable build script: build.sh"; exit 1
+}
+
+./build.sh || exit 1
+
+# configure environment variables
 [[ -f .env ]] && source .env
-. build.sh && ./main $*
-status=$?
+[[ -x ./main ]] || {
+    echo "Missing a executable target file: ./main"; exit 1
+}
 
-if [[ $status -eq 0 ]]; then
-    echo "Process exited normally"
-else
-    echo "Process exited with code: ${status}"
-fi
+./main "$@" || {
+    status=$?; echo "Process exited with code: ${status}"; exit "${status}"
+}
 
-exit $status
+exit 0

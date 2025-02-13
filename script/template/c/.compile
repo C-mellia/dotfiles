@@ -3,17 +3,21 @@
 declare srcs
 
 CC=gcc
-CC_FLAG='-Wall -Wextra -std=gnu11 -I./include'
+CC_FLAG=(
+    -Wall -Wextra -Werror
+    -std=gnu11
+    -I./include
+    -I"$HOME"/.local/include
+)
 
 function do_compile() {
     declare CC CC_FLAG TARGET input
     declare -a cmd
 
-    local CC_FLAG=("$CC_FLAG")
     local input="${1?No input specified}"
-    local cmd=("$CC" -o "$TARGET" -c "$input" "${CC_FLAG[@]}")
+    local cmd=("$CC" -o "$TARGET" -c "$input" "$CC_FLAG")
 
-    echo "${cmd[@]}"; eval "${cmd[@]}" || {
+    echo "${cmd[@]}"; bash -c "${cmd[*]}" || {
         echo "Failed to compile $fname.c" && exit 1
     }
 }

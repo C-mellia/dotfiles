@@ -1,0 +1,15 @@
+#!/bin/bash
+
+python -m venv venv || {
+    echo "Failed to create virtual environment"; exit 1
+}
+
+./venv/bin/pip\
+    install\
+    -r requirements.txt || {
+    echo "Failed to install packages specified from requirements.txt"; exit 1
+}
+
+git status &> /dev/null || git init &> /dev/null
+
+exit 0

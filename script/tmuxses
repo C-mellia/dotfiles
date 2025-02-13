@@ -2,15 +2,22 @@
 # from thePrimeagen:
 # https://github.com/ThePrimeagen/.dotfiles/blob/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer#L4
 
+version=$(tmux -V | awk '{ print $2; }')
+read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
+[[ $gt_version = "$version" ]] && fzf_flag+=(--tmux='center,90%')
+
 select_path=${1:-$(/bin/find\
     -O3 "$PWD"\
     -name '.*'\
     -prune\
     -o -perm -004\
     -type d\
-    2> /dev/null\
-    | /bin/grep -vE '.*/\.'\
-    | fzf)}
+    2> /dev/null |\
+    /bin/grep -vE '.*/\.' |\
+    fzf --cycle\
+    --bind ctrl-d:page-down\
+    --bind ctrl-u:page-up\
+    "${fzf_flag[@]}")}
 
 [[ -z "$select_path" ]] && exit 0
 [[ -d "$select_path" ]] || exit 1
@@ -33,6 +40,7 @@ tmux has-session\
     -c "$select_path"
 
 tmux switch-client\
-    -t "$client_id"
+    -t "$client_id"\
+    || tmux a
 
 exit 0

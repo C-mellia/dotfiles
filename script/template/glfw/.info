@@ -1,0 +1,15 @@
+<!-- vim: set filetype=markdown: -->
+# glfw
+
+depends on libarray.so and liblinalg.so, which are implementions of dynamic
+array(implicitly string class) and linear algebra(vec2-4 and mat2-4)
+respectively
+
+This template also included a external library nothings/stb to handle image
+file decoding. It will automatically cloned the repo into `vendor/stb` whenever
+the project files are copied.
+
+callbacks and handlers are implemented in `impl.h`, resources, e.g. meshes and
+shaders are loaded in `resource.h`, and important states(timer, camera...) will
+be handled in `state.h`. Other miscellaneous functionalities will be handled in
+other handful headers.

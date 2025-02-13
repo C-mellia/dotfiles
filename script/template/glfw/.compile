@@ -3,7 +3,9 @@
 declare srcs
 stb_lib=./vendor/stb
 
-[[ -d $stb_lib ]] || { echo "library nothings/stb not found in $stb_lib"; exit 1; }
+[[ -d $stb_lib ]] || {
+    echo "dependency nothings/stb not found in $stb_lib"; exit 1
+}
 
 CC=gcc
 CC_FLAG=(

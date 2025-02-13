@@ -1,21 +1,29 @@
 #!/bin/bash
 
+LD=gcc
+LD_FLAG=(
+    -L"$HOME"/.local/lib
+)
+
 function do_link() {
-    declare LD LD_FLAG TARGET srcs
+    declare LD TARGET srcs LD_FLAG
     declare -a cmd
 
     local srcs="$*"
-    local LD_FLAG=("$LD_FLAG")
-    local cmd=("$LD" -o "$TARGET" "$(for file in $srcs; do printf " %s " target/"$file".o; done)" "${LD_FLAG[@]}")
+    local cmd=(
+    "$LD" -o
+    "$TARGET"
+    "$(for file in $srcs; do printf " %s " target/"$file".o; done)"
+    "$LD_FLAG")
 
-    echo "${cmd[@]}"; eval "${cmd[@]}" || {
+    echo "${cmd[@]}"; bash -c "${cmd[*]}" || {
         printf "Failed to link target \"%s\"" "$TARGET" && exit 1
     }
 
     return 0
 }
 
-LD=gcc LD_FLAG= TARGET=main do_link\
+LD=$LD LD_FLAG="${LD_FLAG[*]}" TARGET=main do_link\
     "$(find target/ -type f\
     | /bin/grep -E '\.o$'\
     | while read -r file; do

@@ -5,14 +5,21 @@ show_info=false # -i
 recipe= # <cmd> [<option>] <recipe>
 pager=$(which glow) || pager=less
 only_list=false
+update=none
 
-while getopts "hil" opt; do
+excludes=(
+    .info
+    .exec
+)
+
+while getopts "hilo" opt; do
     case $opt in
         h)
             echo "copy files from templates and execute custom script to setup a project"
             echo "-h: show this help"
             echo "-i: show recipe info if available"
             echo "-l: list available recipes"
+            echo "-o: overwrite existing files"
             exit 0
             ;;
         i)
@@ -20,6 +27,9 @@ while getopts "hil" opt; do
             ;;
         l)
             only_list=true # list available recipes
+            ;;
+        o)
+            update=older
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2; exit 1
@@ -49,18 +59,19 @@ fi
 echo "Copying template files..."
 while read -r file; do
     fname=${file#"$template"/"$recipe"/}
-    if [[ $fname == .info ]]; then
+    if [[ " ${excludes[*]} " =~ [[:space:]]${fname}[[:space:]] ]]; then
         continue
-    elif [[ $fname == .exec ]]; then
-        echo "Custom script found, executing..."
-        eval . "$template/$recipe/.exec" || {
-            echo "errors occurred during execution of the custom script" && exit 1
-        }
     else
         # echo $fname
         [[ -d $(dirname "$fname") ]] || mkdir -p "$(dirname "$fname")"
-        [[ -f $file ]] && cp --update --preserve=links "$file" "$fname"
+        [[ -f $file ]] && cp --update=$update --preserve=links "$file" "$fname"
     fi
 done <<< "$(find -L $template/"$recipe"/ -type f)"
+
+[[ -f "$template/$recipe/.exec" ]] && (
+echo "Custom script found, executing..."; "$template/$recipe/.exec" || {
+    echo "errors occurred during execution of the custom script"; exit 1
+}
+)
 
 echo "Project setup completed"

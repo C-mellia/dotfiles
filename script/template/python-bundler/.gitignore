@@ -1,0 +1,11 @@
+# virtual environment
+venv/
+
+# executable
+main
+
+# generated spec
+main.spec
+
+# target files
+build/
