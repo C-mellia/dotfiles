@@ -4,7 +4,7 @@ set -o pipefail
 
 sound_effect=${HOME}/Downloads/Hitmarker\ sound.wav
 prefix=$HOME/ScreenCap
-scrot_flag=("$@" --file "$prefix"/%b%d-%H:%M:%S.png -e "echo \$n")
+scrot_flag=("$@" --file "$prefix"/%b%d%Y-%H:%M:%S.png -e "echo \$n")
 
 [[ -d $prefix ]] || mkdir -p "$prefix"
 

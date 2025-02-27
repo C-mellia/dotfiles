@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:ComicShannsMonoNerdFont Regular 6
+font pango:FantasqueSansMNerdFont 6
 #font pango:DejaVu Sans Mono 8
 
 exec --no-startup-id picom -b --config $PICOM_CONFIG_FILE
@@ -11,8 +11,8 @@ exec --no-startup-id fcitx5
 
 workspace 1 output HDMI-0
 workspace 5 output DP-4
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
-# exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+# exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
 
 exec --no-startup-id /usr/bin/wired --run
 
@@ -180,8 +180,9 @@ bar {
     # modifier $mod
 }
 
-include gaps
 default_border pixel 0
 default_floating_border pixel 0
-for_window [class="^.*"] border pixel 0
-for_window [class="^.*"] title_format ""
+for_window [class=".*"] border none
+for_window [class=".*"] title_format "<b>%title[%class]</b>"
+
+include gaps

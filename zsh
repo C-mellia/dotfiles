@@ -51,3 +51,12 @@ alias lsfzf="/bin/ls | tr -s ' ' '\n' | _cycle_fzf"
 
 export DOTFILES=${DOTFILES:-$HOME/dotfiles}
 [[ -f $DOTFILES/envs ]] && source $DOTFILES/envs
+
+# completions(optional, introduces delay to init a shell)
+# which wezterm &> /dev/null && eval "$(wezterm shell-completion --shell zsh)"
+# which qrcp &> /dev/null && eval "$(qrcp completion zsh)"
+# which pip &> /dev/null && eval "$(pip completion --zsh)"
+# which watchexec &> /dev/null && eval "$(watchexec --completions zsh)"
+
+# starship
+which starship &> /dev/null && eval "$(starship init zsh)"

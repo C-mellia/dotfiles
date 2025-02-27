@@ -1,9 +1,11 @@
+local trouble = require("trouble")
+
 require("trouble").setup({
 	position = "bottom",
 	height = 10,
 	width = 50,
 	mode = "workspace_diagnostics",
-	icons = false,
+	icons = true,
 	fold_open = "v", -- icon used for open folds
 	fold_closed = ">", -- icon used for closed folds
 	indent_lines = false, -- add an indent guide below the fold icons
@@ -29,3 +31,10 @@ require("trouble").setup({
 	auto_jump = { "lsp_definition", "lsp_references" },
 	use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 })
+
+vim.keymap.set("n", "<leader>X", function()
+	trouble.toggle()
+end)
+vim.keymap.set("n", "<leader>xf", function()
+	trouble.toggle("quickfix")
+end)

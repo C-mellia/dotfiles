@@ -5,6 +5,7 @@ require("conform").setup({
 		-- python = { "isort", "black" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 
+		cpp = { "clang-format" },
 		sql = { "sql_formatter", "sqlfmt", stop_after_first = true },
 		bash = { "shellharden" },
 
@@ -39,7 +40,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
 		if not require("conform").format({ bufnr = args.buf }) then
-			vim.notify("Failed to format file", vim.log.levels.WARN)
+			-- vim.notify("Failed to format file", vim.log.levels.WARN)
 			return false
 		end
 	end,

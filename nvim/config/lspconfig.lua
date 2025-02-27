@@ -31,6 +31,7 @@ lspconf.lua_ls.setup({
 			},
 		})
 	end,
+
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -83,9 +84,9 @@ lspconf.templ.setup({
 	capabilities = capabilities,
 })
 
-lspconf.htmx.setup({
-	capabilities = capabilities,
-})
+-- lspconf.htmx.setup({
+-- 	capabilities = capabilities,
+-- })
 
 lspconf.cmake.setup({
 	capabilities = capabilities,
@@ -115,13 +116,19 @@ lspconf.texlab.setup({
 	capabilities = capabilities,
 })
 
--- lspconf.clangd.setup({
---     capabilities = capabilities,
---     -- handlers = {
---     --     ["textDocument/publishDiagnostics"] = function ()
---     --     end,
---     --},
--- })
+lspconf.clangd.setup({
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		local filetype = vim.bo[bufnr].filetype
+		if filetype == "c" then
+			client.stop()
+		end
+	end,
+	-- handlers = {
+	--     ["textDocument/publishDiagnostics"] = function ()
+	--     end,
+	--},
+})
 
 lspconf.eslint.setup({
 	capabilities = capabilities,
@@ -129,11 +136,11 @@ lspconf.eslint.setup({
 
 lspconf.ts_ls.setup({
 	capabilities = capabilities,
-	init_options = {
-		preferences = {
-			disableSuggestions = true,
-		},
-	},
+	-- init_options = {
+	-- 	preferences = {
+	-- 		disableSuggestions = true,
+	-- 	},
+	-- },
 })
 
 lspconf.rust_analyzer.setup({

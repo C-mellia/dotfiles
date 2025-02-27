@@ -1,6 +1,4 @@
 local util = require("util")
-local builtin = require("telescope.builtin")
-local trouble = require("trouble")
 -- local oil = require("oil.actions")
 
 vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
@@ -8,54 +6,6 @@ vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
 
 vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
 vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
-
-vim.keymap.set("n", "gd", function()
-	builtin.lsp_definitions({
-		jump_type = "vsplit",
-	})
-end)
-
-vim.keymap.set("n", "<leader>G", function()
-	builtin.git_files()
-end)
-
-vim.keymap.set("n", "<C-p>", function()
-	builtin.find_files({
-		hidden = false,
-	})
-end)
-
-vim.keymap.set("n", "<leader>M", function()
-	builtin.man_pages({
-		sections = { "ALL" },
-	})
-end)
-
-vim.keymap.set("n", "B", function()
-	builtin.buffers()
-end)
-
-vim.keymap.set("n", "<Leader>N", function()
-	builtin.live_grep()
-end)
-
-vim.keymap.set("n", "<Leader>T", function()
-	builtin.help_tags()
-end)
-
-vim.keymap.set("n", "<C-s>", function()
-	builtin.treesitter()
-end)
-
-vim.keymap.set("n", "<leader>S", function()
-	builtin.colorscheme({
-		enable_preview = true,
-	})
-end)
-
-vim.keymap.set("n", "<C-l>", function()
-	builtin.lsp_document_symbols()
-end)
 
 -- vim.keymap.set("n", "<Leader>N", "<cmd>:Telescope live_grep<CR>")
 -- vim.keymap.set("n", "<Leader>T", "<cmd>:Telescope help_tags<CR>")
@@ -129,13 +79,6 @@ vim.keymap.set("n", '<Leader>d"', 'di"vhP')
 -- "apsijdpoasijd"
 
 -- vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>X", function()
-	trouble.toggle()
-end)
-vim.keymap.set("n", "<leader>xf", function()
-	trouble.toggle("quickfix")
-end)
-
 vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
 
 vim.keymap.set("n", "<leader>D", "<cmd>Oil<cr>")
@@ -152,11 +95,11 @@ vim.keymap.set("n", "<Right>", "<cmd>vertical resize -2<CR>")
 vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
 vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")
 
-vim.keymap.set("n", "<leader>MI", "<cmd>:MoltenInit<CR>")
-vim.keymap.set("n", "<leader>MM", "<cmd>:MoltenEvaluateLine<CR>")
-vim.keymap.set("n", "<leader>MR", "<cmd>:MoltenReevaluateCell<CR>")
-vim.keymap.set("v", "<leader>MM", "<cmd>:MoltenEvaluateVisual<CR>")
-vim.keymap.set("n", "<leader>MD", "<cmd>:MoltenDelete<CR>")
+-- vim.keymap.set("n", "<leader>MI", "<cmd>:MoltenInit<CR>")
+-- vim.keymap.set("n", "<leader>MM", "<cmd>:MoltenEvaluateLine<CR>")
+-- vim.keymap.set("n", "<leader>MR", "<cmd>:MoltenReevaluateCell<CR>")
+-- vim.keymap.set("v", "<leader>MM", "<cmd>:MoltenEvaluateVisual<CR>")
+-- vim.keymap.set("n", "<leader>MD", "<cmd>:MoltenDelete<CR>")
 
-vim.keymap.set("n", "<leader>MO", "<cmd>:noautocmd MoltenEnterOutput<CR>")
-vim.keymap.set("n", "<leader>C", "<cmd>:CopilotChat<CR>")
+-- vim.keymap.set("n", "<leader>MO", "<cmd>:noautocmd MoltenEnterOutput<CR>")
+-- vim.keymap.set("n", "<leader>C", "<cmd>:CopilotChat<CR>")
