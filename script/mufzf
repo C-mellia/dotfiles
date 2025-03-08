@@ -78,6 +78,7 @@ workspace=${1:-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).
     --bind 'ctrl-h:execute(nohup zathura {} &> /dev/null & disown)'\
     --bind 'ctrl-d:page-down'\
     --bind 'ctrl-u:page-up'\
+    --bind 'ctrl-g:pos(-1)'\
     "${fzf_flag[@]}")
 
 [[ -z $increment ]] && : > "$session_path"

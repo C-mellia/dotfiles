@@ -16,16 +16,16 @@ vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nv
 -- vim.keymap.set("n", "B", "<cmd>:Telescope buffers<CR>")
 -- vim.keymap.set("n", "<Leader>M", '<cmd>:Telescope man_pages sections={"ALL"}<CR>')
 
-vim.keymap.set("n", "va/", "[/v]/")
-vim.keymap.set("n", "va/", "[/v]/d")
-vim.keymap.set("n", "va/", "[/v]/c")
+-- vim.keymap.set("n", "va/", "[/v]/")
+-- vim.keymap.set("n", "va/", "[/v]/d")
+-- vim.keymap.set("n", "va/", "[/v]/c")
 
-vim.keymap.set("n", "vi/", "[/wv]/")
-vim.keymap.set("n", "vi/", "[/wv]/d")
-vim.keymap.set("n", "vi/", "[/wv]/c")
+-- vim.keymap.set("n", "vi/", "[/wv]/")
+-- vim.keymap.set("n", "vi/", "[/wv]/d")
+-- vim.keymap.set("n", "vi/", "[/wv]/c")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
 vim.keymap.set("n", "<leader>tu", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)

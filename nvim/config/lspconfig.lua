@@ -1,168 +1,115 @@
 local lspconf = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconf.lua_ls.setup({
-	capabilities = capabilities,
-	on_init = function(client)
-		if client.workspace_folders then
-			local path = client.workspace_folders[1].name
-			if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
-				return
-			end
-		end
-
-		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-			runtime = {
-				-- Tell the language server which version of Lua you're using
-				-- (most likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		local opts = {
+			capabilities = capabilities,
+			flags = {
+				debounce_text_changes = 150,
 			},
-			-- Make the server aware of Neovim runtime files
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					vim.env.VIMRUNTIME,
-					-- Depending on the usage, you might want to add additional paths here.
-					-- "${3rd}/luv/library"
-					-- "${3rd}/busted/library",
+		}
+		lspconf[server_name].setup(opts)
+	end,
+
+	["lua_ls"] = function()
+		lspconf.lua_ls.setup({
+			capabilities = capabilities,
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						-- Tell the language server which version of Lua you're using
+						-- (most likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+					},
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- Depending on the usage, you might want to add additional paths here.
+							"${3rd}/luv/library",
+							"${3rd}/busted/library",
+						},
+						-- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
+						-- library = vim.api.nvim_get_runtime_file("", true)
+					},
+				})
+			end,
+
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					telemetry = {
+						enable = false,
+					},
 				},
-				-- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-				-- library = vim.api.nvim_get_runtime_file("", true)
 			},
 		})
 	end,
 
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
-})
-
-lspconf.docker_compose_language_service.setup({
-	capabilities = capabilities,
-})
-
-lspconf.dockerls.setup({
-	capabilities = capabilities,
-})
-
-lspconf.sqlls.setup({
-	capabilities = capabilities,
-})
-
-lspconf.elixirls.setup({
-	capabilities = capabilities,
-	cmd = { os.getenv("HOME") .. "/.local/bin/language_server.sh" },
-})
-
-lspconf.jdtls.setup({
-	capabilities = capabilities,
-	cmd = { "jdtls" },
-	-- root_dir = vim.fn.getcwd,
-})
-
-lspconf.arduino_language_server.setup({
-	capabilities = capabilities,
-})
-
-lspconf.gdscript.setup({
-	capabilities = capabilities,
-})
-
-lspconf.cssls.setup({
-	capabilities = capabilities,
-})
-
-lspconf.tailwindcss.setup({
-	capabilities = capabilities,
-})
-
-lspconf.templ.setup({
-	capabilities = capabilities,
-})
-
--- lspconf.htmx.setup({
--- 	capabilities = capabilities,
--- })
-
-lspconf.cmake.setup({
-	capabilities = capabilities,
-})
-
-lspconf.html.setup({
-	capabilities = capabilities,
-})
-
-lspconf.svelte.setup({
-	capabilities = capabilities,
-})
-
-lspconf.pyright.setup({
-	capabilities = capabilities,
-})
-
-lspconf.glsl_analyzer.setup({
-	capabilities = capabilities,
-})
-
-lspconf.zls.setup({
-	capabilities = capabilities,
-})
-
-lspconf.texlab.setup({
-	capabilities = capabilities,
-})
-
-lspconf.clangd.setup({
-	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		local filetype = vim.bo[bufnr].filetype
-		if filetype == "c" then
-			client.stop()
-		end
+	["elixirls"] = function()
+		lspconf.elixirls.setup({
+			capabilities = capabilities,
+			cmd = { os.getenv("HOME") .. "/.local/bin/language_server.sh" },
+		})
 	end,
-	-- handlers = {
-	--     ["textDocument/publishDiagnostics"] = function ()
-	--     end,
-	--},
-})
 
-lspconf.eslint.setup({
-	capabilities = capabilities,
-})
+	["jdtls"] = function()
+		lspconf.jdtls.setup({
+			capabilities = capabilities,
+			cmd = { "jdtls" },
+			-- root_dir = vim.fn.getcwd,
+		})
+	end,
 
-lspconf.ts_ls.setup({
-	capabilities = capabilities,
-	-- init_options = {
-	-- 	preferences = {
-	-- 		disableSuggestions = true,
-	-- 	},
-	-- },
-})
+	["rust_analyzer"] = function()
+		lspconf.rust_analyzer.setup({
+			capabilities = capabilities,
+			settings = {
+				diagnostics = {
+					enable = true,
+				},
+			},
+			workspace = {
+				didChangeConfiguration = {
+					dynamicRegistration = false,
+				},
+			},
+		})
+	end,
 
-lspconf.rust_analyzer.setup({
-	capabilities = capabilities,
-	settings = {
-		diagnostics = {
-			enable = true,
-		},
-	},
-	workspace = {
-		didChangeConfiguration = {
-			dynamicRegistration = false,
-		},
-	},
-})
+	["clangd"] = function()
+		lspconf.clangd.setup({
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				local filetype = vim.bo[bufnr].filetype
+				if filetype == "c" then
+					client.stop()
+				end
+			end,
+			-- handlers = {
+			--     ["textDocument/publishDiagnostics"] = function ()
+			--     end,
+			--},
+		})
+	end,
 
-lspconf.gopls.setup({
-	capabilities = capabilities,
-})
-
-lspconf.bashls.setup({
-	capabilities = capabilities,
+	["rubocop"] = function()
+		lspconf.rubocop.setup({
+			capabilities = capabilities,
+			cmd = { "bundle", "exec", "rubocop", "--lsp" },
+		})
+	end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {

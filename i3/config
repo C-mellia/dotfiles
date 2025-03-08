@@ -183,6 +183,6 @@ bar {
 default_border pixel 0
 default_floating_border pixel 0
 for_window [class=".*"] border none
-for_window [class=".*"] title_format "<b>%title[%class]</b>"
+for_window [class=".*"] title_format "<i>%title</i>[<b>%class</b>]"
 
 include gaps

@@ -7,3 +7,6 @@
 [submodule "rofi-themes-collection"]
 	path = rofi-themes-collection
 	url = https://github.com/newmanls/rofi-themes-collection
+[submodule "zsh-completions"]
+	path = zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
