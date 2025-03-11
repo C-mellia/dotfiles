@@ -1,5 +1,7 @@
 SHELL := bash
+MAKEFLAGS += --no-print-directory
 
+LIB_NAME := $(shell cd ../.. && make _lib_name)
 TARGET := main
 SRC_EXT := c
 
@@ -12,8 +14,9 @@ PREFIX := $(if $(INSTALL_PREFIX),$(INSTALL_PREFIX),$(HOME)/.local)
 CC := gcc
 CC_FLAG := -Werror -Wall -Wextra\
 		   -std=gnu23\
-		   -I$(INCLUDE_DIR) -I$(HOME)/.local/include
-LD_FLAG := -L$(HOME)/.local/lib
+		   -I$(INCLUDE_DIR) -I$(HOME)/.local/include -I../../include
+LD_FLAG := -L$(HOME)/.local/lib -L../..\
+					 -l$(LIB_NAME)
 
 SRCS := $(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 OBJS := $(SRCS:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/%.o)
@@ -27,9 +30,7 @@ clean:
 	[[ -z $(TARGET) ]] || rm -rf $(TARGET)
 
 run: $(TARGET)
-	sh -c main +o $(ARGS)
-
-install: $(INSTALL_BIN)/$(TARGET)
+	source .env && ./main
 
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $^ $(LD_FLAG)
@@ -40,7 +41,4 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(OBJ_DIR)
 $(OBJ_DIR) $(INSTALL_BIN):
 	mkdir -p $@
 
-$(INSTALL_BIN)/$(TARGET): $(TARGET) $(INSTALL_BIN)
-	install -m 755 $(TARGET) $(INSTALL_BIN)/
-
-.PHONY: all clean install
+.PHONY: all clean run

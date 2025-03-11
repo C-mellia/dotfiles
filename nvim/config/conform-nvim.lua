@@ -13,7 +13,10 @@ require("conform").setup({
 		yaml = { "prettierd", "prettier", stop_after_first = true },
 		html = { "prettierd", "prettier", stop_after_first = true },
 		css = { "prettierd", "prettier", stop_after_first = true },
+		scss = { "prettierd", "prettier", stop_after_first = true },
 		svelte = { "prettierd", "prettier", stop_after_first = true },
+		ruby = { "prettierd", "prettier", stop_after_first = true },
+		eruby = { "prettierd", "prettier", stop_after_first = true },
 	},
 
 	-- format_on_save = {

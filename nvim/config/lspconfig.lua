@@ -1,20 +1,18 @@
 local lspconf = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+local opts = {
+	capabilities = capabilities,
+}
+
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
-		local opts = {
-			capabilities = capabilities,
-			flags = {
-				debounce_text_changes = 150,
-			},
-		}
 		lspconf[server_name].setup(opts)
 	end,
 
 	["lua_ls"] = function()
 		lspconf.lua_ls.setup({
-			capabilities = capabilities,
+			unpack(opts),
 			on_init = function(client)
 				if client.workspace_folders then
 					local path = client.workspace_folders[1].name
@@ -59,14 +57,14 @@ require("mason-lspconfig").setup_handlers({
 
 	["elixirls"] = function()
 		lspconf.elixirls.setup({
-			capabilities = capabilities,
+			unpack(opts),
 			cmd = { os.getenv("HOME") .. "/.local/bin/language_server.sh" },
 		})
 	end,
 
 	["jdtls"] = function()
 		lspconf.jdtls.setup({
-			capabilities = capabilities,
+			unpack(opts),
 			cmd = { "jdtls" },
 			-- root_dir = vim.fn.getcwd,
 		})
@@ -74,7 +72,7 @@ require("mason-lspconfig").setup_handlers({
 
 	["rust_analyzer"] = function()
 		lspconf.rust_analyzer.setup({
-			capabilities = capabilities,
+			unpack(opts),
 			settings = {
 				diagnostics = {
 					enable = true,
@@ -90,7 +88,7 @@ require("mason-lspconfig").setup_handlers({
 
 	["clangd"] = function()
 		lspconf.clangd.setup({
-			capabilities = capabilities,
+			unpack(opts),
 			on_attach = function(client, bufnr)
 				local filetype = vim.bo[bufnr].filetype
 				if filetype == "c" then
@@ -101,6 +99,13 @@ require("mason-lspconfig").setup_handlers({
 			--     ["textDocument/publishDiagnostics"] = function ()
 			--     end,
 			--},
+		})
+	end,
+
+	["sorbet"] = function()
+		lspconf.rubocop.setup({
+			capabilities = capabilities,
+			cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
 		})
 	end,
 

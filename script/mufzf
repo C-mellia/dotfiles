@@ -8,14 +8,6 @@ read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
 
 [[ -z $session_path ]] && session_path="$HOME/.local/state/mufzf/session"
 
-find_cmd=(
-    find .
-    -maxdepth 1
-    -type f
-    -not -path '*/.*'
-    -exec basename {} \;
-)
-
 name_sort() { "${find_cmd[@]}" |\
     sort; }
 
@@ -29,6 +21,7 @@ date_sort() { "${find_cmd[@]}" |\
 
 increment=
 sort_method=name_sort
+change_dir=
 
 # PREVIEW='file {}'
 # [[ $TERMINAL = wezterm ]] && which ebook-getcover &> /dev/null\
@@ -41,45 +34,56 @@ sort_method=name_sort
 #     2> /dev/null\
 #     '\
 
-while getopts "is:" opt; do
-    case $opt in
-        i)
-            increment=1
-            ;;
-        s)
-            case $OPTARG in
-                name)
-                    # sort_method=name_sort
-                    ;;
-                date)
-                    sort_method=date_sort
-                    ;;
-                *)
-                    echo "unknown method $OPTARG" >&2; exit 1
-                    ;;
-            esac
-            ;;
-        \?)
-            echo "Invalid option: -$OPTARG" >&2
-            exit 1
-            ;;
-    esac
+while getopts "C:is:" opt; do
+  case $opt in
+    C)
+      change_dir=${OPTARG:?}
+      ;;
+    i)
+      increment=1
+      ;;
+    s)
+      case $OPTARG in
+        name)
+          # sort_method=name_sort
+          ;;
+        date)
+          sort_method=date_sort
+          ;;
+        *)
+          echo "unknown method $OPTARG" >&2; exit 1
+          ;;
+      esac
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
 done
 shift $((OPTIND - 1))
+
+find_cmd=(
+  find "${change_dir:-.}"
+  -maxdepth 1
+  -type f
+  -not -path "'*/.*'"
+  -exec basename '{}' '\;'
+)
 
 workspace=${1:-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).name')}
 [[ -d $(dirname "$session_path") ]] || mkdir -p "$(dirname "$session_path")"
 
 [[ -t 0 ]] || read -r -d '' select
-[[ -t 0 ]] && select=$("${find_cmd[@]}" |\
-    /bin/grep -E "\.pdf$|\.epub$" |\
-    fzf -m --cycle\
-    --bind 'ctrl-l:toggle'\
-    --bind 'ctrl-h:execute(nohup zathura {} &> /dev/null & disown)'\
-    --bind 'ctrl-d:page-down'\
-    --bind 'ctrl-u:page-up'\
-    --bind 'ctrl-g:pos(-1)'\
-    "${fzf_flag[@]}")
+[[ -t 0 ]] && select=$(bash -s <<< "${find_cmd[@]}" |\
+  /bin/grep -E "\.pdf$|\.epub$" |\
+  fzf -m --cycle\
+  --bind 'ctrl-l:toggle'\
+  --bind 'ctrl-h:execute(nohup zathura {} &> /dev/null & disown)'\
+  --bind 'ctrl-d:page-down'\
+  --bind 'ctrl-u:page-up'\
+  --bind 'ctrl-g:pos(-1)'\
+  "${fzf_flag[@]}")
 
 [[ -z $increment ]] && : > "$session_path"
 [[ -z $select ]] && exit 1
@@ -90,21 +94,22 @@ switch_workspace=
 # }
 
 while read -r file; do
-    [[ -r $file ]] || continue
+  [[ -z $change_dir ]] || file="$change_dir/$file"
+  [[ -r $file ]] || continue
 
-    [[ -z $switch_workspace ]] && {
-        switch_workspace=1; i3-msg "workspace $workspace"\
-        > /dev/null\
-        || { echo "Failed to swap to workspace $workspace" >&2; exit 1; }
-    }
+  [[ -z $switch_workspace ]] && {
+    switch_workspace=1; i3-msg "workspace $workspace"\
+    > /dev/null\
+    || { echo "Failed to swap to workspace $workspace" >&2; exit 1; }
+  }
 
-    nohup zathura "$file"\
-        &> /dev/null & disown || {
-        echo "Failed to open '$file'" && continue
-    }
+  nohup zathura "$file"\
+    &> /dev/null & disown || {
+    echo "Failed to open '$file'" && continue
+  }
 
-    [[ -t 1 ]] && echo "$PWD/$file" | tee -a "$session_path"
-    [[ -t 1 ]] || echo "$PWD/$file"
+  [[ -t 1 ]] && echo "$PWD/$file" | tee -a "$session_path"
+  [[ -t 1 ]] || echo "$PWD/$file"
 done <<< "$select"
 
 [[ -n $dry_run ]] && { echo "session file:"; cat "$session_path"; }

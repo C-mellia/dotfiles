@@ -61,6 +61,10 @@ require("telescope").setup({
 			theme = "ivy",
 		},
 
+		man_pages = {
+			theme = "ivy",
+		},
+
 		buffers = {
 			theme = "ivy",
 			mappings = {

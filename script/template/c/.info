@@ -1,1 +1,4 @@
 C Hello world Setup with scripted build system
+
+Original build.sh setup is deprecated, cause I decided to start using Makefile
+to automate the build process

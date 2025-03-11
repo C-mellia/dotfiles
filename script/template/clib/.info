@@ -1,0 +1,8 @@
+C Library template with a quite straightforward unit testing module
+
+to create a new unit test, copy the directory under tests/.template and rename
+the new directory to whatever you want. You can also do `projnew c`, but
+directly copy the template save the efforts to configure each unit tests with
+repeating compile flags.
+
+check out `make help` for more info

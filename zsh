@@ -1,4 +1,5 @@
 source "${0:A:h}/plugins.zsh"
+source "${0:A:h}/completions.zsh"
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -19,8 +20,9 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 # which pip &> /dev/null && eval "$(pip completion --zsh)"
 # which watchexec &> /dev/null && eval "$(watchexec --completions zsh)"
 
-autoload -Uz compinit
-[[ -n ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) ]] && compinit || compinit -C
+# autoload -Uz compinit
+# [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) ]] && compinit || compinit -C
+# [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) ]] && echo "foo" || echo "bar"
 
 autoload -U colors && colors
 unsetopt beep nomatch
