@@ -1,0 +1,11 @@
+CompileFlags:
+  Add:
+    - "-Wall"
+    - "-Wextra"
+    - "-Werror"
+    - "-std=gnu23"
+    - "-I./include"
+  Remove:
+    - "-x*"
+  Compiler:
+    gcc

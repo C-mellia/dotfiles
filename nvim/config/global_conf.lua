@@ -11,7 +11,6 @@ return {
 		"html",
 		"cssls",
 		"jsonls",
-		"pylsp",
 		"rust_analyzer",
 		"ts_ls",
 		"bashls",

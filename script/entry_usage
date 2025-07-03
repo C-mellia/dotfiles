@@ -1,0 +1,9 @@
+#!/bin/bash
+
+root_entry=${1:-./}
+
+[[ -e $root_entry ]] || { echo "$root_entry non exists" 1>&2; exit 1; }
+find "$root_entry" -mindepth 1 -maxdepth 1\
+  | while read -r entry; do du -sh "$entry"; done\
+  | sort -h
+

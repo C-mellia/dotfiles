@@ -90,3 +90,6 @@ vim.g.copilot_proxy = "http://localhost:20171"
 
 -- disable indent for align environment in latex
 vim.g.vimtex_indent_on_ampersands = 0
+
+-- silence deprecated messages
+vim.deprecate = function() end

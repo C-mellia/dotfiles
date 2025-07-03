@@ -3,18 +3,19 @@ set $mod Mod4
 font pango:FantasqueSansMNerdFont 6
 #font pango:DejaVu Sans Mono 8
 
-exec --no-startup-id picom -b --config $PICOM_CONFIG_FILE
+exec --no-startup-id picom -b --config $PICOM_CONFIG_FILE --no-fading-openclose
 # exec --no-startup-id sway
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id fcitx5
 # exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id /usr/bin/wired --run
+exec --no-startup-id dunst
+exec --no-startup-id [[ -f ~/.autostart ]] && ~/.autostart
 
 workspace 1 output HDMI-0
 workspace 5 output DP-4
 # exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
 exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
-
-exec --no-startup-id /usr/bin/wired --run
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -26,8 +27,12 @@ exec --no-startup-id /usr/bin/wired --run
 
 exec --no-startup-id wezterm -e /bin/zsh $HOME/dotfiles/wezterm/wezterm_startup.sh
 
+# no anoying beeps
 exec --no-startup-id xset b off
 exec --no-startup-id xset b 0 0 0
+
+# no more blanking screen
+exec --no-startup-id xset s off -dpms
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -42,6 +47,9 @@ bindsym $mod+Return exec wezterm
 bindsym $mod+c kill
 # bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' dmenu_run -fn 'ComicShannsMonoNerdFontMono-8'
 # bindsym $mod+p exec --no-startup-id dmenu_run -fn 'ComicShannsMonoNerdFontMono-8'
+
+# close all notifications from dunst
+bindsym $mod+x exec --no-startup-id dunstctl close-all
 
 bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' rofi -modes run -show run options -theme squared-nord
 bindsym $mod+p exec --no-startup-id rofi -modes run -show run options -theme squared-everforest
@@ -184,5 +192,7 @@ default_border pixel 0
 default_floating_border pixel 0
 for_window [class=".*"] border none
 for_window [class=".*"] title_format "<i>%title</i>[<b>%class</b>]"
+no_focus [all]
+focus_on_window_activation none
 
 include gaps

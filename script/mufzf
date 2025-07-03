@@ -2,10 +2,7 @@
 
 # `if else fi` indentation in vim is cursed
 
-version=$(tmux -V | awk '{ print $2; }')
-read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
-[[ $gt_version = "$version" ]] && fzf_flag+=(--tmux='center,90%')
-
+which fzf-tmux > /dev/null || exit 1
 [[ -z $session_path ]] && session_path="$HOME/.local/state/mufzf/session"
 
 name_sort() { "${find_cmd[@]}" |\
@@ -77,13 +74,12 @@ workspace=${1:-$(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true).
 [[ -t 0 ]] || read -r -d '' select
 [[ -t 0 ]] && select=$(bash -s <<< "${find_cmd[@]}" |\
   /bin/grep -E "\.pdf$|\.epub$" |\
-  fzf -m --cycle\
+  fzf-tmux -m --cycle\
   --bind 'ctrl-l:toggle'\
   --bind 'ctrl-h:execute(nohup zathura {} &> /dev/null & disown)'\
   --bind 'ctrl-d:page-down'\
   --bind 'ctrl-u:page-up'\
-  --bind 'ctrl-g:pos(-1)'\
-  "${fzf_flag[@]}")
+  --bind 'ctrl-g:pos(-1)')
 
 [[ -z $increment ]] && : > "$session_path"
 [[ -z $select ]] && exit 1

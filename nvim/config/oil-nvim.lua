@@ -30,3 +30,6 @@ require("oil").setup({
 	show_hidden = true,
 	skip_confirm_for_simple_edits = true,
 })
+
+vim.keymap.set("n", "<leader>D", "<cmd>Oil<cr>")
+-- vim.keymap.set("n", "<leader>D", oil.open_cwd.callback)

@@ -58,6 +58,6 @@ config.keys = {
 
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.75
 
 return config

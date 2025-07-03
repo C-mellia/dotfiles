@@ -1,26 +1,33 @@
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 
+local SUB_TYPES = {
+	"javascript",
+	"json",
+}
+
 -- (Don't preview binaries)[https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#dont-preview-binaries]
 local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
 local new_maker = function(filepath, bufnr, opts)
 	filepath = vim.fn.expand(filepath)
-	Job:new({
-		command = "file",
-		args = { "--mime-type", "-b", "--", filepath },
-		on_exit = function(j)
-			local result = j:result()[1]
-			local mime_type = vim.split(result, "/")[1]
-			if mime_type == "text" then
-				previewers.buffer_previewer_maker(filepath, bufnr, opts)
-			else
-				vim.schedule(function()
-					vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY: " .. result })
-				end)
-			end
-		end,
-	}):sync()
+	Job
+		:new({
+			command = "file",
+			args = { "--mime-type", "-b", "--", filepath },
+			on_exit = function(j)
+				local file_type = j:result()[1]
+				local mime_type, sub_type = unpack(vim.split(file_type, "/"), 1, 2)
+				if mime_type == "text" or (mime_type == "application" and vim.tbl_contains(SUB_TYPES, sub_type)) then
+					previewers.buffer_previewer_maker(filepath, bufnr, opts)
+				else
+					vim.schedule(function()
+						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY: " .. file_type })
+					end)
+				end
+			end,
+		})
+		:sync()
 end
 
 require("telescope").setup({
@@ -42,6 +49,10 @@ require("telescope").setup({
 
 	pickers = {
 		find_files = {
+			theme = "ivy",
+		},
+
+		live_grep = {
 			theme = "ivy",
 		},
 
@@ -136,4 +147,8 @@ end)
 
 vim.keymap.set("n", "<C-l>", function()
 	builtin.lsp_document_symbols()
+end)
+
+vim.keymap.set("n", "<Leader>s", function()
+	builtin.symbols()
 end)

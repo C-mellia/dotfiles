@@ -10,10 +10,11 @@ INCLUDE_DIR := ./include
 PREFIX := $(if $(INSTALL_PREFIX),$(INSTALL_PREFIX),$(HOME)/.local)
 
 CC := gcc
-CC_FLAG := -Werror -Wall -Wextra\
-		   -std=gnu23\
-		   -I$(INCLUDE_DIR) -I$(HOME)/.local/include
-LD_FLAG := -L$(HOME)/.local/lib
+LD := gcc
+CC_FLAG ?= -Werror -Wall -Wextra\
+					 -std=gnu23\
+					 -I$(INCLUDE_DIR) -I$(HOME)/.local/include
+LD_FLAG ?= -L$(HOME)/.local/lib
 
 SRCS := $(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 OBJS := $(SRCS:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/%.o)
@@ -27,12 +28,12 @@ clean:
 	[[ -z $(TARGET) ]] || rm -rf $(TARGET)
 
 run: $(TARGET)
-	sh -c main +o $(ARGS)
+	sh -c "./$(TARGET) $(ARGS)"
 
 install: $(INSTALL_BIN)/$(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $^ $(LD_FLAG)
+	$(LD) -o $@ $^ $(LD_FLAG)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) | $(OBJ_DIR)
 	$(CC) -c $< -o $@ $(CC_FLAG)

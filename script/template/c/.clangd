@@ -4,7 +4,7 @@ CompileFlags:
     - "-Wextra"
     - "-Werror"
     - "-std=gnu23"
-    - "-I./include"
+    - "-I../include"
   Remove:
     - "-x*"
   Compiler:

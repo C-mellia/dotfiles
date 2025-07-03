@@ -115,6 +115,13 @@ require("mason-lspconfig").setup_handlers({
 			cmd = { "bundle", "exec", "rubocop", "--lsp" },
 		})
 	end,
+
+	["hls"] = function()
+		lspconf.hls.setup({
+			filetypes = { "haskell", "lhaskell", "cabal" },
+			cmd = { "cabal", "exec", "haskell-language-server-wrapper", "--", "--lsp" },
+		})
+	end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
