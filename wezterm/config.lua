@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 -- config.color_scheme = "Vs Code Dark+ (Gogh)"
 -- config.color_scheme = "Gruvbox Material (Gogh)"
 -- config.color_scheme = "Google Dark (base16)"
-config.color_scheme = "rose-pine-moon"
+-- config.color_scheme = "rose-pine-moon"
 
 config.audible_bell = "Disabled"
 config.enable_scroll_bar = false
@@ -20,7 +20,7 @@ config.font = wezterm.font("FantasqueSansM Nerd Font", { weight = "Medium" })
 -- config.font = wezterm.font("Victor Mono", { weight = "Medium" })
 -- config.font = wezterm.font("Scriptina Regular", { weight = "Bold", italic = true })
 
-config.font_size = 26
+-- config.font_size = 26
 config.enable_wayland = false
 config.default_prog = { "/usr/bin/zsh" }
 config.disable_default_key_bindings = true

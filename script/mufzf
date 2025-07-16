@@ -5,14 +5,14 @@
 which fzf-tmux > /dev/null || exit 1
 [[ -z $session_path ]] && session_path="$HOME/.local/state/mufzf/session"
 
-name_sort() { "${find_cmd[@]}" |\
-    sort; }
-
-date_sort() { "${find_cmd[@]}" |\
-    xargs -I{} sh -c "stat --printf='%Y %n\n' {}" |\
-    sort --reverse |\
-    awk '{ $1=""; print $0; }' |\
-    awk '{ $1=$1; print; }'; }
+# name_sort() { "${find_cmd[@]}" |\
+#     sort; }
+#
+# date_sort() { "${find_cmd[@]}" |\
+#     xargs -I{} sh -c "stat --printf='%Y %n\n' {}" |\
+#     sort --reverse |\
+#     awk '{ $1=""; print $0; }' |\
+#     awk '{ $1=$1; print; }'; }
 
 # -i: increment to existing session
 
@@ -45,7 +45,7 @@ while getopts "C:is:" opt; do
           # sort_method=name_sort
           ;;
         date)
-          sort_method=date_sort
+          # sort_method=date_sort
           ;;
         *)
           echo "unknown method $OPTARG" >&2; exit 1

@@ -72,7 +72,7 @@ vim.opt.inccommand = "split"
 vim.opt.breakindent = true
 
 -- timeout for keymap sequence
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- hidden or replace concealed characters
 vim.opt.conceallevel = 2
