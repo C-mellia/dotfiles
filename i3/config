@@ -14,8 +14,8 @@ exec --no-startup-id [[ -f ~/.autostart ]] && ~/.autostart
 
 workspace 1 output HDMI-0
 workspace 5 output DP-4
-# exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
-exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+# exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -193,6 +193,6 @@ default_floating_border pixel 0
 for_window [class=".*"] border none
 for_window [class=".*"] title_format "<i>%title</i>[<b>%class</b>]"
 no_focus [all]
-focus_on_window_activation none
+focus_on_window_activation smart
 
 include gaps

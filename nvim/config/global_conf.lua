@@ -15,6 +15,7 @@ return {
 		"ts_ls",
 		"bashls",
 		"texlab",
+		"gopls",
 	},
 	-- colorscheme = "nightfox",
 	-- colorscheme = "default",

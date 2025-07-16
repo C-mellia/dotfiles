@@ -20,7 +20,7 @@ config.font = wezterm.font("FantasqueSansM Nerd Font", { weight = "Medium" })
 -- config.font = wezterm.font("Victor Mono", { weight = "Medium" })
 -- config.font = wezterm.font("Scriptina Regular", { weight = "Bold", italic = true })
 
-config.font_size = 14
+config.font_size = 26
 config.enable_wayland = false
 config.default_prog = { "/usr/bin/zsh" }
 config.disable_default_key_bindings = true

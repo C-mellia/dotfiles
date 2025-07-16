@@ -8,9 +8,9 @@ vim.opt.smartcase = true
 
 vim.opt.path:append("/usr/local/include")
 vim.opt.path:append("/opt/cuda/include")
-for _, path in ipairs(vim.fn.glob("/usr/include/c++/*", true, true)) do
-	vim.opt.path:append(path)
-end
+-- for _, path in ipairs(vim.fn.glob("/usr/include/c++/*", true, true)) do
+-- 	vim.opt.path:append(path)
+-- end
 vim.opt.path:append(os.getenv("HOME") .. "/.local/include")
 if os.getenv("PWD") ~= nil then
 	vim.opt.path:append(os.getenv("PWD") .. "/include")

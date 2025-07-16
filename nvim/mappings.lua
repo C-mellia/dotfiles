@@ -4,32 +4,21 @@ local util = require("util")
 vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
 
-vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>")
-vim.keymap.set("n", "<Leader>`", "<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>xc", "<cmd>:wa | qa!<CR>", { desc = "save quit" })
+vim.keymap.set(
+	"n",
+	"<Leader>`",
+	"<cmd>:e " .. os.getenv("HOME") .. "/.config/nvim/init.lua<CR>",
+	{ desc = "edit nvim config file" }
+)
 
--- vim.keymap.set("n", "<Leader>N", "<cmd>:Telescope live_grep<CR>")
--- vim.keymap.set("n", "<Leader>T", "<cmd>:Telescope help_tags<CR>")
--- vim.keymap.set("n", "<C-s>", "<cmd>:Telescope treesitter<CR>")
--- vim.keymap.set("n", "<Leader>C", "<cmd>:Telescope commands<CR>")
--- vim.keymap.set("n", "<leader>S", "<cmd>:Telescope colorscheme enable_preview=true<CR>")
--- vim.keymap.set("n", "<C-l>", "<cmd>:Telescope lsp_document_symbols<CR>")
--- vim.keymap.set("n", "B", "<cmd>:Telescope buffers<CR>")
--- vim.keymap.set("n", "<Leader>M", '<cmd>:Telescope man_pages sections={"ALL"}<CR>')
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "move line(s) down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "move line(s) up" })
 
--- vim.keymap.set("n", "va/", "[/v]/")
--- vim.keymap.set("n", "va/", "[/v]/d")
--- vim.keymap.set("n", "va/", "[/v]/c")
+vim.keymap.set("n", "<leader>tu", vim.cmd.UndotreeToggle, { desc = "toggle undotree" })
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "toggle fugitive" })
 
--- vim.keymap.set("n", "vi/", "[/wv]/")
--- vim.keymap.set("n", "vi/", "[/wv]/d")
--- vim.keymap.set("n", "vi/", "[/wv]/c")
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
-
-vim.keymap.set("n", "<leader>tu", vim.cmd.UndotreeToggle)
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-
+-- avoid fat finger
 vim.keymap.set("n", "<HOME>", "<NOP>")
 vim.keymap.set("i", "<HOME>", "<NOP>")
 vim.keymap.set("n", "<END>", "<NOP>")
@@ -39,19 +28,6 @@ vim.keymap.set("i", "<PageUp>", "<NOP>")
 vim.keymap.set("n", "<PageDown>", "<NOP>")
 vim.keymap.set("i", "<PageDown>", "<NOP>")
 
-vim.keymap.set("n", "<Leader>a(", "viw<ESC>a)<ESC>bi(<ESC>")
-vim.keymap.set("n", "<Leader>a)", "viw<ESC>a)<ESC>bi(<ESC>")
-vim.keymap.set("n", "<Leader>a[", "viw<ESC>a]<ESC>bi[<ESC>")
-vim.keymap.set("n", "<Leader>a]", "viw<ESC>a]<ESC>bi[<ESC>")
-vim.keymap.set("n", "<Leader>a{", "viw<ESC>a}<ESC>bi{<ESC>")
-vim.keymap.set("n", "<Leader>a}", "viw<ESC>a}<ESC>bi{<ESC>")
-vim.keymap.set("n", "<Leader>a<", "viw<ESC>a><ESC>bi<lt><ESC>")
-vim.keymap.set("n", "<Leader>a>", "viw<ESC>a><ESC>bi<lt><ESC>")
-vim.keymap.set("n", "<Leader>a'", "viw<ESC>a'<ESC>bi'<ESC>")
-vim.keymap.set("n", '<Leader>a"', 'viw<ESC>a"<ESC>bi"<ESC>')
-
--- '"([asodjashiouwehf])"'
-
 vim.keymap.set("n", "<Leader>%", "<cmd>:bd %<CR>")
 vim.keymap.set("n", "<Leader>gg", function()
 	vim.cmd('normal viw"0y')
@@ -60,44 +36,11 @@ end)
 vim.keymap.set("n", "<Leader>cc", function()
 	vim.cmd('normal viw"0y')
 	util.grep_from_buf_reg("0")
-end)
+end, { desc = "vim grep words on the current cursor" })
 vim.keymap.set("n", "<Leader>gr", function()
 	util.grep_from_buf_reg("+")
-end)
-vim.keymap.set("n", "<Leader>cr", function()
-	util.grep_from_buf_reg("+")
-end)
-vim.keymap.set("n", "<C-t>", "xp")
+end, { desc = "vim grep from '+' register" })
+vim.keymap.set("n", "<C-t>", "xp", { desc = "transpose current and next character" })
 
-vim.keymap.set("n", "<Leader>d(", "di(vhP")
-vim.keymap.set("n", "<Leader>d[", "di[vhP")
-vim.keymap.set("n", "<Leader>d{", "di{vhP")
-vim.keymap.set("n", "<Leader>d<lt>", "di<lt>vhP")
-vim.keymap.set("n", "<Leader>d'", "di'vhP")
-vim.keymap.set("n", '<Leader>d"', 'di"vhP')
-
--- "apsijdpoasijd"
-
--- vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>ee", "Oif err != nil {<C-M>}<Esc>Opanic(err)<Esc>++")
-
--- vim.keymap.set("n", "<leader>D", "<cmd>NvimTreeOpen<cr>")
-
-vim.keymap.set("v", "<C-+>", "<C-A>gv")
-
-vim.keymap.set("n", "<Up>", "<cmd>resize +2<CR>")
-vim.keymap.set("n", "<Down>", "<cmd>resize -2<CR>")
-vim.keymap.set("n", "<Left>", "<cmd>vertical resize +2<CR>")
-vim.keymap.set("n", "<Right>", "<cmd>vertical resize -2<CR>")
-
-vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
-vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")
-
--- vim.keymap.set("n", "<leader>MI", "<cmd>:MoltenInit<CR>")
--- vim.keymap.set("n", "<leader>MM", "<cmd>:MoltenEvaluateLine<CR>")
--- vim.keymap.set("n", "<leader>MR", "<cmd>:MoltenReevaluateCell<CR>")
--- vim.keymap.set("v", "<leader>MM", "<cmd>:MoltenEvaluateVisual<CR>")
--- vim.keymap.set("n", "<leader>MD", "<cmd>:MoltenDelete<CR>")
-
--- vim.keymap.set("n", "<leader>MO", "<cmd>:noautocmd MoltenEnterOutput<CR>")
--- vim.keymap.set("n", "<leader>C", "<cmd>:CopilotChat<CR>")
+-- vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
+-- vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")

@@ -40,8 +40,9 @@ require("lazy").setup({
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-cmdline",
 	"hrsh7th/nvim-cmp",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+
+	"mason-org/mason.nvim",
+	"mason-org/mason-lspconfig.nvim",
 
 	{
 		"L3MON4D3/LuaSnip",
