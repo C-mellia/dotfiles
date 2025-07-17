@@ -25,7 +25,7 @@ exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60
 
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id wezterm -e /bin/zsh $HOME/dotfiles/wezterm/wezterm_startup.sh
+exec --no-startup-id wezterm -e /bin/bash -c "$HOME/dotfiles/wezterm/wezterm_startup.sh"
 
 # no anoying beeps
 exec --no-startup-id xset b off

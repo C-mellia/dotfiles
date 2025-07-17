@@ -1,12 +1,6 @@
-[submodule "zsh-syntax-highlighting"]
-	path = zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule "alacritty/alacritty-theme"]
 	path = alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme
 [submodule "rofi-themes-collection"]
 	path = rofi-themes-collection
 	url = https://github.com/newmanls/rofi-themes-collection
-[submodule "zsh-completions"]
-	path = zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
