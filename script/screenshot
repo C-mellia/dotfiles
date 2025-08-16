@@ -8,6 +8,9 @@ scrot_flag=("$@" --file "$prefix"/%b.%d.%Y-%H:%M:%S.png -e "echo \$n")
 
 [[ -d $prefix ]] || mkdir -p "$prefix"
 
-scrot "${scrot_flag[@]}" | tr -d "[:space:]" | xclip -selection clipboard || exit 1
+scrot "${scrot_flag[@]}" | tr -d "[:space:]" | xclip -selection clipboard || {
+  notify-send "screenshot" "Failed to take screenshot or copy to clipboard.\nCheck if scrot is installed."; exit 1
+}
 
+notify-send "screenshot" "Screenshot saved to $prefix and the file name copied to clipboard."
 [[ -f $sound_effect ]] && mpv "$sound_effect" > /dev/null 2>&1

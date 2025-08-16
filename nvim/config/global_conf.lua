@@ -22,6 +22,6 @@ return {
 	-- colorscheme = "kanagawa-dragon",
 	-- colorscheme = "tokyonight",
 	-- colorscheme = "vscode",
-	colorscheme = "rose-pine-moon",
+	colorscheme = "rose-pine",
 	-- colorscheme = "catppuccin-latte",
 }

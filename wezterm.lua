@@ -1,14 +1,16 @@
+local wezterm = require("wezterm")
 local path = os.getenv("HOME") .. "/dotfiles/wezterm/"
 package.path = package.path .. ";" .. path .. "?.lua" .. ";"
-local ok, _config = pcall(require, "config")
+local ok, config = pcall(require, "config")
 
 if not ok then
-	local wezterm = require("wezterm")
-	_config = wezterm.config_builder()
-	return _config
+	os.execute("notify-send 'wezterm' 'Failed to load config.lua'")
+	config = wezterm.config_builder()
+else
+	-- Custom configurations
+	-- config.font = wezterm.font("<Your Font Name>", {})
+	-- config.font_size = 24
+	-- config.color_scheme = "rose-pine"
 end
 
-_config.font_size = 26
-_config.color_scheme = "rose-pine-moon"
-
-return _config
+return config

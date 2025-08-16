@@ -14,7 +14,7 @@ exec --no-startup-id [[ -f ~/.autostart ]] && ~/.autostart
 
 workspace 1 output HDMI-0
 workspace 5 output DP-4
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0
+exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-0 --auto --right-of HDMI-0
 # exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -51,8 +51,8 @@ bindsym $mod+c kill
 # close all notifications from dunst
 bindsym $mod+x exec --no-startup-id dunstctl close-all
 
-bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' rofi -modes run -show run options -theme squared-nord
-bindsym $mod+p exec --no-startup-id rofi -modes run -show run options -theme squared-everforest
+bindsym $mod+Shift+p exec --no-startup-id http_proxy='http://localhost:20171/' https_proxy='http://localhost:20171/' rofi -modes drun -show drun options -theme squared-nord
+bindsym $mod+p exec --no-startup-id rofi -modes drun -show drun options -theme squared-everforest
 
 # bindsym $mod+Shift+e exec --no-startup-id rofi -show emoji -modi emoji options -theme dmenu
 # bindsym $mod+Tab exec --no-startup-id rofi -show window -modi window -theme simple-tokyonight

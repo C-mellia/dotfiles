@@ -16,5 +16,8 @@ map R rotate
 set selection-clipboard clipboard
 set guioptions none
 
+set zoom-min 0.5
+set zoom-max 9.0
+
 # map j feedkeys "<C-Down>"
 # map k feedkeys "<C-Up>"

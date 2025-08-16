@@ -3,8 +3,9 @@
 # https://github.com/ThePrimeagen/.dotfiles/blob/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer#L4
 
 version=$(tmux -V | awk '{ print $2; }')
-read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
-[[ $gt_version = "$version" ]] && fzf_flag+=(--tmux='center,90%')
+# read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
+# [[ $gt_version = "$version" ]] && fzf_flag+=(--tmux='center,90%')
+[[ $version > 3.3 ]] && fzf_flag+=(--tmux='center,90%')
 
 select_path=${1:-$(/bin/find\
     -O3 "$PWD"\
@@ -24,23 +25,22 @@ select_path=${1:-$(/bin/find\
 
 [[ "$select_path" =~ ^\/.* ]] || select_path=$PWD/$select_path
 
-client_id=$(tr . _ <<< "$select_path")
+client_id=$(echo -n "$select_path" | tr : - | tr . _)
 
 [[ -z $TMUX && -z $(pgrep tmux) ]] && {
     tmux new-session\
     -s "$client_id"\
-    -c "$select_path"; exit $?
-}
+    -c "$select_path"; exit $?; }
 
 tmux has-session\
-    -t "$client_id"\
+    -t ="$client_id"\
     2> /dev/null\
     || tmux new-session\
     -ds "$client_id"\
     -c "$select_path"
 
 tmux switch-client\
-    -t "$client_id"\
+    -t ="$client_id"\
     || tmux a
 
-exit 0
+:;

@@ -15,6 +15,10 @@ require("nvim-treesitter.configs").setup({
 		"markdown",
 		"make",
 		"yaml",
+		"tmux",
+		"bash",
+		"json",
+		"llvm",
 	},
 	auto_install = false,
 	highlight = {
