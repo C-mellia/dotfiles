@@ -1,4 +1,4 @@
-
+PWD := $(HOME)/dotfiles
 CONFIG_DIR := $(HOME)/.config
 
 _CONFIGS := nvim picom.conf starship.toml i3 hypr\
@@ -25,7 +25,11 @@ __test:
 link: $(LINKS) wezterm
 
 wezterm:
-	rm -f $(HOME)/.wezterm.lua
-	ln -s $(PWD)/wezterm.lua $(HOME)/.wezterm.lua
+	-mv $(HOME)/.wezterm.lua $(HOME)/.wezterm.lua.bak
+	cp $(PWD)/wezterm.lua $(HOME)/.wezterm.lua
 
-.PHONY: __test link wezterm
+zshrc:
+	-mv $(HOME)/.zshrc $(HOME)/.zshrc.bak
+	cp $(PWD)/zshrc $(HOME)/.zshrc
+
+.PHONY: __test link wezterm zshrc
