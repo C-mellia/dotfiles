@@ -2,7 +2,7 @@
 PATH="$HOME/.local/bin/:$PATH"
 
 # scripts
-PATH="$DOTFILES/script:$PATH"
+PATH="$HOME/dotfiles/script:$PATH"
 
 # editor
 export VISUAL=nvim
