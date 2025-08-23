@@ -209,4 +209,10 @@ require("lazy").setup({
 	-- 	cmd = { "Typr", "TyprStats" },
 
 	"norcalli/nvim-colorizer.lua",
+
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
 }, {})

@@ -12,6 +12,7 @@ require("mason-lspconfig").setup({
 })
 
 vim.lsp.config("lua_ls", {
+	capabilities = capabilities,
 	on_init = function(client)
 		if client.workspace_folders then
 			local path = client.workspace_folders[1].name
@@ -53,12 +54,12 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
-vim.lsp.config('elixirls', {
+vim.lsp.config("elixirls", {
 	unpack(opts),
 	cmd = { os.getenv("HOME") .. "/.local/bin/language_server.sh" },
 })
 
-vim.lsp.config('jdtls', {
+vim.lsp.config("jdtls", {
 	unpack(opts),
 	cmd = { "jdtls" },
 	-- root_dir = vim.fn.getcwd,

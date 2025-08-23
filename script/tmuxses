@@ -2,32 +2,49 @@
 # from thePrimeagen:
 # https://github.com/ThePrimeagen/.dotfiles/blob/602019e902634188ab06ea31251c01c1a43d1621/bin/.local/scripts/tmux-sessionizer#L4
 
+fzf_flag=(
+  --cycle
+  --no-multi
+  --style=full
+  --layout=reverse
+  --margin 5%
+  --bind ctrl-d:page-down
+  --bind ctrl-u:page-up
+  --preview '/bin/ls -l --color=always {} | head -n 20'
+  --preview-window=up:30%:wrap
+  --prompt "Select directory: "
+  --header "Press Ctrl-D to page down, Ctrl-U to page up"
+  --header-lines=1
+)
 version=$(tmux -V | awk '{ print $2; }')
 # read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
 # [[ $gt_version = "$version" ]] && fzf_flag+=(--tmux='center,90%')
-[[ $version > 3.3 ]] && fzf_flag+=(--tmux='center,90%')
+[[ $version > 3.3 ]] && fzf_flag+=(--tmux=center,90%,border-native)
 
-select_path=${1:-$(/bin/find\
-    -O3 "$PWD"\
-    -name '.*'\
-    -prune\
-    -o -perm -004\
-    -type d\
+find_available_directory() { /bin/find\
+  -O3 "$PWD"\
+  -name '.*'\
+  -prune\
+  -o \( -perm -444 -type d -print \); }
+select_with_fzf() { fzf "${fzf_flag[@]}"; }
+is_absolute_path() { [[ "$1" =~ ^/ ]]; }
+echo_if_interactive() { test -t 1 && echo "$@"; }
+exit_withmsg() { st=$1; shift; echo_if_interactive "$@"; exit $st; }
+fix_illegal_tmux_path() { tr : - | tr . _; }
+is_in_tmux_session() { [[ -n $TMUX || -n $(pgrep tmux) ]]; }
+
+select_path=${1:-$(find_available_directory\
     2> /dev/null |\
-    /bin/grep -vE '.*/\.' |\
-    fzf --cycle\
-    --bind ctrl-d:page-down\
-    --bind ctrl-u:page-up\
-    "${fzf_flag[@]}")}
+    select_with_fzf\
+    || exit_withmsg 0 "Exiting without selection")}
 
-[[ -z "$select_path" ]] && exit 0
-[[ -d "$select_path" ]] || exit 1
+[[ -z "$select_path" ]] && exit_withmsg 0 "Exiting without selection"
+[[ -d "$select_path" ]] || exit_withmsg 1 "Not a directory or directory don't exist: $select_path"
 
-[[ "$select_path" =~ ^\/.* ]] || select_path=$PWD/$select_path
+is_absolute_path $select_path || select_path=$PWD/$select_path
+client_id=$(fix_illegal_tmux_path <<< "$select_path")
 
-client_id=$(echo -n "$select_path" | tr : - | tr . _)
-
-[[ -z $TMUX && -z $(pgrep tmux) ]] && {
+is_in_tmux_session || {
     tmux new-session\
     -s "$client_id"\
     -c "$select_path"; exit $?; }

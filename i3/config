@@ -1,5 +1,6 @@
 set $mod Mod4
 
+# font pango:monospace 6
 font pango:FantasqueSansMNerdFont 6
 #font pango:DejaVu Sans Mono 8
 
@@ -11,11 +12,6 @@ exec --no-startup-id fcitx5
 # exec --no-startup-id /usr/bin/wired --run
 exec --no-startup-id dunst
 exec --no-startup-id [[ -f ~/.autostart ]] && ~/.autostart
-
-workspace 1 output HDMI-0
-workspace 5 output DP-4
-exec --no-startup-id xrandr --output HDMI-0 --primary --mode 3440x1440 --rate 60.0 --output DP-0 --auto --right-of HDMI-0
-# exec --no-startup-id xrandr --output HDMI-0 --output DP-4 --primary --mode 1920x1080 --rate 60.00 --right-of HDMI-0
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -33,6 +29,7 @@ exec --no-startup-id xset b 0 0 0
 
 # no more blanking screen
 exec --no-startup-id xset s off -dpms
+exec --no-startup-id bash "~/.config/polybar/launch.sh --pwidgets"
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -174,25 +171,31 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-client.background       #181818f0
+client.focused          #171717a0 #171717a0 #ffffffff #00000000   #00000000
+client.focused_inactive #171717a0 #171717a0 #ffffffff #00000000   #00000000
+client.unfocused        #171717a0 #171717a0 #888888ff #00000000   #00000000
+client.urgent           #171717a0 #171717a0 #eded00ff #00000000   #00000000
+client.placeholder      #171717a0 #171717a0 #ffffffff #00000000   #00000000
 
-bar {
-    i3bar_command i3bar --transparency;
-    status_command i3status;
-    colors {
-        background #181818b0
-    }
-    position top
-    tray_output none
-    # mode hide
-    # modifier $mod
-}
+#client.background       #00000000
+# bar {
+#     i3bar_command i3bar --transparency;
+#     status_command i3status;
+#     colors {
+#         background #181818b0
+#     }
+#     position top
+#     tray_output none
+#     # mode hide
+#     # modifier $mod
+# }
 
-default_border pixel 0
-default_floating_border pixel 0
+default_border none
+default_floating_border none
 for_window [class=".*"] border none
-for_window [class=".*"] title_format "<i>%title</i>[<b>%class</b>]"
+for_window [class=".*"] title_format "<b>%title</b>[<i>%class</i>]"
 no_focus [all]
 focus_on_window_activation smart
+title_align center
 
 include gaps

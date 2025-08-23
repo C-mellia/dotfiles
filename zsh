@@ -20,28 +20,14 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 # which pip &> /dev/null && eval "$(pip completion --zsh)"
 # which watchexec &> /dev/null && eval "$(watchexec --completions zsh)"
 
-# autoload -Uz compinit
-# [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) ]] && compinit || compinit -C
-# [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(N.mh+24) ]] && echo "foo" || echo "bar"
+_italic() { echo -e "\e[3m$1\e[0m"; }
+_cycle_fzf() { fzf --cycle $@; }
 
 autoload -U colors && colors
 unsetopt beep nomatch
 bindkey -v
 
-_italic() {
-    echo -e "\e[3m$1\e[0m"
-}
-
-_cycle_fzf() {
-    fzf --cycle $@
-}
-
 export _cycle_fzf
-
-# Greeting: (Cute Ascii emos!)
-# _italic '<(` ^´)>'
-# echo '(> … <)'
-echo '(˘ w ˘)'
 
 # stop annoying beepings of tty
 setterm --bfreq 0 2> /dev/null
@@ -53,11 +39,12 @@ stty stop 'undef'
 alias ls='/bin/env ls -C -F --color="always" -w $COLUMNS'
 alias grep='/bin/env grep -n --color=always'
 
-# fzfs
-alias lsfzf="/bin/ls | tr -s ' ' '\n' | _cycle_fzf"
-
-export DOTFILES=${DOTFILES:-$HOME/dotfiles}
-[[ -f $DOTFILES/envs ]] && source $DOTFILES/envs
+[[ -f $HOME/dotfiles/envs ]] && source $HOME/dotfiles/envs
 
 # starship
 which starship &> /dev/null && eval "$(starship init zsh)"
+
+# Greeting: (Cute Ascii emos!)
+# _italic '<(` ^´)>'
+# echo '(> … <)'
+echo '(˘ w ˘)'

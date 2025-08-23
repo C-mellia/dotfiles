@@ -7,14 +7,8 @@ vars_fname=OVMF_VARS.fd
 code_file=/usr/share/edk2/x64/$code_fname
 vars_file=$nvme0_25G_template/$vars_fname
 
-panic() {
-    while [[ ! -z $1 ]]; do echo $1; shift; done
-    exit 1
-}
-
-exec_print() {
-    echo "$*" && eval "$*"
-}
+panic() { while [[ ! -z $1 ]]; do echo "$1"; shift; done; exit 1; }
+exec_print() { echo "$*" && eval "$*"; }
 
 if [[ ! -d $nvme0_25G_template ]]; then
     panic "Template missing: $nvme0_25G_template"\
