@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# export TERMINAL=wezterm
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export XCURSOR_SIZE=24
+export QT_WAYLAND_DECORATION=whitesur-gtk
+
+export DOTFILES="$HOME/dotfiles"
+export PICOM_CONFIG_FILE="$DOTFILES/picom.conf"
+export STARSHIP_CONFIG="$DOTFILES/starship.toml"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export PYTHONPATH="$DOTFILES/python_packages:$PYTHONPATH"
+
+xrandr --output HDMI-0 --primary --auto --output DP-0 --auto --right-of HDMI-0
+
+:;

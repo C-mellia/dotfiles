@@ -1,9 +1,0 @@
-#!/bin/bash
-
-CC_FLAG=${CC_FLAG:-"-Wall -Wextra -Werror -std=gnu11"}
-
-fname=${1:-main.c}
-uuid=$(uuidgen)
-out=/tmp/$fname-$uuid
-
-tee $fname > /dev/null && gcc -o $out $fname $CC_FLAG && $out

@@ -1,32 +1,33 @@
-PWD := $(HOME)/dotfiles
+_D := $(HOME)/dotfiles
 CONFIG_DIR := $(HOME)/.config
 
 _CONFIGS := nvim picom.conf starship.toml i3 hypr\
 						dunst/dunstrc zathura/zathurarc nap/config.yaml\
 						.tmux.conf
 CONFIGS = $(shell echo -n $(_CONFIGS) | tr [:space:] ',')
+CUSTOM_CONFIGS = wezterm.lua zshrc vimrc xprofile
 
 LINKS := $(shell echo $(CONFIG_DIR)/{$(CONFIGS)})
 
 $(CONFIG_DIR)/%:
 	-mkdir -p $(shell dirname $@) -v
-	ln -s $(PWD)/$(shell basename $@) -t $(shell dirname $@) -v
+	ln -s $(_D)/$(shell basename $@) -t $(shell dirname $@) -v
 
 $(CONFIG_DIR)/nap/config.yaml:
 	-mkdir -p $(shell dirname $@) -v
-	ln -s $(PWD)/nap.yaml $@ -v
+	ln -s $(_D)/nap.yaml $@ -v
 
 # $(CONFIG_DIR)/*: $(shell dirname $@)
 # 	ln -s $@ $(shell basename $@)
 
-__test:
-	@echo $(CONFIGS)
-	@echo $(LINKS)
+all: link copy
 
-link: $(LINKS) wezterm zshrc vimrc
+link: $(LINKS)
 
-wezterm.lua zshrc vimrc:
+copy: $(CUSTOM_CONFIGS)
+
+$(CUSTOM_CONFIGS):
 	-mv $(HOME)/.$@ .$@.bak
-	cp $(PWD)/.$@ $(HOME)/.$@
+	cp $(_D)/.$@ $(HOME)/.$@
 
-.PHONY: __test link wezterm zshrc vimrc
+.PHONY: link copy $(CUSTOM_CONFIGS)
