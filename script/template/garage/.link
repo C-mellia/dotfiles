@@ -1,9 +1,0 @@
-#!/bin/bash
-
-LD=gcc
-LD_FLAG=(-lgarage)
-
-echo "$LD -o main $(for file in $srcs; do echo target/"$file".o; done)" "${LD_FLAG[@]}"
-$LD -o main "$(for file in $srcs; do echo target/"$file".o; done)" "${LD_FLAG[@]}" || {
-    echo "Failed to link target main" && exit 1
-}

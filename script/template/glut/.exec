@@ -1,8 +1,0 @@
-#!/bin/bash
-
-stb_url=https://github.com/nothings/stb
-
-git status &> /dev/null || git init 2> /dev/null
-
-[[ -d vendor ]] || mkdir vendor
-[[ -d vendor/stb ]] || git submodule add $stb_url ./vendor/stb 2> /dev/null

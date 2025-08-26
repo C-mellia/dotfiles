@@ -1,9 +1,0 @@
-<!-- vim: set filetype=markdown: -->
-# glut
-
-depends on libarray.so and liblinalg.so, which are implementions of dynamic
-array(implicitly string class) and linear algebra(vec2-4 and mat2-4)
-respectively
-
-provides a simple implementation of common glut callbacks and renders a
-triangle.

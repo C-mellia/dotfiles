@@ -1,6 +1,0 @@
-#!/bin/bash
-
-tr -s '[:blank:]' '[\n*]' |
-    while read -r word; do
-        echo "$word 1"
-    done

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-tex_flag='-interaction=nonstopmode'
-
-[[ -d target ]] || mkdir target/
-(cd target && pdflatex $tex_flag ../src/body.tex body.pdf)
