@@ -19,7 +19,7 @@ fzf_flag=(
 version=$(tmux -V | awk '{ print $2; }')
 # read -r gt_version <<< "$(printf '%s\n%s\n' 3.3 "$version" | sort --reverse)"
 # [[ $gt_version = "$version" ]] && fzf_flag+=(--tmux='center,90%')
-[[ $version > 3.3 ]] && fzf_flag+=(--tmux=center,90%,border-native)
+[[ $version > "3.3" ]] && fzf_flag+=(--tmux=center,90%,border-native)
 
 find_available_directory() { /bin/find\
   -O3 "$PWD"\
@@ -29,7 +29,7 @@ find_available_directory() { /bin/find\
 select_with_fzf() { fzf "${fzf_flag[@]}"; }
 is_absolute_path() { [[ "$1" =~ ^/ ]]; }
 echo_if_interactive() { test -t 1 && echo "$@"; }
-exit_withmsg() { st=$1; shift; echo_if_interactive "$@"; exit $st; }
+exit_withmsg() { st=$1; shift; echo_if_interactive "$@"; exit "$st"; }
 fix_illegal_tmux_path() { tr : - | tr . _; }
 is_in_tmux_session() { [[ -n $TMUX || -n $(pgrep tmux) ]]; }
 
@@ -41,7 +41,7 @@ select_path=${1:-$(find_available_directory\
 [[ -z "$select_path" ]] && exit_withmsg 0 "Exiting without selection"
 [[ -d "$select_path" ]] || exit_withmsg 1 "Not a directory or directory don't exist: $select_path"
 
-is_absolute_path $select_path || select_path=$PWD/$select_path
+is_absolute_path "$select_path" || select_path=$PWD/$select_path
 client_id=$(fix_illegal_tmux_path <<< "$select_path")
 
 is_in_tmux_session || {

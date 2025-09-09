@@ -71,6 +71,9 @@ vim.opt.inccommand = "split"
 -- allow indent for breaked lines(happens if line is longer than window width)
 vim.opt.breakindent = true
 
+-- rounded border for floating windows
+vim.o.winborder = "rounded"
+
 -- timeout for keymap sequence
 vim.opt.timeoutlen = 500
 
@@ -81,6 +84,8 @@ vim.g.tex_conceal = "abdmgs"
 
 -- correct formating for cjk characters
 vim.opt.formatoptions:append("mB")
+
+-- vim.opt.formatoptions:append("nqp")
 
 -- darkmode for vscode color theme
 vim.opt.background = "dark"

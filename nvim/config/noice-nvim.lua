@@ -4,6 +4,7 @@ require("noice").setup({
 		view = "mini",
 		view_error = "mini",
 		view_warn = "mini",
+		view_history = "messages",
 	},
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**

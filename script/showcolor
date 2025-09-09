@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for color in {0..255}; do
+  printf "\e[38;5;%dm%03d\e[0m " "$color" "$color"
+  (( (color + 1) % 16 == 0 )) && echo
+done
+echo
+
+for color in {0..255}; do
+  printf "\e[48;5;%dm%03d\e[0m " "$color" "$color"
+  (( (color + 1) % 16 == 0 )) && echo
+done
+echo

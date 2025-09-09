@@ -81,12 +81,12 @@ vim.lsp.config("rust_analyzer", {
 
 vim.lsp.config("clangd", {
 	unpack(opts),
-	on_attach = function(client, bufnr)
-		local filetype = vim.bo[bufnr].filetype
-		if filetype ~= "cpp" then
-			client.stop()
-		end
-	end,
+	-- on_attach = function(client, bufnr)
+	-- 	local filetype = vim.bo[bufnr].filetype
+	-- 	if filetype ~= "cpp" then
+	-- 		client.stop()
+	-- 	end
+	-- end,
 	-- handlers = {
 	--     ["textDocument/publishDiagnostics"] = function ()
 	--     end,

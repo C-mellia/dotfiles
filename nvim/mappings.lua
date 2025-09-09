@@ -42,5 +42,23 @@ vim.keymap.set("n", "<Leader>gr", function()
 end, { desc = "vim grep from '+' register" })
 vim.keymap.set("n", "<C-t>", "xp", { desc = "transpose current and next character" })
 
+-- 'm' is crucial for formatting CJK words, however it has some unwanted line
+-- breaks for some combinations of characters, for example:
+--
+-- `<head>`. in this case the line break can happen between '>' and the second
+-- backtick, resulting in Obsidian not able to recognize the markdown syntax.
+--
+-- Manually toggling 'm' is annoying, but at least it's a workaround. Also in
+-- my case, I probably won't be working with both at the same time.
+vim.keymap.set("n", "<leader>e", function()
+	if vim.bo.formatoptions:match("m") then
+		vim.bo.formatoptions = vim.bo.formatoptions:gsub("m", "")
+		print("formatoptions: 'm' removed")
+	else
+		vim.bo.formatoptions = vim.bo.formatoptions .. "m"
+		print("formatoptions: 'm' added")
+	end
+end, { desc = "toggle formatoptions 'm'" })
+
 -- vim.keymap.set("n", "<leader>h", "<cmd>%!xxd<CR>")
 -- vim.keymap.set("n", "<leader>H", "<cmd>%!xxd -r<CR>")
