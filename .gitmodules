@@ -1,6 +1,6 @@
-[submodule "alacritty/alacritty-theme"]
-	path = alacritty-theme
-	url = https://github.com/alacritty/alacritty-theme
 [submodule "rofi-themes-collection"]
 	path = rofi-themes-collection
 	url = https://github.com/newmanls/rofi-themes-collection
+[submodule "alacritty-theme"]
+	path = alacritty-theme
+	url = https://github.com/alacritty/alacritty-theme
