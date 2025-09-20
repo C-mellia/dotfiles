@@ -3,14 +3,14 @@ COPY := .config/nvim\
 				.config/polybar\
 				.config/picom.conf\
 				.config/hypr\
+				.config/alacritty\
 				.zshrc\
 				.vimrc\
 				.wezterm.lua\
 				.tmux.conf\
 				.xprofile\
 
-LINK := .config/alacritty\
-				.config/dunst\
+LINK := .config/dunst\
 				.config/starship.toml\
 				.config/dunst\
 
