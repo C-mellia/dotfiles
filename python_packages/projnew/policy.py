@@ -1,9 +1,9 @@
 import os
 
-from typing import Literal
+from typing import Literal, List
 
 
-def is_special(rel_dir: str, filename: str, special_files: [str]) -> bool:
+def is_special(rel_dir: str, filename: str, special_files: List[str]) -> bool:
     return rel_dir == "." and filename in special_files
 
 

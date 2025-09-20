@@ -1,6 +1,8 @@
 import os
 import sys
 
+from typing import List
+
 
 def find_candidate(prefix, template_name):
     candidates = [os.path.join(p, template_name) for p in prefix]
@@ -11,7 +13,7 @@ def find_candidate(prefix, template_name):
 
 
 def info(
-    prefix: [str],
+    prefix: List[str],
     exec_file: str,
     info_file: str,
     quiet: bool,
@@ -44,7 +46,7 @@ def info(
 
 
 def init(
-    prefix: [str],
+    prefix: List[str],
     exec_file: str,
     info_file: str,
     quiet: bool,
@@ -53,7 +55,7 @@ def init(
     update: str,
     dry: bool,
     no_exec: bool,
-    extra_args: [str],
+    extra_args: List[str],
     *args,
     **kwargs,
 ):
@@ -130,19 +132,19 @@ def init(
 
 
 def list_(
-    prefix: [str],
+    prefix: List[str],
     exec_file: str,
     info_file: str,
     quiet: bool,
     *args,
     **kwargs,
 ):
-    prefix = filter(
+    prefix_ = filter(
         lambda dir_: os.path.isdir(dir_) and os.access(dir_, os.R_OK), prefix
     )
     templates = {}
 
-    for dir_ in prefix:
+    for dir_ in prefix_:
         for name in os.listdir(dir_):
             template_path = os.path.join(dir_, name)
             paths = templates.get(name, [])

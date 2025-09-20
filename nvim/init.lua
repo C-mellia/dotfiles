@@ -1,4 +1,6 @@
-local path = os.getenv("HOME") .. "/.config/nvim/"
+local path = os.getenv("HOME") .. "/dotfiles/nvim/"
+local prev_path = package.path
+
 package.path = package.path .. ";" .. path .. "?.lua" .. ";" .. path .. "config/?.lua"
 
 if vim.g.vscode then
@@ -6,8 +8,6 @@ if vim.g.vscode then
 	require("mappings")
 	require("autocmd")
 else
-	-- global config: config/global_conf
-	-- utils: util
 	require("unmapping")
 	require("variables")
 	require("plugins")
@@ -20,3 +20,5 @@ else
 		require("neovide")
 	end
 end
+
+package.path = prev_path

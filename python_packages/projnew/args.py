@@ -1,5 +1,6 @@
 import os
 
+from typing import List
 from argparse import ArgumentParser
 from .commands import init, list_, info
 
@@ -7,7 +8,7 @@ from .commands import init, list_, info
 __user = os.path.expanduser("~")
 
 
-def posix_list(s: str) -> [str]:
+def posix_list(s: str) -> List[str]:
     return s.split(":")
 
 

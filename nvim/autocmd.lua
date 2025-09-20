@@ -16,18 +16,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- vim.api.nvim_create_autocmd({
--- 	"BufRead",
--- 	"BufNewFile",
--- }, {
--- 	group = augroup,
--- 	callback = function(ev)
--- 		if vim.bo[ev.buf].filetype == "cpp" and ev.file:match("%.h$") then
--- 			print(ev.file)
--- 			vim.cmd([[ set ft=c ]])
--- 		end
--- 	end,
--- })
+vim.api.nvim_create_autocmd({
+	"BufRead",
+	"BufNewFile",
+}, {
+	group = augroup,
+	callback = function(ev)
+		if vim.bo[ev.buf].filetype == "cpp" and ev.file:match("%.h$") then
+			print(ev.file)
+			vim.cmd([[ set ft=c ]])
+		end
+	end,
+})
 
 -- having issue with oil-nvim
 -- vim.api.nvim_create_autocmd("BufWritePre", {

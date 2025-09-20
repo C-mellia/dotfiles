@@ -1,6 +1,3 @@
-local util = require("util")
--- local oil = require("oil.actions")
-
 vim.keymap.set("n", "<C-j>", "<cmd>:cnext<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>:cprev<CR>")
 
@@ -27,20 +24,6 @@ vim.keymap.set("n", "<PageUp>", "<NOP>")
 vim.keymap.set("i", "<PageUp>", "<NOP>")
 vim.keymap.set("n", "<PageDown>", "<NOP>")
 vim.keymap.set("i", "<PageDown>", "<NOP>")
-
-vim.keymap.set("n", "<Leader>%", "<cmd>:bd %<CR>")
-vim.keymap.set("n", "<Leader>gg", function()
-	vim.cmd('normal viw"0y')
-	util.grep_from_dir_reg("0")
-end)
-vim.keymap.set("n", "<Leader>cc", function()
-	vim.cmd('normal viw"0y')
-	util.grep_from_buf_reg("0")
-end, { desc = "vim grep words on the current cursor" })
-vim.keymap.set("n", "<Leader>gr", function()
-	util.grep_from_buf_reg("+")
-end, { desc = "vim grep from '+' register" })
-vim.keymap.set("n", "<C-t>", "xp", { desc = "transpose current and next character" })
 
 -- 'm' is crucial for formatting CJK words, however it has some unwanted line
 -- breaks for some combinations of characters, for example:

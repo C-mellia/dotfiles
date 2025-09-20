@@ -1,0 +1,41 @@
+return {
+  transparent_bg = true,
+  mason_ensure_installed = {
+    "cssls",
+    "html",
+    "templ",
+    "svelte",
+    "lua_ls",
+    "cssls",
+    "jsonls",
+    "rust_analyzer",
+    "bashls",
+    "texlab",
+    "gopls",
+  },
+
+  -- colorscheme = "nightfox",
+  -- colorscheme = "default",
+  -- colorscheme = "kanagawa-dragon",
+  -- colorscheme = "tokyonight-night",
+  -- colorscheme = "vscode",
+  -- colorscheme = "rose-pine",
+  -- colorscheme = "catppuccin-latte",
+  colorscheme = "catppuccin",
+
+  neovide_font = "Victor Mono Medium:h12",
+
+  extra_plugins = {
+    "ThePrimeagen/vim-be-good",
+    "crispybaccoon/evergarden",
+    "ramojus/mellifluous.nvim",
+    "EdenEast/nightfox.nvim",
+    "ellisonleao/gruvbox.nvim",
+    { "rose-pine/neovim", name = "rose-pine" },
+    -- "github/copilot.vim",
+    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
+    "rebelot/kanagawa.nvim",
+    "Mofiqul/vscode.nvim",
+  },
+}

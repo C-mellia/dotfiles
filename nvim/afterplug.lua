@@ -1,2 +1,2 @@
-local global_conf = require("global_conf")
-vim.cmd.colorscheme(global_conf.colorscheme)
+local confs = require("local")
+vim.cmd.colorscheme(confs.colorscheme)

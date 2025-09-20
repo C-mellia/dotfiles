@@ -1,7 +1,7 @@
 require("config.catppuccin-nvim")
 require("config.colorizer-nvim")
 require("config.comment")
-require("config.conform-nvim")
+-- require("config.conform-nvim")
 require("config.evergarden")
 require("config.gruvbox")
 require("config.kanagawa-nvim")

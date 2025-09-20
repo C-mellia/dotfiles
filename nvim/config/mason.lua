@@ -1,4 +1,4 @@
-local global_conf = require("global_conf")
+local confs = require("local")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local opts = {
@@ -7,7 +7,7 @@ local opts = {
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = global_conf.mason_ensure_installed,
+	ensure_installed = confs.mason_ensure_installed,
 	automatic_enable = true,
 })
 

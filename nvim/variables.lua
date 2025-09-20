@@ -78,7 +78,7 @@ vim.o.winborder = "rounded"
 vim.opt.timeoutlen = 500
 
 -- hidden or replace concealed characters
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 1
 -- conceal settings for vimtex
 vim.g.tex_conceal = "abdmgs"
 

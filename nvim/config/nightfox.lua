@@ -1,11 +1,11 @@
-global_conf = require("global_conf")
+confs = require("local")
 -- Default options
 require('nightfox').setup({
   options = {
     -- Compiled file's destination location
     compile_path = vim.fn.stdpath("cache") .. "/nightfox",
     compile_file_suffix = "_compiled", -- Compiled file suffix
-    transparent = global_conf.transparent_bg,     -- Disable setting background
+    transparent = confs.transparent_bg,     -- Disable setting background
     terminal_colors = true,  -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
     dim_inactive = false,    -- Non focused panes set to alternative background
     module_default = true,   -- Default enable value for modules

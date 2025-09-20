@@ -1,4 +1,6 @@
+local confs = require("local")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -53,25 +55,11 @@ require("lazy").setup({
 
 	"saadparwaiz1/cmp_luasnip",
 
-	"crispybaccoon/evergarden",
-
-	"ThePrimeagen/vim-be-good",
-
-	"ramojus/mellifluous.nvim",
-
 	"mbbill/undotree",
 
 	"tpope/vim-fugitive",
 
 	"winston0410/range-highlight.nvim",
-
-	"EdenEast/nightfox.nvim",
-
-	"ellisonleao/gruvbox.nvim",
-
-	{ "rose-pine/neovim", name = "rose-pine" },
-
-	"github/copilot.vim",
 
 	{
 		"folke/trouble.nvim",
@@ -111,16 +99,10 @@ require("lazy").setup({
 		},
 	},
 
-	"folke/tokyonight.nvim",
-
-	"catppuccin/nvim",
-
-	"rebelot/kanagawa.nvim",
-
-	{
-		"stevearc/conform.nvim",
-		opts = {},
-	},
+	-- {
+	-- 	"stevearc/conform.nvim",
+	-- 	opts = {},
+	-- },
 
 	{
 		"lervag/vimtex",
@@ -130,17 +112,15 @@ require("lazy").setup({
 		end,
 	},
 
-	"Mofiqul/vscode.nvim",
-
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		-- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = {},
-	},
+	-- {
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- 	-- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+	-- 	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+	-- 	---@module 'render-markdown'
+	-- 	---@type render.md.UserConfig
+	-- 	opts = {},
+	-- },
 
 	{
 		"folke/noice.nvim",
@@ -175,4 +155,6 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
+
+	unpack(confs.extra_plugins),
 }, {})

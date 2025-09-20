@@ -1,33 +1,36 @@
-_D := $(HOME)/dotfiles
-CONFIG_DIR := $(HOME)/.config
+COPY := .config/nvim\
+				.config/i3\
+				.config/polybar\
+				.config/picom.conf\
+				.config/hypr\
+				.zshrc\
+				.vimrc\
+				.wezterm.lua\
+				.tmux.conf\
+				.xprofile\
 
-_CONFIGS := nvim picom.conf starship.toml i3 hypr\
-						dunst/dunstrc zathura/zathurarc nap/config.yaml\
-						.tmux.conf
-CONFIGS = $(shell echo -n $(_CONFIGS) | tr [:space:] ',')
-CUSTOM_CONFIGS = wezterm.lua zshrc vimrc xprofile
+LINK := .config/alacritty\
+				.config/dunst\
+				.config/starship.toml\
+				.config/dunst\
 
-LINKS := $(shell echo $(CONFIG_DIR)/{$(CONFIGS)})
+TARGET := $(HOME)
+SOURCE := $(HOME)/dotfiles
 
-$(CONFIG_DIR)/%:
-	-mkdir -p $(shell dirname $@) -v
-	ln -s $(_D)/$(shell basename $@) -t $(shell dirname $@) -v
+COPY_TARGET := $(addprefix $(TARGET)/,$(COPY))
+LINK_TARGET := $(addprefix $(TARGET)/,$(LINK))
 
-$(CONFIG_DIR)/nap/config.yaml:
-	-mkdir -p $(shell dirname $@) -v
-	ln -s $(_D)/nap.yaml $@ -v
+all: $(LINK_TARGET) $(COPY_TARGET)
 
-# $(CONFIG_DIR)/*: $(shell dirname $@)
-# 	ln -s $@ $(shell basename $@)
+$(TARGET)/%: $(SOURCE)/% | $(TARGET)
+	@echo "Linking $@ -> $<"
+	@-ln -s $< $@
 
-all: link copy
+$(COPY_TARGET): $(TARGET)/%: $(SOURCE)/% | $(TARGET)
+	@echo "Copying $< -> $@"
+	@cp -rf --update $< $@
 
-link: $(LINKS)
+$(TARGET):
+	-mkdir -p $@
 
-copy: $(CUSTOM_CONFIGS)
-
-$(CUSTOM_CONFIGS):
-	-mv $(HOME)/.$@ .$@.bak
-	cp $(_D)/.$@ $(HOME)/.$@
-
-.PHONY: link copy $(CUSTOM_CONFIGS)
+.PHONY: all

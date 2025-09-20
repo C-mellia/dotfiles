@@ -2,7 +2,7 @@ import os
 import logging
 
 from string import Template
-from typing import Literal
+from typing import Literal, List
 from .policy import is_special, should_update
 
 
@@ -25,7 +25,7 @@ def populate_directory(
     context: dict | None,
     update: Literal["none", "older"],
     dry: bool,
-    exceptions: [str] = [],
+    exceptions: List[str] = [],
 ):
     for dirname, _, filenames in os.walk(src_dir):
         dest_dir = os.path.join(dest_dir, os.path.relpath(dirname, src_dir))
