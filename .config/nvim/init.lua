@@ -8,8 +8,9 @@ package.path = package.path .. ";" .. local_path .. "/?.lua"
 package.path = package.path .. ";" .. local_path .. "/config/?.lua"
 
 -- base config
-require("init")
+require("base")
 
 -- local configs
 require("local_mappings")
 require("local_plugins")
+require("local_afterplug")
