@@ -11,6 +11,8 @@ package.path = package.path .. ";" .. local_path .. "/config/?.lua"
 require("base")
 
 -- local configs
-require("local_mappings")
-require("local_plugins")
-require("local_afterplug")
+if not vim.g.vscode then
+	require("local_mappings")
+	require("local_plugins")
+	require("local_afterplug")
+end
